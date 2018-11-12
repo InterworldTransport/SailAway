@@ -1,0 +1,398 @@
+<HTML>
+<HEAD>
+<TITLE>Help Me Understand - Clados Package</TITLE>
+</HEAD>
+ 
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table border=0 width=100% align=center>
+<tr align=center valign=top>
+	<td align=center valign=middle>
+		<img	height=100
+			src="../images/SplashImage.gif" 
+			border=0>
+	</td>
+	<td align=center valign=bottom>
+		<h1>SailAway</h1>
+		<h3>Version 0.10<br>(An early development version)</h3>
+	</td>
+</tr>
+<tr>
+	<td colspan=2 bgcolor=cccccc>
+		&nbsp;
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top>
+		<h3>Contents</h3>
+		<h5>The clados package</h5>
+		<font size=2>
+		<ul>
+		<li><a href="#Overview">Overview</a>
+		<li><a href="#Monad">The Monad</a>
+		<li><a href="#Dyad">The Dyad</a>
+		<li><a href="#EuclidSpace">Euclidian space</a>
+		<li><a href="#AlgebraEuclidSpace">Euclidian algebra</a>
+		</ul>
+		</font>
+	</td>
+	<td align=left valign=bottom>
+		<a name="Overview">
+			<h3>Clados Package Overview</h3>
+		</a>
+		<font size=3>
+		<p>
+		A Clifford Algebra is a mathematical object useful for 
+		representing geometry in an algebraic manner.  The physics  of 
+		celestial mechanics was born from geometry observations yet it 
+		is calculated today with algebra.  Calculus has its roots in 
+		geometry and algebra.  Uniting the two mathematical arenas gives 
+		those simulating the physics a very powerful programatic tool.
+		<p>
+		<h4>Clados = CLifford Algebra Derived ObjectS</h4>
+		<p>
+		There are other approaches to implementing geometry manipulation
+		code.  Most are based upon the handling of matricies.  Using 
+		Clifford Algebras is simply better.  Some knowledgeable people 
+		may debate this, but we don't.  The reason we don't is that many
+		programmatic errors are easily avoided with Clifford Algebra 
+		derived objects.  Besides, the generators of Clifford Algebras 
+		can be cast as matrices with all the rules of matrix algebra
+		reproducing the rules of geometric algebra.  Using the matricies
+		hides the underlying geometry and leads to unnecessary
+		computation.
+		<p>
+		The clados package implements Clifford Algebra objects.  These 
+		objects can represent any property from physics.  The Moon's 
+		momentum and angular momentum can be written as a Monad.  The 
+		inertia of an extended mass can be written as a dyad.  
+		</font>>
+		<hr size=4>
+		<a name="Monad">
+			<h3>The Monad</h3>
+		</a>
+		<font size=3>
+		<p>
+		The Monad class is the basic single-algebra object generator in 
+		a flat space.  Most of the physical properties taught in 
+		undergraduate physics can be represented with a single-algebra 
+		object.
+		<p>
+		The description of what a Monad is can be summarized as follows.
+		<ul>
+		<li>A name for the Monad
+		<li>A name for the reference frame used to describe the flat
+		tangent space.  It is assumed a transformation on the reference
+		frame will change this name to demonstrate the action.
+		<li>A named location representing the foot of the tangent space.
+		This location is the point on the underlying manifold where the
+		tangent space is defined as tangent.
+		<li>An array of coefficients from the field upon which the
+		algebra is defined.  Clados monads are defined upon real
+		numbers.
+		<li>The number of generators with a sqaure of positive unity.
+		<li>The number of generators with a sqaure of negative unity.
+		</ul>
+		<p>
+		The foot name is not used in any serious fashion at this time.
+		Later versions of Clados will support transformations of the
+		foot along the underlying manifold in some fashion, so it makes
+		sense to include place holders in the monad now.
+		<p>
+		The frame name is used now as a way to ensure Monads using
+		different reference frames may be treated as though they were of
+		a different type without having to actually declare another
+		class within the package.  Passive transformations change the
+		reference frame, but no support for them has been coded into the
+		monad yet.
+		<p>
+		Several arrays are figured once the basic information has been
+		provided in the list above.  The generator and multiplication
+		tables are both produced and kept with each instance of a Monad.
+		<p>
+		Not all possible metrics of a space are supported within the
+		Monad.  The generators with a positive square are listed in the
+		generator table before the ones with negative square.  No
+		generality is lost with this limitation, though fans of certain
+		metrics may find this annoying when they can't write a 
+		multivector the way they want.
+		</font>>
+		<hr size=4>
+		<a name="Dyad">
+			<h3>The Dyad</h3>
+		</a>
+		<font size=3>
+		<p>
+		Some thought has been given concerning how to code a Dyad within
+		Clados.  There are some fundamental choices that have to be made
+		early.  We have yet to make them.  How these choices work out
+		will have a definite impact on how some physical properties like
+		rotational inertia and the link between angular momentum and
+		angular velocity are written.
+		<p>
+		A Dyad is the basic two-algebra object generator in a flat
+		space.  It may be thought of as two Monads written side-by-side
+		with each using a different reference frame.  It is possible for
+		each monad to use the same foot location, but the reference
+		frames are assumed to be different even if they appear to be
+		interchangeable.
+		<p>
+		A Dyadic is a sum of dyads.  All dyads may be written as a
+		dyadic by breaking each Monad into a sum over its basis elements
+		and them performing the multiplicative distribution.  It is not 
+		so clear that all dyadics simplify to a product of Monads, 
+		however.
+		</font>
+		<hr size=4>
+		<a name="EuclidSpace">
+			<h3>Geometry in three dimensional Euclidian spaces.</h3>
+		</a>
+		<font size=3>
+		<p>
+		Newtonian physics is performed in a three dimensional space 
+		where time is treated as a parameter of our algebraic equations.
+		Three dimensional spaces have four distinct ranks (sometimes 
+		called 'grades') for the geometric objects within them.  The 
+		basic objects are as follows...<br><br>
+		<ul>
+		<li>Points - grade 0
+		<li>Line segments - grade 1
+		<li>Plane segments - grade 2
+		<li>Volume segments - grade 3
+		</ul>
+		Each of these objects has associated with it a sense of 
+		magnitude.  Each one except the points also has an associated 
+		orientation or direction.
+		<p>
+		Usage Example 1:<br>
+		Imagine a room filled with air.  Each location in the room has 
+		associated with it a temperature.  The function representing the
+		temperature anywhere takes as input a location defined by useful
+		parameters and may output a point with a magnitude equal to the 
+		temperature there.
+		<pre>
+f(location) = point*temperature
+		</pre>
+		Most people don't bother writing down the 'point' in the 
+		algebraic equation, but it can be done.  Don't confuse the 
+		parameters of the function describing the location with the 
+		point located there.  Many do confuse the two, but they are not 
+		the same thing.
+		<p>
+		Usage Example 2:<br>
+		Imagine the room from example one.  If someone puts a fan in a 
+		corner and turns it on, the air will move around.  Now each 
+		location within the room has associated with it a line segment 
+		representing the velocity of the air.
+		<pre>
+f(location) = directed line segment*speed
+		</pre>
+		Each line segment can be thought of as a line with an arrow 
+		describing which way it points.  There are two directions a line
+		segment could point, so we have a positive and negative 
+		possibility.
+		<p>
+		Usage Example 3:<br>
+		With the same air filled room from the previous two examples, 
+		imagine that each molecule of air was also rotating.  We can now
+		associate a small plane segment with each location to represent 
+		the equators of each rotating molecule.
+		<pre>
+f(location) = directed plane segment*rotation speed
+		</pre>
+		Each plane segment can be thought of as a small loop with an 
+		arrow describing which way one goes around on it.  Remember that
+		a single plane at the equator can represent two possible 
+		rotations; east to west, and west to east.  One direction can be
+		positive while the other is negative.  With this notion we turn 
+		plane segments into directed plane segments and grade two 
+		objects are avialble for use.
+		<p>
+		Many people are used to using a right hand rule at this point to
+		turn a plane segment into a related vector perpendicular to the
+		plane.  That operation is called 'taking a dual' in a geometric
+		algebra and is unecessary for our work.  It is better to avoid
+		using the dual for reasons that might become apparent when a
+		'multivector' is defined next.
+		<p>
+		All three examples can be combined and written as one function 
+		if the air in the room is warm, moving, and rotating.  There is 
+		no reason why our function must stick to producing geometry of 
+		one grade.
+		<pre>
+f(location) = 	point*temperature + 
+		directed line segment*speed + 
+		directed plane segment*rotation speed
+		</pre>
+		It will be left to the reader to put the directed volume segment
+		to work for the air filled room example.  Think awhile about the
+		Ideal gas law.
+		</font>
+		<hr size=4>
+		<a name="AlgebraEuclidSpace">
+			<h3>Algebra in three dimensional Euclidian spaces.</h3>
+		</a>
+		<font size=3>
+		<p>
+		Many people find the geometric nature of Clifford Algebras 
+		relatively straight forward.  Our intuitions seem well designed 
+		for geometry.  Learning the algebraic nature is where most 
+		people bog down.
+		<p>
+		Newtonian physics is performed with equations and the other 
+		aspects of algebra.  With its roots in geometry, celestial 
+		mechanics took a great leap forward once practitioners could 
+		operate algebraically.  This section focuses upon how to write 
+		the geometry in a symbolic form that lends itself to easy use 
+		and understanding within the framework of algebra.
+		<p>
+		We start with how to write the various ranked objects in 
+		symbolic form.
+		<ul>
+		<li>A point is a number multiplied by the symbol 'e'
+		<li>A directed line segment is a number multiplied by the 
+		symbol 'e<sub>i</sub>'
+		<li>A directed plane segment is a number multiplied by the 
+		symbol 'e<sub>ij</sub>'
+		<li>A directed volume segment is a number multiplied by the 
+		symbol 'e<sub>ijk</sub>'
+		<li>where i, j, and k = 1, 2, or 3
+		<li>and i not= j &nbsp;&nbsp; and j not= k &nbsp;&nbsp; 
+		and i not= k
+		</ul>
+		<p>
+		There are special names given to each grade that you should probably learn
+		if you ever wish to be able to read texts on the subject.
+		<ul>
+		<li>Points are refered to as scalars.
+		<li>Directed line segments are refered to as vectors.
+		<li>Directed plane segments are refered to as bivectors and 
+		sometimes as psuedovectors.
+		<li>Directed volume segments are refered to as trivectors and 
+		often as psuedoscalars.
+		</ul>
+		<p>
+		Now it's time to try a few examples of symbolic forms.
+		<ul>
+		<li>5 is a number
+		<li>5e is a scalar
+		<li>0e<sub>3</sub> is a vector
+		<li>3e<sub>1</sub> is a vector
+		<li>-5e<sub>2</sub> is a vector
+		<li>0e<sub>12</sub> is a bivector
+		<li>3e<sub>23</sub> is a bivector
+		<li>5e<sub>123</sub> is a trivector
+		<li>5e<sub>321</sub> is a trivector
+		</ul>
+		<p>
+		Now that we have defined the actors on our stage, we must define
+		what they do.  In algebra, this is done by defining what we mean
+		by addition and multiplication.  Don't assume these operators 
+		work the way they do for real numbers.  They do in some ways and
+		not in other ways.
+		<p>
+		<h4>The meaning of addition</h4>
+		<p>
+		The fastest way to describe how addition works is to give a few 
+		examples.  Don't expect all the problems to simplify to a single
+		symbol as they would with real numbers.
+		<p>
+		<ul>
+		<li>3e + (-5e) = (-2e)
+		<li>(-5e) + 3e = (-2e)	{Yes...Addition is commutative}
+		<li>6e + 5e<sub>12</sub> = 6e + 5e<sub>12</sub> 
+		{No simplification}
+		<li>(3e<sub>1</sub> + 2e<sub>3</sub>) + (6e<sub>2</sub> + 
+		-3e<sub>3</sub>) = (3e<sub>1</sub> + 6e<sub>2</sub> + 
+		-1e<sub>3</sub>)
+		</ul>
+		Addition works by group terms with similar basis elements and 
+		adding the coefficients.
+		<p>
+		<h4>The meaning of multiplication</h4>
+		<p>
+		Multiplication is a trickier operation.  It is best defined in 
+		terms of the basis vectors.  The other possibilities fall out of
+		this partial definition in a consistent manner.
+		<p>
+		<ul>
+		<li>e<sub>i</sub> * e<sub>j</sub> = e<sub>ij</sub> if i 
+		not= j
+		<li>e<sub>i</sub> * e<sub>j</sub> = e if i = j
+		<li>and e<sub>ij</sub> = -1e<sub>ji</sub>
+		<li>and (a * (b * c)) = ((a * b) * c)) for all a, b, c in the 
+		algebra
+		</ul>
+		<p>
+		We can now derive how multiplication works for all other cases.
+		Here are some examples.
+		<p>
+		<ul>
+		<li>5e * 3e<sub>1</sub> = 15e<sub>1</sub>
+		<li>3e<sub>3</sub> * 2e<sub>12</sub> = 6e<sub>312</sub> = 
+		6e<sub>123</sub>
+		<li>-2e<sub>1</sub> * (6e<sub>2</sub> * 4e<sub>123</sub>) =
+		+48e<sub>3</sub>
+		</ul>
+		Note that multiplication is not always commutative.<br>
+		Different basis vectors always anti-commute.
+		<p>
+		<h4>The multiplication table</h4>
+		<p>
+		<img src="./images/3dmult.gif">
+		<p>
+		Multiplying sums of geometry works by distribution.<br>
+		(A+B)*(C+D)=A*B + A*D + B*C + B*D
+		<p>
+		Be careful to write the products in the correct order relative 
+		to multiplication.
+		<p>
+		<h4>Multivector</h4>
+		<p>
+		A result that contains a mixture of grades is called a 
+		'multivector'.
+		<p>
+		Now that we have a working definition for addition and 
+		multiplication, we can apply the rest of the rules we learned 
+		from geometry.  Be careful when trying to perform division or 
+		use higher level functions.  There are many multivectors that 
+		have no multiplicative inverse besides 0e.  For a little 
+		practice, see if you can find an object that acts as 
+		A<super>-1</super> for the following multivectors.
+		<ul>
+		<li>A = e<sub>1</sub>
+		<li>A = 0.5 * (1e + e<sub>1</sub>)
+		<li>A = 0.5 * e<sub>2</sub> * (1e + e<sub>1</sub>)
+		</ul>
+		<p>
+		<h4>Enough</h4>
+		<p>
+		Give it a try.<br><br>
+		If all this is still obscure, you probably need some other 
+		exposure to the subject.  Look it up in the math text books and 
+		grab a comfortable seat.
+		</font>
+	</td>
+</tr>
+<tr>
+	<td colspan=2 bgcolor=cccccc>
+		&nbsp;
+	</td>
+</tr>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,69 @@
+<!BASE HREF=".">
+<html>
+
+<head>
+<title>Interworld Transport - SailAway Project Presentation</title>
+<script language="JavaScript1.2">
+<!--
+  var slideNum=1;
+  var slideMax=9;
+  var origWidth=736;
+  var origHeight=647;
+  if(document.layers)
+  {
+    origWidth=innerWidth;
+    origHeight=innerHeight;
+  }
+  function NextSlide()
+  {
+    if(slideNum<slideMax)
+      document.images["slide"].src="Slide"+(++slideNum)+".jpeg";
+    else
+      alert("You are already at the end of the presentation");
+  }
+  function PrevSlide()
+  {
+    if(slideNum>1)
+      document["slide"].src="Slide"+(--slideNum)+".jpeg";
+    else
+      alert("You are already at the beginning of the presentaton");
+  }
+  function Jump()
+  {
+    slideNum=document.controls.jumpMenu.options[document.controls.jumpMenu.selectedIndex].value;
+    document["slide"].src="Slide"+slideNum+".jpeg";
+  }
+  function Redo()
+  {
+    if( document.layers && (origWidth != innerWidth || origHeight != innerHeight) )
+    {
+      origWidth= innerWidth;
+      origHeight= innerHeight;
+      location.reload();
+    }
+  }
+//-->
+</script>
+</head>
+
+<body bgcolor="#000000" onresize="Redo()">
+<center>
+<IMG name="slide" src="Slide1.jpeg" width="524" height="393">
+<FORM name="controls">
+<INPUT type="button" value="Previous Slide" onClick="PrevSlide()">
+<INPUT type="button" value="Next Slide"     onClick="NextSlide()"><BR>
+<SELECT name="jumpMenu">
+  <OPTION value="1">Cover
+  <OPTION value="2">Overview
+  <OPTION value="3">Features & Benefits
+  <OPTION value="6">Applications
+  <OPTION value="7">Specifications
+  <OPTION value="8">Pricing
+  <OPTION value="9">Availability
+</SELECT>
+<INPUT type="button" value="Go" onClick="Jump()">
+</FORM>
+</CENTER>
+</BODY>
+
+</HTML>

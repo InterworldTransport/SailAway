@@ -1,0 +1,242 @@
+<html>
+<head>
+	<title>
+		SailAway Case Study
+	</title>
+</head>
+<body>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table width=90%>
+<tr>
+<td width=120 align=center valign=top>
+	<img width=100 height=100 src="../images/SplashImage.gif">
+</td>
+<td align=center valign=top>
+	<h2>
+	SailAway Project
+	</h2>
+</td>
+</tr>
+</table>
+
+<table border=1 width=90%>
+<caption>
+	<b>Use Cases</b>
+</caption>
+
+<tr>
+<th align=left valign=top>
+	Diagram
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<img 	alt="Use Case Diagram 19" 
+			src="../images/usecase19.gif" 
+			align="top" 
+			border="0">
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Name
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Iterate Sail One Phase Step
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Iteration
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Finished
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Summary
+</th>
+<td align=left valign=top>
+	<font size=3>
+	When the User orders an orbit iteration during a flight simulation, this
+	case handles the details of the command.  The System steps forward or 
+	backward along the Sail's orbit one phase step and returns a Sail with a 
+	valid physical state at the other end of the step.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Basic Course of Events
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ol>
+	<li>The Command to step forward or backward is issued within the simulation.
+	<li>The Sail interprets the command as a phase step and issues the revised
+	order to one of its properties (Orbit) as a discrete orbit iteration.
+	<li>The Orbit then requests an update to the orbit properties from one of
+	its properties (Perturber) as a small perturbation.
+	<li>The Perturber collects all the perturbing forces registered with it	into
+	a list.
+	<li>The Perturber takes the list and calculates resulting forces and torques
+	from each of them.
+	<li>The Perturber takes the sum of the perturbing forces and calculates the
+	changes to the orbit parameters.
+	<li>If the changes to the parameters are not small relative to the original
+	parameters, the Perturber informs the Orbit it will try again with a phase 
+	step that is half the size of the original.  Return to step 6.
+	<li>The Perturber hands the new orbit parameters to the Orbit.
+	<li>The Orbit derives the new location and velocity of the Sail based upon
+	old orbit properties and then changes those parameters to reflect the new
+	ones delivered by the Perturber.
+	<li>The Orbit updates other derived properties and completes the order 
+	issued by the Sail.
+	<li>The Sail updates its other derived properties and issues a statement to
+	all its registered listeners signaling the completion of the order.
+	</ol>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Alternative Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Exception Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Extension Points
+</th>
+<td align=left valign=top>
+	<font size=3>
+	.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Trigger
+</th>
+<td align=left valign=top>
+	<font size=3>
+	A command from the user or a command list triggers this use case.  The User
+	does not trigger the case directly.  They do it through the case that runs
+	simulations.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Assumptions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	If the system is configured to use a library, there must be sufficient room
+	in the library to store the newly derived Sail.  The System will
+	automatically try to save the Sail state unless there is a command
+	overriding this behavior.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Preconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ol>
+	<li>In step 8, the test for relative smallness is made against a value provided
+	as an assumption from the Flight Assumptions List.  If no related assumption
+	is made, a default value will be used.
+	<li>A well formed Sail.
+	<li>A command to step forward or backward along the orbit.
+	<li>Optional commands ordering the output of derived information.
+	<li>A library in which to save the newly derived Sail.
+	</ol>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Postconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ol>
+	<li>A well formed Sail one orbital phase step removed from the first one.
+	<li>The newly derived Sail is stored in the library.
+	</ol>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Related Environment Rules
+</th>
+<td align=left valign=top>
+	<font size=3>
+	1
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Author
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Dr Alfred W Differ
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Date
+</th>
+<td align=left valign=top>
+	<font size=3>
+	2002/01/10 - Facade<br>
+	2002/01/15 - Filled<br>
+	2002/02/07 - Focused<br>
+	2002/02/15 - Finished
+	</font>
+</td>
+</tr>
+</table>
+
+</body>
+</html>	

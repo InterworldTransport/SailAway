@@ -1,0 +1,456 @@
+		SailAway Application Plan
+
+		Application Architecture and
+		Plans for the future
+
+Introduction
+
+
+The Current SailAway application packages are as follows.
+
+	sailgui		-	A SailAway user interface
+	sailevents	-	A SailAway events model built for sailgui
+
+	sailmodel	-	The solar sail physical model
+	clados		-	The mathematics behind the physics of the physical model
+
+These packages are defined to be working elements of the SailAway application.  
+The first two are common to most applications of any type.  The third one is
+what makes SailAway a solar sail simulator.  The fourth one implements the math
+behind the physics of the simulation and is designed to be useful for simulators
+other than SailAway.
+
+There are two main branches to the plan for SailAway features in the future.
+The first branch involves the architecture of the physical model.  The 
+sophistication of the perturbation techniques, the level of detail describing
+the structure of the sail, and the accuracy of the external calculators are all 
+examples of concerns and features found within sailmodel.  The macro language
+used to define pre-planned missions, the detail and format of ephemeris I/O, and
+the useful representation of data to the user are all examples of concerns and
+features found within sailgui and the related event model.  For the sake of 
+clarity, the first and second branches will be named 'Physical Branch' and
+'User Branch' when planners engage in related discussions.
+
+Due to the use of Clifford Algebras within SailAway, there is a third minor
+branch to the plan that will be named 'Math Branch'.  It is our current belief
+that the detail behind the mathematics of the physical model can largely be
+avoided by the developers and application planners.  Those interested in
+Clifford Algebras are welcome to bring up issues, though.  If our belief is
+found to be incorrect, the Math Branch may take on more importance in the
+future.
+
+________________________________________________________________________________
+The Physical Branch
+
+No matter what the user interface is designed to do, the physical model must
+accurately simulate the physics behind a real solar sail.  Anything a sail can
+do should be considered for inclusion in the physical model.
+
+Early versions of the physical model will support a simplistic sail in a limited
+environment.  The structure of the model, however, should avoid enforcing these
+early limitations.  Early plans for expansion will avoid unneeded API 
+deprecations later.
+
+The Object Plan:
+
+Objects							Description
+
+Sail							A representation of a solar sail
+|
+|----->	Orbit						A representation of two body orbits
+|	|
+|	|----->	Perturber				The pieces of an Orbit that handle
+|							small perturbations due to small
+|
+|~~~~~>	Structure
+	|
+	|~~~~~>	Element
+	|	|
+	|	|----->	Force Model
+	|			|
+	|			|			External forces on the Sail
+	|			|			not attributable to two-body forces
+	|			|
+	|			|----->	RadiationForceModel		The physics of radiation pressure
+	|			|----->	HarmonicForceModel		The physics of nonspherical gravity
+	|			|----->	NBodyForceModel			The physics of multi-body gravity
+	|			|----->	FluidForceModel			The physics of fluid drag
+	|			|----->	MagneticForceModel		The physics of magnetic forces-eddy
+	|			|----->	ImpulsiveForceModel		The physics of impulsive forces
+	|
+	|~~~~~>	ElementConstraint
+
+				
+
+Current Capabilities:	(See the SailAway Documentation)
+
+
+Future Plans:		(Approved)
+
+00001	The physical model should be able to run independent of a user interface
+	through a simple batch mode.  Use of a profile, ephemeris, and mission
+	plan will be required before this feature is worth building.  
+	The Sail class will acquire a 'main' method.
+
+00002	Each orbit type should be supported.  Many features from the elliptical
+	Orbit will be moved to the general Orbit.  OrbitEllipse will descend 
+	from Orbit.
+
+00003	Other perturbation techniques should be supported.  The current Perturber supports
+	the Lagrange method.  A General Perturber class will acquire common features to all
+	perturbers.  The current perturber will be renamed to LPerturber and descend from a 
+	GeneralOrbitPerturber.
+
+00004	An Orbit should be able to own one of each type of perturber that makes sense for
+	its orbit type.
+
+00005	The physical model should be able to represent the internal structure of the Sail
+	to allow consideration of sail billowing and structural deformation under load.  
+	This feature is needed as a precursor to knowing elastic loads on the sail film.
+
+00006	Torques found from the internal calculators that do not balance must make the sail
+	rotate around its center of mass.
+
+00007	The physical model should be able to perform elastic and temperature finite element
+	analysis to permit each element of the Sail's structure to act independently while 
+	obeying constraints placed upon it by its neighboring elements.
+
+00008	The physical model should be able to support dynamic changes to a FOO.  This is 
+	needed to expand the types of simulations to be run and orbit patching.
+
+
+Future Possibilities:	(Need serious consideration)
+
+00001	Some parts of the Fluidiom project may be useful for elements and next classes
+	within SailAway.  The impulse generators would probably have to be changed to
+	actually model reality, but it might be easier to do this than write our own
+	code.  It's worth looking into.
+
+Future Wishes: 		(Need initial consideration)
+
+00001	The physical model should be able to support distributed I/O for mission, profile, 
+	structure, and ephemeris file sharing.  Sharing these files will encourage use of
+	the common SailAway environment.
+
+00002	The physical model should be able to pass some work to other faster, dedicated 
+	machines.  Passing the finite element analysis will allow optimization of packages
+	and encourage use of the common SailAway environment.
+
+00003	The physical model should be able to support objects running on their own threads
+	that detail behavior of items on the sail that are not considered part of the sail  
+	structure.  An example would be a communications object that understood the sail 
+	upon which it flew and handled radio up and down links.  Payloads, avoinics, and
+	other common hardware found on real spacecraft would fall under this category.
+
+
+Paths rejected:		(Considered and turned down with reason)
+
+
+
+
+___________________________________________________________________________________________
+User Branch
+
+
+Objects:					Description
+
+SailAway
+|
+|----->	Sail					(covered in Physical Branch)
+|
+|----->	SailEventModel
+|	|
+|	|----->	FileEvents
+|	|	|
+|	|	|~~~~~>FileNewEvents
+|	|	|
+|	|	|~~~~~>FileOpenEvetns
+|	|	|
+|	|	|~~~~~>FileCaptureEvents
+|	|	|
+|	|	|~~~~~>FilePrintEvents
+|	|	|
+|	|	|----->FileExitEvents
+|	|
+|	|----->	EditEvents
+|	|
+|	|----->	ToolEvents
+|	|	|
+|	|	|----->ToolOrbitGraphicEvents
+|	|	|
+|	|	|----->ToolSailGraphicEvents
+|	|	|
+|	|	|----->ToolOrbitDetailingEvents
+|	|	|
+|	|	|----->ToolSailDetailingEvents
+|	|	|
+|	|	|----->ToolSailMomentsEvents
+|	|	|
+|	|	|----->ToolSailMonadEvents
+|	|	|
+|	|	|~~~~~>ToolTimeRateEvents
+|	|	|
+|	|	|----->ToolOptionsEvents
+|	|
+|	|----->	ActionEvents
+|	|	|
+|	|	|----->ActionIterateFEvents
+|	|	|
+|	|	|----->ActionIterateBEvents
+|	|	|
+|	|	|~~~~~>ActionViewChangeEvents
+|	|
+|	|----->	WindowEvents
+|	|
+|	|----->	HelpEvents
+|		|
+|		|----->HelpSupportEvents
+|		|
+|		|----->HelpAboutEvents
+|
+|----->	Menu
+|	|
+|	|----->	FileMenu
+|	|	|
+|	|	|----->	NewSail			This command should start a new Sail and
+|	|	|				attach it to the running GUI.  Any previously 
+|	|	|				running Sail should be terminated if it was 
+|	|	|				still attached to the GUI.  This command 
+|	|	|				should query the user for a variety of 
+|	|	|				information to initialize a new Sail.  
+|	|	|				Template Sails should be pickable from
+|	|	|				a list much like template documents are 
+|	|	|				pickable in high-end word processors.
+|	|	|----->	OpenSail		This command should start an existing Sail
+|	|	|				and attach it to the running GUI.  Any 
+|	|	|				previously running Sail should be terminated
+|	|	|				if it was still attached to the GUI.  This 
+|	|	|				command should query the user for a variety
+|	|	|				of information to initialize the Sail if the 
+|	|	|				profile is not complete.
+|	|	|----->	CaptureSail		This command should force the creation of an
+|	|	|				Ephemeris file for the attached Sail if one
+|	|	|				does not already exist.  SailProps should be 
+|	|	|				updated to reflect the new Ephemeris file if 
+|	|	|				needed.  It should then turn the controlling 
+|	|	|				boolean to 'true' so new Ephemeris information 
+|	|	|				gets saved.
+|	|	|----->	Print			This command should print what is currently
+|	|	|				visible on the GUI to a printer of the user's
+|	|	|				choice.
+|	|	|----->	Exit			This command should terminate the application
+|	|					and close all connections it might have with 
+|	|					files and sockets.  Later versions of this 
+|	|					command should only close the GUI and permit
+|	|					the physical model to run unattended.  A 
+|	|					command for separating a Sail from its GUI 
+|	|					will be needed to make this work.
+|	|
+|	|----->	EditMenu
+|	|	|
+|	|	|----->	SailProps		This command should bring up a window that
+|	|	|				would permit the Sail properties to be changed 
+|	|	|				on the fly.  These properties are the same 
+|	|	|				ones as found in the Sail.profile file.  
+|	|	|				Changes to these properties should be reflected
+|	|	|				in SailProps, but not in the Sail.profile file 
+|	|	|				without further orders from the user.  Changes
+|	|	|				to the Sail Properties should get saved as 
+|	|	|				comments in the Ephemeris file and possibly in 
+|	|	|				other supporting places.
+|	|	|----->	OrbitProps		This command should bring up a window that 
+|	|	|				would permit the Orbit properties to be changed 
+|	|	|				on the fly.  These properties are not available 
+|	|	|				in any of the supporting files.  Changes to these 
+|	|	|				properties should reflect events not within the 
+|	|	|				scope of SailAway such as collisions, grappling, 
+|	|	|				and other outside influences.  As SailAway 
+|	|	|				evolves, the list of events handled in this manner 
+|	|	|				will be absorbed by specialized methods.
+|	|	|----->	ViewPoint		This command should allow the user to specify a
+|	|					new viewing plane from which the GUI can draw the
+|	|					graphical presentations.  This command should also 
+|	|					allow the user to apply the change.
+|	|
+|	|----->	ToolsMenu
+|	|	|
+|	|	|----->	OrbitGraphic		This command allows the user to display the Orbit
+|	|	|				Graphic window.
+|	|	|				
+|	|	|----->	SailGraphic		This command allows the user to display the Sail
+|	|	|				Graphic window.
+|	|	|				
+|	|	|----->	OrbitDetailing		This command allows the user to display the Orbit
+|	|	|				Detail window
+|	|	|				
+|	|	|----->	SailDetailing		This command allows the user to display the Sail
+|	|	|				Detail window
+|	|	|				
+|	|	|----->	SailMonads		This command allows the user to display the Sail
+|	|	|				Monad windows
+|	|	|				
+|	|	|----->	TimeRate		This command should really be renamed.  It will be
+|	|	|				used to control the size of the orbit steps taken
+|	|	|				during iteration.  Setting a new step should force 
+|	|	|				the Sail to at least try the step specified by the
+|	|	|				user before settling on one that obeys the level 
+|	|	|				of tolerance allowed by the Sail.  The user also
+|	|	|				has to be able to change the tolerance level.
+|	|	|				
+|	|	|----->	Options			This command should allow the user to specify 
+|	|					changes to the overall configuration of the SailAway 
+|	|					application.  Changes made here should be reflected 
+|	|					in the SailAway.conf file if they are normally 
+|	|					stored there.
+|	|
+|	|----->	ActionMenu
+|	|	|
+|	|	|----->	IterateForward		This command is responsible for making the
+|	|	|				simulation step forward one finite step along the 
+|	|	|				orbit of the sail.  Any features of the iteration 
+|	|	|				that are turned on before this event result in 
+|	|	|				calculations. 
+|	|	|----->	IterateBackward		This command is responsible for making the
+|	|	|				the simulation step backward one finite step along 
+|	|	|				the orbit of the sail.  Any features of the 
+|	|	|				iteration that are turned on before this event 
+|	|	|				result in calculations.  This command effective 
+|	|	|				reverses the forward stepper except for round-off 
+|	|	|				errors.
+|	|	|----->	ChangeViewPoint		This command is not needed since it can be handled
+|	|					by the Edit|View Point command.  It will be renamed
+|	|					and given another purpose later.
+|	|
+|	|----->	WindowMenu
+|	|	|
+|	|	|----->	Close			This command should close an active window within
+|	|	|				the SailAway frame.  Since the current GUI is 
+|	|	|				using panels instead of windows, this command is 
+|	|	|				useless.  
+|	|	|----->	Iconify			This command should iconify the SailAway frame.
+|	|	|----->	Pack			This command should redraw the SailAway 
+|	|					frame and its contents.
+|	|
+|	|----->	HelpMenu
+|		|
+|		|----->	Support			This command displays a window with 
+|		|				information telling the user where they may 
+|		|				get help and technical support.
+|		|----->	About			This command displays a window with
+|						information telling the user who created and
+|						tested the various parts that make up SailAway.
+|
+|----->	ToolBar
+|
+|----->	StatusBar
+|	|
+|	|----->	Messaging
+|	|----->	ViewPoint
+|	|----->	MissionClock
+|
+|----->	CenterBar				(not used at this time)
+|
+|----->	OrbDrawing				(orbit graphic)
+|
+|
+|----->	OrbParm					(orbit details)
+|
+|
+|----->	SailDrawing				(sail graphic)
+|
+|
+|----->	SailParm				(sail detailing)
+|
+|
+|----->	MonadDisplays				(monad detailing)
+
+
+Current Capabilities:	(See the SailAway Documentation)
+
+
+
+Future Plans:		(Approved)
+
+00001	The user interface should be able to run each data and graphic frame 
+	independent of the application frame.  Each frame should be openable 
+	or closeable independent of the application frame.  Only the status
+	bar information is left to go.  
+	I am going to leave the status bar within the main application window.  
+	It can be turned on and off via the conf file, so it isn't a big issue.
+
+00002	The graphic frames should be able to display interpretations of 
+	various monads (sail and orbit properties).  This is partially done
+	in the Monad Displayers.
+
+
+Future Possibilities:	(Need serious consideration)
+
+
+
+Future Wishes: 		(Need initial consideration)
+
+00004	?
+
+
+Paths rejected:		(Considered and turned down with reason)
+
+
+
+
+
+
+______________________________________________________________________________________________
+Math Branch
+
+Object Plan:
+
+Monad
+
+Dyad
+
+MonadTester
+
+Dyad Tester
+
+Clados Exception
+|
+|----->	BladeOutOfRangeException
+|----->	CantDoPassiveRotationYetException
+|----->	NoDefinedGradeException
+|----->	NoInverseCalculationMethodException
+|----->	NoInverseException
+|----->	NoReferenceMatchException
+|----->	RotationDefinitionException
+|----->	TranslationDefinitionException
+|----->	DotDefinitionException
+|----->	WedgeDefinitionException
+
+
+Current Capabilities:	(See the SailAway Documentation)
+
+
+
+Future Plans:		(Approved)
+
+
+
+Future Possibilities:	(Need serious consideration)
+
+00001	A flat 3-space monad should probably be used for SailAway
+	to improve the speed of the simulation later.  The flat
+	monad would use a common set of arrays for the multiplication
+	table, Eddington Basis, and Eddington Keys.  This 
+	commonality would improve overhead costs for generating
+	these monads during orbit iterations.
+
+Future Wishes: 		(Need initial consideration)
+
+
+
+Paths rejected:		(Considered and turned down with reason)
+
+
+
+
+
+___________________________________________________________________________________________

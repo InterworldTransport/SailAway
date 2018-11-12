@@ -1,0 +1,94 @@
+
+               SailAway Development Policies
+
+This file, DEVELOPMENT-POLICIES, contains the policies by which the SailAway
+development group operates. Also see the HACKING file.
+
+--------------------------------------------------------------------------------
+Charter for the sailaway-develop mailing list:
+
+The SailAway Developers' List exists to help developers with access to the
+SailAway source repository co-ordinate changes, make releases, and administer
+the repository.
+
+Everyone who has checkin access to the repository for the SailAway sources
+should read sailaway-devel. Only those with checkin access should send messages
+to the list. This list does not currently block others from posting and won't do
+so unless it is abused.
+
+The sailaway-develop list may be used to discuss:
+- administrivia regarding the SailAway source repository and release
+  process, and
+- changes and features intended for inclusion in the official SailAway
+  release (either source code or documentation), which someone plans
+  to implement, or has implemented.
+
+The sailaway-develop list should not be used to discuss:
+- changes or features to packages other than the SailAway release
+- changes which nobody has offered to implement
+These topics should be handled off list.
+
+The topic restrictions in this charter do not reflect the development group's
+future plans for SailAway; rather, they reflect a topic classification which the
+group finds helpful.
+
+--------------------------------------------------------------------------------
+Policies regarding the SailAway source repository:
+
+By checking items into the repository, developers agree to permit distribution
+of such items under the terms of the GNU Public License version 2.  They are
+not necessarily assigning their copyright to anyone else on the project unless
+they make it obvious that they intend to do so.  A simple statement in the
+Change Notes for the commit of new code can be used for copyright assignment if
+the developer wishes it.
+
+--------------------------------------------------------------------------------
+Policy for dealing with people who want to be developers:
+
+People who want checkin access are first requested to send patches and have them
+reviewed by a developer. If they submit some good ones (preferably over a period
+of time, to demonstrate sustained interest), then one of the developers can ask
+the SailAway maintainer whether it is OK to make this person a developer (after
+first making sure the prospective developer has read a copy of this file and
+then having the prospective developer say they want to be a SailAway developer).
+If there are no objections among the current developers and the maintainer, the
+person will be made a developer.
+
+--------------------------------------------------------------------------------
+Policy regarding checkout-only access:
+
+Checkout-only access to the SailAway repository is available to all, on an
+anonymous basis. The exact technical mechanisms by which it is available are not
+covered by this policy.  At present, the source code is available via anonymous
+checkout through CVS from SourceForge.net
+
+--------------------------------------------------------------------------------
+Policy regarding name credit in requirements, design and development
+documentation.
+
+Some lines of the supporting documentation show the name of the project 
+participant who contributed a definition, description, or iteration.  These
+names are present to help readers identify the primary contact person for
+questions about content and to give some credit for the work done.  When
+another person changes a previous section, their name should be added to the
+credit and possibly replace the original author.  Rough guidelines for how to
+handle these changes are as follows.
+
+	1.	If the change is mostly editorial in manner, no authorship change should
+	be made.
+	2.	If the change is an alteration of the part leaving most of the content
+	intact, the second author's name should be appended to the first making a
+	comma separated list.
+	3.	If the change is sufficiently large that the primary author may no
+	longer be the subject matter expert but may still know enough to help a
+	curios reader, the second author's name should be prepended to the first
+	making a comma separated list.
+	4.	If the change is large enough that the primary author really has
+	nothing to do anymore with the new content, the second author's name should
+	replace the first.
+
+Remember that the real purpose of the name credits in SailAway documentation is
+to provide readers with a point of contact that could answer detailed questions.
+
+--------------------------------------------------------------------------------
+

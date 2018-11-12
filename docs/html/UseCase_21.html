@@ -1,0 +1,232 @@
+<html>
+<head>
+	<title>
+		SailAway Case Study
+	</title>
+</head>
+<body>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table width=90%>
+<tr>
+<td width=120 align=center valign=top>
+	<img width=100 height=100 src="../images/SplashImage.gif">
+</td>
+<td align=center valign=top>
+	<h2>
+	SailAway Project
+	</h2>
+</td>
+</tr>
+</table>
+
+<table border=1 width=90%>
+<caption>
+	<b>Use Cases</b>
+</caption>
+
+<tr>
+<th align=left valign=top>
+	Diagram
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<img 	alt="Use Case Diagram 21" 
+			src="../images/usecase21.gif" 
+			align="top" 
+			border="0">
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Name
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Retrieve Object from Library
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Iteration
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Finished
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Summary
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Any time the User opens a storable object to make it their current working
+	copy, the System will offer objects from remote libraries which are
+	registered for use.  The User will be made aware of remote object available
+	to them and in which libraries these objects happen to be stored.  If the
+	User picks an object for retieval, the object will be requested from the
+	local or remote library as appropriate and delivered to the System.
+	</font>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Basic Course of Events
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ul>
+	<li>The User shows a desire to work with an existing storable object.
+	<li>If the system is configured for the use of a remote library, the 
+	reachable libraries will be queried for information about their contents
+	that may be accessed by the user.
+	<li>The results of each query will be appended to the local list and 
+	presented for the user to pick the object they wish to retrieve.
+	<li>The User will pick one or several objects.
+	<li>The System will attempt to retrieve all objects marked by the user.
+	</ul>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Alternative Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	If the system is not configured to make use of a remote libary, it will 
+	search the user's local environment for an existing local library and
+	present only those objects for choosing.  The user will be made aware,
+	though, that no remote libraries are being used.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Exception Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	If the system is configured for a remote libary and after trying to retrieve
+	an object the registered library reports problems, the system will hunt for 
+	another registered libary that contains the object and issue the task 
+	request again.
+	<p>
+	If the system is configured for a libary and after trying to retrieve an
+	object all registered libraries report problems, the system will revert to 
+	a local library configuration and proceed.  If the object being requested in
+	not in the local library, the System will report an error to the User
+	through the Notification tool.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Extension Points
+</th>
+<td align=left valign=top>
+	<font size=3>
+	.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Trigger
+</th>
+<td align=left valign=top>
+	<font size=3>
+	The User triggers this case by issuing a command at a user interface to 
+	retrieve a storable object.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Assumptions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	The System must be able to find a Library somewhere whether it be remote or
+	local.  Anything short of this is an error condition.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Preconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ul>
+	<li>The System has access to a library
+	<li>The reachable libraries have objects that may be used by the user.
+	</ul>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Postconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	The System retrieves objects for use by the User with later commands.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Related Environment Rules
+</th>
+<td align=left valign=top>
+	<font size=3>
+	3, 4, 5
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Author
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Dr Alfred W Differ
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Date
+</th>
+<td align=left valign=top>
+	<font size=3>
+	2002/01/30 - Facade<br>
+	2002/01/30 - Filled<br>
+	2002/02/08 - Focused<br>
+	2002/02/15 - Finished
+	</font>
+</td>
+</tr>
+</table>
+
+</body>
+</html>	

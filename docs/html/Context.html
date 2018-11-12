@@ -1,0 +1,178 @@
+<html>
+<head>
+	<title>
+		SailAway Case Study
+	</title>
+</head>
+<body>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table border=0 width=90%>
+<tr>
+<td width=120 align=center valign=top>
+	<img width=100 height=100 src="../images/SplashImage.gif">
+</td>
+<td align=center valign=top>
+	<h2>
+	SailAway Project<br>
+	System Level Context
+	</h2>
+</td>
+</tr>
+</table>
+<table border=0 width=90%>
+<tr>
+<th width=120 align=right bgcolor=silver valign=top>
+adiffer<br>
+2001/12/26
+</th>
+<td align=left valign=top>
+<font size=2>
+<p>
+SailAway Project - 'The Problem Being Solved.'
+<blockquote>
+Solar Sail research is done by a variety of people using tools that range from
+home grown to sophisticated mathematical and engineering analysis.  While some
+of the end results of this research do get published and survive the ups and
+downs of any one person's interest in the subject, the tools themselves rarely
+get traded or improved unless two like minded researchers can find each other
+and not violate the intellectual property laws that govern their work.
+<p>
+For the state of the art to advance more efficiently, the tools, intermediate
+research, and tested solutions to posed problems must survive in a knowledge
+base accessible to all others interested in solar sails. The demise of solar
+sail projects must not lead to the demise of the knowledge gained by those who
+support the project.
+</blockquote>
+</font>
+</td>
+</tr>
+
+<tr>
+<th width=120 align=right bgcolor=silver valign=top>
+adiffer<br>
+2001/12/26
+</th>
+<td align=left valign=top>
+<font size=2>
+<p>
+SailAway Project - 'Why Solve The Problem?'
+<blockquote>
+A careful reading of the solar sail literature shows that the subject matter
+covered by theorists proposing solar sail missions is generally confined to a
+few mission types.  These missions can be modelled by current tools or minor
+improvements on older tools.
+<p>
+Solar Sail mission planners spend considerable time rebuilding necessary
+analysis tools for non-impulsive, long duration flights and extended, filmy
+spacecraft structures or they make strong flight or structural restrictions and
+use simpler planning tools.
+<p>
+Many flight plans are developed as intermediate results resulting from
+optimization attempts or solution space searches along the way to a different
+published result.
+<p>
+Duplication of effort, restricted research, and the lack of availability of a
+body of knowledge representing what is and isn't possible leads to
+inefficiencies in the research community. These inefficiencies are found among
+the flight planners, the spacecraft engineers, and the science and commercial
+customers who might actually fly instruments on a sail.
+<p>
+Solving this problem reduces research inefficiencies and further enables those
+wishing to promote the use of solar sails for solar system transportation.
+</blockquote>
+</font>
+</td>
+</tr>
+
+<tr>
+<th width=120 align=right bgcolor=silver valign=top>
+adiffer<br>
+2001/04/15
+</th>
+<td align=left valign=top>
+<font size=2>
+<p>
+SailAway Requirements Specification - 'A Case Study'
+<blockquote>
+We are intent on developing an automated tool for the simulation of structure
+and flight of solar sails in the inner solar system. This tool will enable
+researchers to record sail designs, initial conditions, and expected final
+conditions for simulation and return to them ephemerides, structural histories,
+and optimization choices that result from the simulation run they started. The
+tool will also maintain a library of prior simulations in order to support
+solution space searches by researchers and faster response times for casual
+browsers.
+<p>
+When a researcher first plans a simulation, they record the details concerning
+the structure of their sail and the initial internal conditions into the tool or
+choose an already described sail stored in the library. After choosing or
+describing a sail the researcher describes the initial external conditions and
+the desired final conditions for their sail. Both condition sets may be choosen
+from examples stored in the library. The initial condition set is optional for
+simulations designed to determine the internal structure of a sail without
+concern for external conditions beyond force sources. The final condition set is
+optional for simulations with no flight end boundry conditions.  
+<p>
+The tool will verify whether the sail description and initial and final
+conditions are physically possible or meaningful and reject those that are not.
+External initial and final conditions are defined in terms of physical
+properties external to the sail that describe the physics of a flight such as
+position, velocity, accelertion, momentum, angular momentum and other sources of
+force upon the sail besides solar gravity and photons. Internal initial
+conditions are defined in terms describing the physical properties of the sail
+that do not depend on external references such as sail fabric reflectivity,
+emmissivity, spar strengths, and attenna look angles.
+<p>
+Once a simulation plan has been established, the researcher defining it may run
+it. The tool will make use of whatever resources are registered as available on
+the net and that it deems necessary to produce the results requested by the
+researcher. The researcher will be able to check up on the state of their
+simulation periodically by submitting a query to the tool. When so requested,
+the tool will gather a snapshot of the simulation and deliver it to the
+researcher.
+<p>
+During a simulation, a researcher may interact with their simulation through an
+established set of commands available to them through a user interface. The
+researcher may also pre-plan a set of commands by defining a macro to be used by
+the simulation instead of a human interaction through their user interface.
+Macros will be able to support time based commands and simple what-if
+conditional commands.
+<p>
+Assuming the simulation encounters no physical impossibilities, it will run to
+completion with or without human interaction and then deliver its results to the
+address specified by the researcher and to the library for future use.
+</blockquote>
+</font>
+</td>
+</tr>
+
+<tr>
+<th width=120 align=right bgcolor=silver valign=top>
+adiffer<br>
+2002/02/07
+</th>
+<td align=left valign=top>
+	<font size=2>
+	SailAway in Context<br> 
+	(only four actors are shown for now)<br>
+	</font>
+	<img  border=0 src="../images/SailAway_Context1.gif">
+</td>
+</tr>
+</table>
+</body>
+</html>	

@@ -1,0 +1,204 @@
+<html>
+<head>
+<title>Package Comments</title>
+</head>
+<body>
+Sail Event Model:  Solar sailing simulation event model
+<h2>Copyright</h2>
+Copyright (c) 1998-2002 Interworld Transport.  All rights reserved.<br>
+--------------------------------------------------------------------------------
+<br>
+---com.interworldtransport.SailEvent.All Classes<br>
+--------------------------------------------------------------------------------
+<p>
+Interworld Transport grants you ("Licensee") a license to this software 
+under the terms of the GNU General Public License.<br>
+A full copy of the license can be found bundled with this package or code file.
+<p>
+If the license file has become separated from the package, code file, or binary 
+executable, the Licensee is still expected to read about the license at the 
+following URL before accepting this material.
+<blockquote><code>http://www.opensource.org/gpl-license.html</code></blockquote>
+<p>
+Use of this code or executable objects derived from it by the Licensee states
+their willingness to accept the terms of the license.
+<p>
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+<p>
+--------------------------------------------------------------------------------
+<br>
+---com.interworldtransport.SailEvent.All Classes<br>
+--------------------------------------------------------------------------------
+
+<p>
+<h2>Package Contents</h2>
+<table border=0 width=90%>
+<tr>
+	<th align=left>
+		Classes
+	</th>
+	<th align=left>
+		Interfaces
+	</th>
+	<th align=left>
+		Exceptions
+	</th>
+</tr>
+</table>
+<h2>Background</h2>
+This is the package defined to be the event model for the SailAway application.
+It contains all classes needed to handle events generated from components of the
+user interface. Proper design of the SailAway application is accomplished by
+separating the event model from the user interface.
+<p>
+This package is organized as follows.  
+<ol>
+<li>The SailEvent Model
+<li>The Menu Parent handlers
+<li>The Menu Item handlers
+</ol>
+<p>
+This package is meant to be handled by a SailAway instance, but any user
+interface that uses the API correctly will suffice. Different user interfaces
+will require alterations to the event model to support added features.
+<p>
+The events currently supported are all tied to actions triggered by Menu choices
+from sailgui. There are a number of menu items that are not well defined at this
+time, so they will be listed here until the documentation takes better shape.
+<p>
+The File Menu
+<ul>
+<li>New
+<p>
+This command should start a new Sail and attach it to the running GUI. Any
+previously running Sail should be terminated if it was still attached to the
+GUI. This command should query the user for a variety of information to
+initialize a new Sail. Template Sails should be pickable from a list much like
+template documents are pickable in high-end word processors.
+<li>Open
+<p>
+This command should start an existing Sail and attach it to the running GUI. Any
+previously running Sail should be terminated if it was still attached to the
+GUI. This command should query the user for a variety of information to
+initialize the Sail if the profile is not complete.
+<li>Capture Data
+<p>
+This command should force the creation of an Ephemeris file for the attached
+Sail if one does not already exist. SailProps should be updated to reflect the
+new Ephemeris file if needed. It should then turn the controlling boolean to
+'true' so new Ephemeris information gets saved.
+<li>Print All
+<p>
+This command should print what is currently visible on the GUI to a printer of
+the user's choice.
+<li>Exit
+<p>
+This command should terminate the application and close all connections it might
+have with files and sockets. Later versions of this command should only close
+the GUI and permit the physical model to run unattended. A command for
+separating a Sail from its GUI will be needed to make this work.
+<p>
+This command is currently functioning.
+</ul>
+<p>
+The Edit Menu
+<ul>
+<li>Sail Properties
+<p>
+This command should bring up a window that would permit the Sail properties to
+be changed on the fly. These properties are the same ones as found in the
+Sail.profile file. Changes to these properties should be reflected in SailProps,
+but not in the Sail.profile file without further orders from the user. Changes
+to the Sail Properties should get saved as comments in the Ephemeris file and
+possibly in other supporting places.
+<li>Orbit Properties
+<p>
+This command should bring up a window that would permit the Orbit properties to
+be changed on the fly. These properties are not available in any of the
+supporting files. Changes to these properties should reflect events not within
+the scope of SailAway such as collisions, grappling, and other outside
+influences. As SailAway evolves, the list of events handled in this manner will
+be absorbed by specialized methods.
+<li>View Point
+<p>
+This command should allow the user to specify a new viewing plane from which the
+GUI can draw the graphical presentations. This command should also allow the
+user to apply the change.
+</ul>
+<p>
+The Tools Menu
+<ul>
+<li>Time Rate
+<p>
+This command should really be renamed. It will be used to control the size of
+the orbit steps taken during iteration. Setting a new step should force the Sail
+to at least try the step specified by the user before settling on one that obeys
+the level of tolerance allowed by the Sail. The user also has to be able to
+change the tolerance level.
+<li>Show Orbit
+<li>Show Sail
+<li>Show Orbit Details
+<li>Show Sail Details
+<li>Show Sail Forces 
+<li>Options
+<p>
+This command should allow the user to specify changes to the overall
+configuration of the SailAway application. Changes made here should be reflected
+in the SailAway.conf file if they are normally 
+stored there.
+</ul>
+<p>
+The Actions Menu
+<ul>
+<li>Iterate Forward
+<p>
+This command is responsible for making the simulation step forward one finite
+step along the orbit of the sail. Any features of the iteration that are turned
+on before this event result in calculations.
+<p>
+This command is currently functioning.
+<li>Iterate Backward
+<p>
+This command is responsible for making the simulation step backward one finite
+step along the orbit of the sail. Any features of the iteration that are turned
+on before this event result in calculations. This command effective reverses the
+forward stepper except for round-off errors.
+<p>
+This command is currently functioning.
+<li>Change View Point
+<p>
+This command is not needed since it can be handled by the Edit|View Point
+command. It will be renamed and given another purpose later.
+</ul>
+<p>
+The Windows Menu
+<ul>
+<li>Pack
+<p>
+This command should redraw the SailAway frame and its contents.
+<li>Close
+<p>
+This command should close an active window with the SailAway frame. Since the
+current GUI is using panels instead of windows, this command is useless.  
+<li>Iconify
+<p>
+This command should iconify the SailAway frame.
+</ul>
+<p>
+The Help Menu
+<ul>
+<li>Support
+<p>
+This command should display a window with information telling the user where
+they may get help and technical support.
+<li>About
+<p>
+This command should display a window with information telling the user who
+created and tested the various parts that make up SailAway.
+</ul>
+<p>
+Future versions of the sailevent package will track closely to features
+available in the user interface.
+</body>
+</html>

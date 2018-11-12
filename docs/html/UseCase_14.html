@@ -1,0 +1,237 @@
+<html>
+<head>
+	<title>
+		SailAway Case Study
+	</title>
+</head>
+<body>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table width=90%>
+<tr>
+<td width=120 align=center valign=top>
+	<img width=100 height=100 src="../images/SplashImage.gif">
+</td>
+<td align=center valign=top>
+	<h2>
+	SailAway Project
+	</h2>
+</td>
+</tr>
+</table>
+
+<table border=1 width=90%>
+<caption>
+	<b>Use Cases</b>
+</caption>
+
+<tr>
+<th align=left valign=top>
+	Diagram
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<img 	alt="Use Case Diagram 14" 
+			src="../images/usecase14.gif" 
+			align="top" 
+			border="0">
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Name
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Create Sail Property Set
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Iteration
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Finished
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Summary
+</th>
+<td align=left valign=top>
+	<font size=3>
+	A user records into the system details about the external properties of a
+	sail.  These details will add up to enough information for the system to
+	treat a related model as a rigid physical object that obeys rigid physics
+	laws.  Information that makes up a sail property set includes detail about
+	the location of the center of mass, the total linear momentum, the focus of
+	the Sail's orbit and other external properties.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Basic Course of Events
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ol>
+	<li>From within the system the User optionally recalls an existing property
+	set for refinement.
+	<li>The User records details about a sail property set
+	<li>The User optionally records details about the related sail model.
+	<li>The System attempts to validate the new details.
+	<li>The System records these details for later use
+	</ol>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Alternative Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	If the system is configured for the use of a library at step 4, the sail 
+	property set will saved in the library along with any information about a 
+	related sail model.
+	<p>
+	If the system is configured for the use of a library in step 1, the sail 
+	property set associated with the current model stored in the library will be
+	made avialable to the user as a starting point for possible refinement or 
+	use as is.  Other property sets will be made available too, but they will be
+	clearly marked as not yet being associated with the model.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Exception Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Invalid properties are brought to the attention of the user and not saved
+	within a sail property set.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Extension Points
+</th>
+<td align=left valign=top>
+	<font size=3>
+	When the System records properties for a sail property set, these properties
+	are passed through a validator.
+	<p>
+	When the System records a property set in a library, it will use a
+	separate process to do the actual saving due to the complexity of the
+	interaction between the System and a remote library and the fact that the 
+	separate process can be re-used by other sections of the system.
+	<p>
+	When the System retrieves a property set from a library, it will use a
+	separate process to do the actual getting due to the complexity of the
+	interaction between the System and a remote library and the fact that the 
+	separate process can be re-used by other sections of the system.
+	<p>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Trigger
+</th>
+<td align=left valign=top>
+	<font size=3>
+	The user triggers this case when they enter information into the System that
+	results in a new or altered Sail Property Set.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Assumptions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Preconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ul>
+	<li>Templates for a variety of valid sail properties exist.
+	</ul>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Postconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Every time the System leaves this case, any stored sail property set is 
+	valid.  It is not necessarily true that the property set is complete.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Related Environment Rules
+</th>
+<td align=left valign=top>
+	<font size=3>
+	.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Author
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Dr Alfred W Differ
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Date
+</th>
+<td align=left valign=top>
+	<font size=3>
+	2001/12/26 - Facade<br>
+	2002/01/04 - Filled<br>
+	2002/02/04 - Focused<br>
+	2002/02/15 - Finished
+	</font>
+</td>
+</tr>
+</table>
+
+</body>
+</html>	

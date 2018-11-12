@@ -1,0 +1,269 @@
+<html>
+<head>
+<Title>Event List for SailAway</title>
+</head>
+<body bgcolor=ffffff>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table border=0 width=100% align=center>
+<tr align=center valign=top>
+	<td align=center valign=middle>
+		<img	height=100
+			src="../images/SplashImage.gif" 
+			border=0>
+	</td>
+	<td align=center valign=bottom>
+		<h1>SailAway</h1>
+		<h3>Version 0.10<br>(An early development version)</h3>
+	</td>
+</tr>
+<tr>
+	<td colspan=2 bgcolor=cccccc>
+		&nbsp;
+	</td>
+</tr>
+<tr align=left valign=top>
+	<td align=left valign=top>
+		<h3>Contents</h3>
+		<font size=2>
+		<ul>
+		<li>Event List
+		</ul>
+		</font>
+	</td>
+	<td align=left valign=top>
+		<h3>Event List</h3>
+		<font size=3>
+		<p>
+		Events in the following list are ones that may be triggered by a
+		terminator on the Analysis document.
+		<p>
+		<table border=0 width=100%>
+		<tr>
+			<th colspan=1 align=left valign=top>
+				Name
+			</th>
+			<th align=left valign=top>
+				Incarnated as
+			</th>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				initiateApplConfiguration
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				SailAway.main()
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				initiatetSail
+			</td>
+			<td align=left valign=top>
+				SailAway constructor
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				attachSailToUI
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				SailEventModel.setDemoSail()<br>
+				Parts of the Sail are attached as needed by 
+				various events within the Event Model
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				reattachSailToUI
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				Various events look for null references in the 
+				UI and force attachment if a Sail is referenced 
+				in the UI.<br>
+				No event attaches a new or existing sail to the 
+				UI as a whole yet.
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				detachSailFromUI
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				saveSailEphemeris
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				terminateSail
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				within File|Exit menu
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				editSailProperties
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				editOrbitProperties
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				editApplicationOptions
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				editUIOptions
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				editUIEnvironment
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				stepForwardOnOrbit
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				within Actions|IterateForward menu
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				stepBackwardOnOrbit
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				within Actions|IterateBackward menu
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				openSupportForHelp
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				openSupportForAbout
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				openSupportForLicense
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				printUI
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				activatePerturbationByType
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		</table>
+		
+	</td>
+</tr>
+<tr>
+	<td colspan=2 bgcolor=cccccc>
+		&nbsp;
+	</td>
+</tr>
+</table>
+</body>
+</html>

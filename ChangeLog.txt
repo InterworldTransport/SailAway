@@ -1,0 +1,416 @@
+
+2002/02/25	Alfred Differ
+There is a new development policy in the DEVELOPMENT-POLICIES file regarding the
+crediting of definitions, descriptions, and iterations in the requirements,
+design, and development documentation.  It explains the purpose and guidelines
+for future contributors.
+
+2002/02/23	Alfred Differ
+Design work is now underway because the requirements phase is done once again.
+While design documentation is being written, I have begun to rearrange things
+in the source code to 'stay in touch' with it.  When I need a break, I will
+read through some of the older classes and bring them up-to-date.  This usually
+means comments, jEdit fold marks, and physical rearranging of the code for the
+sake of readability.  Because of this work, it is likely that the code base
+will continue to compile but it probably won't run very well.  If you want to
+see the application run, use the SailAway 0.1 jar file release.
+
+2002/01/15	Alfred Differ
+I have been working on the use cases and associated scenarios the last few 
+weeks.  There isn't a whole lot to say about them except that they are proving 
+to be useful in pointing out what really needs to be defined in order to reach
+the goals I have in mind.  I shall be working on writing diagrams for each of
+them next.
+
+Ant appears to be working OK for me.  I have a build file that seems to work.  I
+can even package things from there now with the jar task.
+
+I have made a decision to split the clados code out of sailaway and simply
+include clados.jar in the lib directory.  Clados hasn't changed much in a while
+and won't until I work more on the Dyad.  I have also started work on another
+project that uses clados, so the time to split has arrived.
+
+2001/11/03	Alfred Differ
+Moving the build/install stuff from Make to Ant.  I'm also cleaning up the docs
+directory since there is a bunch of badly formed javadoc stuff there.  All the 
+html is OK, but the links got mangled because I committed form a win32 machine
+that made some case sensitivity assumptions about folders in my project that 
+were flat out wrong.  My bad.
+
+2000/12/20	Alfred Differ
+I've been working on the documentation in the docs directory.
+
+2000/12/15	Alfred Differ
+I have changed the method that checks to see if a vector lies within the orbit
+plane a bit.  The check used to not be concerned with the magnitudes of vectors
+being checked.  That isn't a fair test when RHat might pass and Position won't.
+The check is now done with normalized monads.
+
+I have written a method for OrbitEllipse that should allow a vector to be 
+projected into the orbit plane.  I haven't put it to use yet, but I might if 
+necessary.  I would prefer to have the vectors pass a tolerance test.  
+Projections run the risk to masking underlying logical problems.
+
+2000/12/13	Alfred Differ
+I'm now sure the bug is of the logical variety.
+When an iteration step occurs, the perturber
+figures out the new L and RL first.  The orbit
+then propagates to the new position and velocity
+using the old L and RL next.  When the new RL 
+was calculated, though, the old velocity was
+used.  
+
+It should be a surprise to find that RHat and 
+Velocity do not lie upon the new L.  It is 
+strange to find that the new Velocity does not 
+lie upon the old L, though.  Even when this 
+bug is beaten, we may have to project the 
+new position and velocity into the new L.
+
+Another check shows the new velocity does not
+lie on the old L even with perturbations off.
+Obviously it is not being figured correctly
+or the tolerance screen is too tight.
+
+2000/12/05	Alfred Differ
+I am quite certain that L and RungeLenz are not
+coming out right after an iteration step with
+the perturber turned on.  The magnitude of the
+change to both is too large and unexplained.
+I suspect a bug of the logical variety there.
+
+2000/06/30	Alfred Differ
+I don't like the way the perturber is figuring
+the change to the orbit parameters.  They aren't
+coming out right and I can't tell whether the
+delta parameter equations or the delta time 
+equation is at fault.  I was intending to convert
+the method to the one proposed by D.Hestenes for
+orbit perturbations on L and RL eventually, so 
+I guess I'll do that now.  This will push unit
+testing back a month, but it should be worth it.
+
+There is a but in the MonadDisplayer.  I haven't 
+tracked it down yet, but RHat shows up as null.
+This implies an inability to get the RHat monad
+and that leads to trouble later.  This one should
+be findable without too much sweat.
+
+2000/06/21	Alfred Differ
+I am adding more Orbit monads to the Tools menu
+for display during unit testing.  Whether anyone
+would want to see those monads is debatable.
+
+I have worked over the delta time orbit method.
+It had some problems.  I think I have fixed 
+some of them.  It now appears some of the
+convenience 'get' calculators might be wrong,
+so I'll give them a once over too.
+
+The monad for the Latus Rectum is going to be
+promoted to a higher level of importance.
+One thing that can be calculated for all the 
+Orbit types is P, so calculation of the other
+orbit parameter sets should start from a common
+place.  Expect to see more stuff added and
+moved around in the Orbit parent class.
+
+2000/06/16	Alfred Differ
+The Tools menu has changed quite a bit with
+the inclusion of a general Monad displayer
+frame.  All the regular monads from the Sail,
+Orbit, and Perturber can now be shown.  Since
+each of the new Frames can be closed from two
+places, I may run into null pointer problems,
+but they aren't too dangerous right now.  Any
+that do pop up will get fixed later.
+
+The other detailers will evolve soon now that
+a general monad displayer is useable.  Look for
+a Perturber Summed Force displayer later when
+I get one of the other perturbing forces working.
+
+
+2000/06/02	Alfred Differ
+A problem figuring the average angular speed 
+introduced an error in figuring the orbit time
+step.  I have fixed it.  It still appears that
+there is a problem figuring the time step since
+its value should hold fairly constant in near
+circular orbits.  It appears to be increasing
+linearly, so I've got to check my equations 
+again.
+
+I need more of the GUI to continue proper unit
+testing.  Writing to the console with debug 
+statements is getting too hard and slowing me
+down.  So...I will be writing new parts to the 
+GUI for displaying some of the properties I need
+to see during unit testing.
+
+2000/05/30	Alfred Differ
+The RFModel has problems when the sail attitude
+points the reflecting surface directly at the sun.
+One of the dot products comes out zero, and my
+code is not handling it well.  I'll figure out
+which section of code and fix it, though.  It
+shouldn't be hard... 8)
+
+The PhaseToTime calculator is off my many, many
+orders of magnitude.  The Delta parameters are
+not to be believed right now.
+
+2000/05/27	Alfred Differ
+The PhaseToTime convertion method in Orbit is not
+working properly.  That throws off integration of
+accelerations in the force models.
+I fixed the double accounting for the solar distance
+in the Absorbing Force magnitude in the RFModel.
+The Force Models correctly force the setting
+of derived values before they create their
+contribution to the force sum.
+
+2000/05/25	Alfred Differ
+The Perturber has been revamped and appears to be
+working.  I moved a lot of things around to avoid
+calculating constants over and over again while
+within the DPhase acceptance loop. I aslo forced
+the parts that calculate the Angular Momentum
+and RungeLenz changes to make proper use of the 
+Rotate method with the Monad.
+
+I'm pretty sure the numbers coming out of the 
+calculator for the Delta parameter set are 
+incorrect.  However, I'm also pretty sure the 
+fault lies with the Force Models and not the 
+Perturber.  So...it is time for unit testing
+to move down a level to the Force Models.
+
+I have added a new abstract class that captures
+the notion of what a Force Model is all about.
+As a result, some parts of the RadiationForceModel
+have been moved.  The next Force Model will be
+the impulsive one.  I may build it along side the
+unit testing of the RFModel.
+
+2000/05/18	Alfred Differ
+Unit testing has progressed to the Perturber now.
+I'm sure there are some things that will still need
+fixing in the Orbit, but I won't see them without
+turning on the Perturber.  Afterwards I will 
+tackle the RFModel to see if the correct values
+are being passed back up the chain.
+
+I have also been spending a little time altering
+the GUI and fleshing out the Event Model.  The 
+various detailing windows are now callable and 
+linkable from the menu.  I will be writing other
+detailers for displaying Orbit, Perturber and 
+RFModel details, but they are mostly meant for 
+unit testing.  Whether they are good enough to 
+survive the a GUI for real users remains to be seen.
+
+2000/05/15	Alfred Differ
+I spent the day fleshing out the Tools menu.  Each
+of the data frames now comes up when the menu item
+is chosen.  I still have to make sure the data frame
+gets properly linked the the related sail so new
+data propagates during step iterations.
+
+2000/05/15	Alfred Differ
+Hmm...  it has nothing to do with L.  The double
+primitive only has so much precision and I'm pushing
+it too far.  I have stopped checking the in-plane
+nature of the newPosition and newVelocity monads
+calculated near the end of the orbit stepper.  If
+newRHat satisfies the validator, I am comfortable
+with the other two.  Only newRHat really matters
+to the Orbit.  The other two are conveniences to
+display on the GUI.
+
+The tolerance level for precision in newRHat is 
+currently hard-coded.  This needs to be modernized
+to accept information from the Sail profile.
+
+The tolerance level for precision in newRHat leads
+to a monad that will be near the L plane.  
+Successive steps will sometimes land on, above or 
+below L.  This needs to be looked at carefully to
+decide whether newRHat should be projected into L
+if it passes the tolerance test.  Decimal precision
+might make this a moot issue if the projected
+monad doesn't sit in the plane any better than the
+original.
+
+The current code works well enough to move on to the
+next level of unit testing.
+
+I also had some time over the weekend to alter the 
+GUI a little.  I've broken it into multiple windows
+in anticipation of independent operations later.
+Check out the Mars simulation for an application I
+am imitating at this time.
+
+2000/05/12	Alfred Differ
+Something is resetting L after an iteration step.
+This should not be happening if the perturbation is 
+turned off.  This bug is mangling the Direction 
+validity checker.
+
+2000/05/03	Alfred Differ
+I've built a simple MonadTester now.  I am using it to
+check out the difference between a Monad and an
+OrbitEllipse bug.
+
+2000/04/20	Alfred Differ
+I've look over OrbitEllipse some more.  The problem
+in the iteration step definitely lies with the fact that
+RHat is not getting rotated correctly to point to the
+new direction along the orbit.  The newRHat is failing
+the in-Plane test as it should.  It is time to find out 
+what part of the rotation is failing.
+
+I will be on vacation for a week.  I'll be back at my
+desk by the beginning of next month.
+
+2000/04/19	Alfred Differ
+I ran across the Mars Simulation Project today.  Many of
+the GUI pieces I wanted to build are already done within
+their code.  I have copied a couple pieces over to 
+SailAway to flesh out the Help menu.  There is more to
+come.
+
+The problem with the newRHat monad is still there.
+I haven't forgotten it.
+
+2000/04/12	Alfred Differ
+Well...
+The newRHat monad does not appear to be coming out intact
+after a rotation.  One set of position and velocity gives
+a multivector after one step for newRHat.  Other starting
+positions cause the second step to get to the velocity
+and then fail.  Other combinations seem to get all the
+way through.  This will take some more thought.
+
+2000/04/11	Alfred Differ
+Grumble...
+The simple orbit stepper still isn't working.  It works
+fine for some combinations of eccentricity and inclination
+and not others.  When it doesn't work, it is failing to 
+find the next velocity vector.  It complains that the
+velocity must be of a single rank or that the newPosition
+monad is not in the orbit plane.  There is more work
+to do on this problem yet.
+
+2000/04/10	Alfred Differ
+The problem with the true anomaly calculation tracked 
+backed to a problem with overwriting the RHat Monad
+used to point at the sail at the start of an orbit step.
+It is important to remember that Java has variables act
+as references to objects.  Since I overwrote the newRHat
+variable to save some overhead, each Monad pointed at
+the object effectively got overwritten.  I have ditched
+my attempt to save memory and done the right thing.  As
+a result, the simple orbit stepper appears to be iterating
+correctly.  I'll turn perturbations back on and see if
+the perturber and RadForce objects are working next.
+
+Memory and overhead saving techniques will need to be 
+applied later to speed up the simulation.  I think I 
+will need another set of eyeballs to do that properly.
+
+2000/04/07	Alfred Differ
+The velocity is caluculating properly on the first step,
+but the true anomaly has a problem.  An error in
+this parameter throws everything off in the second step.
+Unit testing continues.
+
+The package file for the sailevent package now has a
+better description of what the menu items on the GUI
+are intended to do.  More needs to be added before 
+another developer could help much here, but I will
+probably put the detailed plan in the APPLICATION-
+PLAN file instead.
+
+2000/03/21	Alfred Differ
+I have narrowed all the calculation errors to a clados
+problem.  I've got a sign error on newRHat after it
+is constructed from RHat.  This says that Monad 
+isn't doing rotations correctly.  I can fix that by 
+digging into Monad.  Until Monad is fixed, the Orbit
+cannot iterate properly, so all second step numbers
+are suspect.
+
+I've started to flesh out the meanings of the menu
+options in the current GUI.  It is the event model
+that must understand the meaing of the menu options,
+so the documentation is currently placed in the 
+package.html file for sailevent.  This places the 
+verbiage in the API documentation.
+
+2000/03/13	Alfred Differ
+The RungeLenz and Angular Momentum appear to be working
+all right now.  The conversion of them into the classic
+parameter set is not bug proof yet, though.  SMA and 
+ECC appear to be OK.  Inc isn't there yet. If Inc is
+messed up, suspicion should be applied to the other 
+angles.
+
+There is still a problem rotating RHat into the 
+newRHat near the end of the orbit step.  The new
+monad is failing the check for being in the orbit
+plane.  It must pass this check to be valid.
+
+There is still a delay in the appearance of the 
+step details on the GUI.  It does not appear to be
+a GUI problem, though.  More work needs to be done on
+the OrbitEllipse class.
+
+I've altered OrbitEllipse to create a few internal
+calculators.  This centralized the calculation of 
+certain parameters and makes future maintenance 
+easier.
+
+There is more work to go on this class before unit
+testing descends to the Perturber.
+
+2000/03/03	Alfred Differ
+The RungeLenz vector is definitely not calculating the
+right way.  I have to look this one over in detail.
+I've altered the OrbitEllipse in such a way that the 
+RungeLenz vector doesn't get saved unless it passes a few
+validation tests.  Since it doesn't pass right now, the 
+setDerivedValues method fails with a NullPointer.  The
+NullPointer will go away when RungeLenz is fixed.
+
+Inclination, Right Ascension of the Node, and the
+periapsis angle are not calculating correctly.
+The RungeLenz vector seems to work according to it's
+magnitude, but it is failing the check to see if it
+lies in the L plane.  Messing up L or RL is assured to
+mess up the classical parameters.
+
+I'm going to check the latest code in even though this
+problem is happening.  It's not like the current version
+is any worse off...
+
+2000/02/29	Alfred Differ
+It would appear the RungeLenz object is not calculating
+correctly.  This is throwing off the velocity calculation
+later on.
+
+2000/02/07	Alfred Differ
+There was some confusion about which PhaseStep was getting
+used betweeen the Orbit and the Perturber.  I believe this
+led to the mangling of the backward iterator.  
+
+I have noticed that the orbit iterator seems to deliver 
+information to the detailers that is one step behind.  If
+we move forward three steps and then backward two, the 
+orbit detailer shows a forward step on the first backward
+step.  This suggests a hold over of information when
+iterating.  This may also be reponsible for the first step
+not showing a velocity change.
+
+The inclination is still not calculating correctly.  This
+is a different bug, though, so I will file one.

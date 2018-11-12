@@ -1,0 +1,229 @@
+<html>
+<head>
+	<title>
+		SailAway Case Study
+	</title>
+</head>
+<body>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table width=90%>
+<tr>
+<td width=120 align=center valign=top>
+	<img width=100 height=100 src="../images/SplashImage.gif">
+</td>
+<td align=center valign=top>
+	<h2>
+	SailAway Project
+	</h2>
+</td>
+</tr>
+</table>
+
+<table border=1 width=90%>
+<caption>
+	<b>Use Cases</b>
+</caption>
+
+<tr>
+<th align=left valign=top>
+	Diagram
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<img 	alt="Use Case Diagram 20" 
+			src="../images/usecase20.gif" 
+			align="top" 
+			border="0">
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Name
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Store Object in Library
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Iteration
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Finished
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Summary
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Any time a storable object gets changed by the user or by the System, the
+	System will attempt to save it in a local or remote library.  If scheduling
+	is configured for use, the object will be stored in the local library and
+	marked for storage in a remote library at a later date.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Basic Course of Events
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ol>
+	<li>An alteration is made to a storable object.
+	<li>The System checks to see if save scheduling is being used or not.
+	<li>If sheduling is not being used, the system attempts to save the object 
+	to a remote library
+	</ol>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Alternative Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ul>
+	<li>If scheduling is being used at step 2, the system saves the object to 
+	the local library with a schedule date and flag.
+	<li>If scheduling is being used at step 2, the system checks the local 
+	library when a new object is added to see if any already there are supposed
+	to be remotely stored at that time.  If there are any, the system will
+	attempt to store them remotely immediately.
+	</ul>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Exception Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	If the system tries to store an object at step 3 or alt step 2, and the 
+	registered library reports a problem with the completion of the storage 
+	task, the system will hunt for another registered libary and issue the task
+	request again.
+	<p>
+	If the system tries to store an object and all remote libraries report
+	problems, the system will revert to scheduling and save the object to a 
+	local library.  It will also send a notification to the user who issued the
+	command, and then proceed without further input.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Extension Points
+</th>
+<td align=left valign=top>
+	<font size=3>
+	.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Trigger
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Any change to a storable object will raise a flag signalling the System to 
+	store it in the Library.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Assumptions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	For a remote library to be used, the user must have a functional internet
+	connection.
+	<p>
+	For a local library to be used, the user must have sufficient storage space
+	to hold the Sail.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Preconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	A storable object must be created or altered.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Postconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	A return receipt from the library will signify the success or failure of the
+	attempt to save the object to a Library.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Related Environment Rules
+</th>
+<td align=left valign=top>
+	<font size=3>
+	3, 4, 5
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Author
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Dr Alfred W Differ
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Date
+</th>
+<td align=left valign=top>
+	<font size=3>
+	2002/01/30 - Facade<br>
+	2002/01/30 - Filled<br>
+	2002/02/08 - Focused<br>
+	2002/02/15 - Finished
+	</font>
+</td>
+</tr>
+</table>
+
+</body>
+</html>	

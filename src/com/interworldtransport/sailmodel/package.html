@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<TITLE>Package Comments</TITLE>
+	<META NAME="GENERATOR" CONTENT="StarOffice/5.1 (Linux)">
+	<META NAME="CREATED" CONTENT="20000526;11091900">
+	<META NAME="CHANGEDBY" CONTENT="Alfred Differ">
+	<META NAME="CHANGED" CONTENT="20000526;11110600">
+</HEAD>
+<BODY>
+<P>Solar Sail Model: [The physical model for a solar sail simulation]
+<h2>Copyright</h2>
+Copyright (c) 1998-2002 Interworld Transport.  All rights reserved.<br>
+--------------------------------------------------------------------------------
+<br>
+---com.interworldtransport.sailmodel.All Classes<br>
+--------------------------------------------------------------------------------
+<p>
+Interworld Transport grants you ("Licensee") a license to this software 
+under the terms of the GNU General Public License.<br>
+A full copy of the license can be found bundled with this package or code file.
+<p>
+If the license file has become separated from the package, code file, or binary 
+executable, the Licensee is still expected to read about the license at the 
+following URL before accepting this material.
+<blockquote><code>http://www.opensource.org/gpl-license.html</code></blockquote>
+<p>
+Use of this code or executable objects derived from it by the Licensee states
+their willingness to accept the terms of the license.
+<p>
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+<p>
+--------------------------------------------------------------------------------
+<br>
+---com.interworldtransport.sailmodel.All Classes<br>
+--------------------------------------------------------------------------------
+<P>
+<H2>Package Contents</H2>
+<TABLE WIDTH=90% BORDER=0 CELLPADDING=2 CELLSPACING=2>
+	<TR>
+		<TH>
+			<P ALIGN=LEFT>Classes 
+			</P>
+		</TH>
+		<TH>
+			<P ALIGN=LEFT>Interfaces 
+			</P>
+		</TH>
+		<TH>
+			<P ALIGN=LEFT>Exceptions 
+			</P>
+		</TH>
+	</TR>
+	<TR VALIGN=TOP>
+		<TD>
+			<UL>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">Sail 
+				</P>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">Orbit(Abstract)</P>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">OrbitEllipse 
+				</P>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">Perturber 
+				</P>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">Force Model
+				(Abstract) 
+				</P>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">Radiation Force
+				Model 
+				</P>
+				<LI><P ALIGN=LEFT>Impulsive Force Model (new) 
+				</P>
+			</UL>
+		</TD>
+		<TD>
+			<P ALIGN=LEFT>None As Of Yet 
+			</P>
+		</TD>
+		<TD>
+			<UL>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">SailException 
+				</P>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">BadAngularMomentumException
+								</P>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">BadOrbitDefinitionException
+								</P>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">BadPositionException
+								</P>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">BadRungeLenzException
+								</P>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">BadSailDefinitionException
+								</P>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">BadVelocityException
+								</P>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">CantGetProfileException
+								</P>
+				<LI><P ALIGN=LEFT STYLE="margin-bottom: 0in">CantGetSaveException
+								</P>
+				<LI><P ALIGN=LEFT>PerturbationAssumptionException 
+				</P>
+			</UL>
+		</TD>
+	</TR>
+</TABLE>
+<H2>Background</H2>
+<P>To simulate solar sail structures, flights, and their
+optimizations, one must construct a model of the physics to have
+anything to simulate. The sailmodel package supports a primitive
+model. Future versions of sailmodel will be expanded to better
+represent a sail. 
+</P>
+<P>The sailmodel package is based on particulars that may be found in
+a variety of books. Sail material from Jerome Wright's book and
+archived JPL documents forms much of the conceptual foundation for
+the solar sail components of the sailmodel. The physics behind
+celestial mechanics and perturbation theory can be found in a number
+of texts starting simply at the undergraduate and progressing to the
+unfathomable at the graduate and higher levels. The current sailmodel
+implements a simplistic sail with a moderately complex perturbation
+model. The sailmodel can simulate a flat sail on an elliptical solar
+orbit not perturbed by anything other than solar radiation at
+present. 
+</P>
+<P>This package is meant to be handled by a SailAway instance, but
+any user interface that uses the API correctly will suffice. 
+</P>
+<HR>
+<H2>Future</H2>
+<P>Future versions of the sailmodel package will include features
+from the following list. 
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in">Internal Structure classes (Finite
+	Element Analysis) 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Classes containing subcomponents
+	for power, communications, and other needs 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Other Orbit types to handle
+	unbounded paths 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Other Perturbers to handle
+	alternate perturbation techniques 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in">Other Force Models to handle known
+	sources of perturbing accelerations 
+	</P>
+	<LI><P>A better set of Exceptions to catch programmatic errors. 
+	</P>
+</UL>
+<H2>Academic Research</H2>
+<P>Academic research in solar sail design and flight optimization has
+been persued for many years. Those interested in such persuits are
+encouraged to the related resources listed below. 
+</P>
+<H2>Other Resources</H2>
+<H5>Books</H5>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in"><I>Fundamentals Of Astrondynamics</I>,
+	Bate, Mueller, White: Dover Publications Inc, 1971, ISBN
+	0-486-60061-0 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><I>Orbital Motion</I>, AE Roy:
+	Halsted Press(A division of John Wiley &amp; Sons Inc), 1978, ISBN
+	0-470-99251-4 
+	</P>
+	<LI><P><I>Space Sailing</I>, Jerome Wright: Gordon and Breach
+	Science Publishers, 1992, ISBN 2-88124-842-X 
+	</P>
+</UL>
+<H5>Dissertations</H5>
+<P>Visit Diedrich's site and use the journal search engine that
+points to NASA's Technical Report Server 
+</P>
+<H5>Journals</H5>
+<P>Visit Diedrich's site and use the journal search engine that
+points to NASA's Technical Report Server 
+</P>
+<H5>Web Resources</H5>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in"><A HREF="http://www.ugcs.caltech.edu/~diedrich/solarsails/">Benjamin
+	Diedrich's site</A> 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><A HREF="http://www.ec-lille.fr/~u3p/index.html">Union
+	for the Promotion of Photonic Propulsion</A> 
+	</P>
+	<LI><P STYLE="margin-bottom: 0in"><A HREF="http://www.kp.dlr.de/solarsail/">Odissee</A>
+		</P>
+	<LI><P STYLE="margin-bottom: 0in"><A HREF="http://src.space.ru/">Space
+	Regatta Consortium</A>
+	</P>
+	<LI><P><A HREF="http://www.interworldtransport.com/">Interworld
+	Transport</A> 
+	</P>
+</UL>
+</BODY>
+</HTML>

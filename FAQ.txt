@@ -1,0 +1,40 @@
+	SailAway 
+	Frequently Asked Questions
+
+	Last modified 2000/02/03
+
+
+
+
+What is SailAway?
+
+SailAway is a solar sail structure and flight simulator.  It is designed to 
+give special care to the contribution of the radiation force pressure as a
+perturber of a sail's orbit.
+
+
+Hasn't someone else written a solar sail simulator?
+
+Probably.  The study done at JPL in 1977 went far enough to simulate their
+designs under flight conditions.  If anyone knows where to find the code
+created for that effort, let the SailAway team know.  Until then, we face
+the typical problem of previous sail teams trying to find work from
+earlier projects and avoid re-inventing the wheel.  When past sail efforts
+shutdown, their work dies with them or gets very hard to find.  By using
+the GNU Pulblic License and the Open Source approach for our work, we hope
+our work survives us even if we all burn out and pursue other work.
+
+
+Why build a solar sail simulator?
+
+Try reading through the academic literature on the subject.  A casual 
+reader might think lots of good, detailed work is being done.  A more 
+knowledgable reader, though, will realize that many of the authors are
+hampered by a similar problem.  While some researchers are producing 
+good and original work, others are writing about simplified sail problems
+due to a lack of a tool to tackle the more realistic problem.  The lack
+of a good simulation tool is holding some in the academic community back.
+Without valuable academic research, the commercial opportunities 
+sails could provide as shipping fleets to venturesome entrepeneurs will
+not come about in our lifetimes.  A good simulation tool will help to 
+some degree by breaking the stagnation our team perceives.

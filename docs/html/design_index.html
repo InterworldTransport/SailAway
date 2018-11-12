@@ -1,0 +1,128 @@
+<html>
+<head>
+  <title>
+  	SailAway Design Documentation
+  </title>
+<link rel="icon" type="image/gif" href="../images/sail1a.gif">
+</head>
+<body bgcolor=ffffff>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table border=0 width=100% align=center>
+<tr align=center valign=top>
+	<td align=center valign=middle>
+		<img	height=100
+				width=100
+				src="../images/SplashImage.gif" 
+				border=0>
+	</td>
+	<td align=center valign=bottom>
+		<h1>SailAway</h1>
+		<h3>Design Documentation</h3>
+	</td>
+</tr>
+<tr>
+	<td colspan=2 bgcolor=cccccc>
+		&nbsp;
+	</td>
+</tr>
+<tr align=left valign=top>
+	<td align=left valign=top bgcolor=cccccc width=200>
+		
+		<font size=2>
+		<h3>Requirements</h3>
+		<ul>
+		<li><a href="./Context.html">The Requirements Context</a>
+		<li><a href="./usecases.html">The Requirements TOC</a>
+		<li><a href="./Dictionary.html">The Requirements Dictionary</a>
+		</ul>
+		<h3>Design</h3>
+		<ul>
+		<li><a href="#Context">The Design Context</a>
+		<li><a href="./DesignDictionary.html">The Data Dictionary</a>
+		<li><a href="./Objects.html">The Objects</a>
+		<li><a href="./AssociationsStatic.html">The Static Associations</a>
+		<li><a href="./Classes.html">The Classes</a>
+		<li><a href="./Collaborations.html">The Collaborations</a>
+		<li><!a href="./DeploymentDiagram.html">The Deployment Diagram</a>
+		</ul>
+		<h3>Prototype</h3>
+		<ul>
+		<li><!a href="./sailgui.html">The UI Overview</a>
+		<li><!a href="./sailevent.html">The EM Overview</a>
+		<li><!a href="./sailli.html">The LI Overview</a>
+		<li><!a href="./sailnti.html">The NTI Overview</a>
+		<li><a href="./sailmodel.html">The PM Overview</a>
+		<li><a href="./clados_help.html">The Math Library Overview</a>
+		</ul>
+		</font>
+	</td>
+	<td align=left valign=top>
+		<a name="Context">
+			<h3>Design Context</h3>
+		</a>
+		<font size=3>
+		The SailAway application is a system largely designed and developed at 
+		Interworld Transport with some help from volunteers interested in
+		advancing the cause of solar sail technologies.  The primary result of
+		this foundation is that the design of the application is largely driven
+		by business interests and practices.
+		<p>
+		It is expected that SailAway will meet the requirements drafted for its
+		next round of development.  The manner in which it does so is not
+		currently influenced by those who are perceived to be the application's
+		biggest user.  To defend against unnecessary design and development, the
+		user interfaces were purposely under described during the requirements
+		gathering phase.  The designers of SailAway will be expected to
+		compensate by crafting an approach that makes the bulk of the user
+		interface a pluggable component for the System.  An example UI will be
+		designed and developed, but it must be swappable during later phases
+		when the primary customers start making demands concerning the bahavior
+		of SailAway.
+		<p>
+		To meet these high level expectations, the initial package plan for the
+		application is as follows.
+		<ul>
+		<li>The Physical Model (PM):  This package will provide for 
+		encapsulation of the physics within the application.  No physical 
+		calculations may take place outside its confines.
+		<li>The User Interface (UI):  This package will encapsulate the portions
+		of the application with which the Users interact.  No user viewable 
+		portion of the application may be included anywhere else.
+		<li>The Event Model (EM):  This package encapsulates the rules by which 
+		a UI may interact with the Physical Model
+		<li>The Notification Tool Interface (NTI):  This package encapsulates
+		the portions of the application responsible for handling messages meant
+		for outbound, external communication channels.
+		<li>The Library Interface (LI):  This package encapsulates the portions
+		of the application responsible for interacting with local and remote
+		libraries.
+		<li>The Supporting Class Libraries:  These package will encapsulate all
+		other entities upon which SailAway will depend.  Foreign packages that 
+		are not used in a piece-meal fashion are included here.
+		</ul>
+		</font>
+	</td>
+</tr>
+<tr>
+	<td colspan=2 bgcolor=cccccc>
+		&nbsp;
+	</td>
+</tr>
+</table>
+
+</body>
+</html>

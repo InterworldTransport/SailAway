@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>Package Comments</title>
+</head>
+<body>
+Sail GUI:  SailAway Graphical User Interface
+<h2>Copyright</h2>
+Copyright (c) 1998-2002 Interworld Transport.  All rights reserved.<br>
+--------------------------------------------------------------------------------
+<br>
+---com.interworldtransport.sailgui.All Classes<br>
+--------------------------------------------------------------------------------
+<p>
+Interworld Transport grants you ("Licensee") a license to this software 
+under the terms of the GNU General Public License.<br>
+A full copy of the license can be found bundled with this package or code file.
+<p>
+If the license file has become separated from the package, code file, or binary 
+executable, the Licensee is still expected to read about the license at the 
+following URL before accepting this material.
+<blockquote><code>http://www.opensource.org/gpl-license.html</code></blockquote>
+<p>
+Use of this code or executable objects derived from it by the Licensee states
+their willingness to accept the terms of the license.
+<p>
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+<p>
+--------------------------------------------------------------------------------
+<br>
+---com.interworldtransport.sailgui.All Classes<br>
+--------------------------------------------------------------------------------
+
+<h2>Package Contents</h2>
+<table border=0 width=90%>
+<tr>
+	<th align=left>
+		Classes
+	</th>
+	<th align=left>
+		Interfaces
+	</th>
+	<th align=left>
+		Exceptions
+	</th>
+</tr>
+<tr>
+	<td valign=top align=left>
+		<ul>
+		<li>SailAway
+		<li>SailDetail
+		<li>OrbitDetailing
+		<li>SailDetailing
+		<li>SailMoments
+		<li>SailDraw
+		<li>OrbitGraphic
+		<li>SailGraphic
+		<li>Messaging
+		<li>ViewLabel
+		<li>ViewTime
+		<li>AboutDialog
+		<li>SupportDialog
+		<li>OptionsDialog
+		</ul>
+	</td>
+	<td valign=top align=left>
+		None As Of Yet
+	</td>
+	<td valign=top align=left>
+		<ul>
+		<li>SailGUIException
+		<li>BadViewPlaneException
+		<li>CantGetIniException
+		</ul>
+	</td>
+</tr>
+</table>
+<h2>Background</h2>
+User interaction with a solar sailing physical model is accomplished through a user interface.
+The sailgui package is a simple user interface for the sailmodel package meant to display basic
+information about a sail's orbit, attitude, accelerations, and other related information.  The sailgui
+package makes minor use of the clados package in order to draw the sail, orbit, and reference frame.
+<p>
+The sailgui package is a collection of classes that handle information for the user.  The class named
+SailAway effectively owns all the parts of the application, but most control is wielded from the
+sailevent package.  The SailAway class instantiates all the early parts of the user interface and
+prepares the rest for control by the sailevent classes.
+
+<p>
+The sailgui package is designed as it is to be modular.  It is intended that users of the full SailAway 
+application be able to swap in their own user interface in place of sailgui.  Users with sophisticated
+user interface classes may want to include their work within sailgui.  If this package evolves much beyond
+what the current author has written, the SailAway class will become an Interface instead and allow the more
+advanced classes to take over the details.
+<p>
+Future versions of the sailgui package will include features from the following list.
+<p>
+<ul>
+<li>Restarting of the application using a new .profile file
+<li>Inclusion of a macro-oriented .command file for running the Sail through predefined steps
+<li>Graphical & textual representation of the Sail's parameters
+<li>Graphical & textual representation of target parameters from a .mission file
+<li>Representation of differences between Sail current parameters and target parameters.
+<li>Graphical representation of a Sail's Structure object.
+<li>A better set of exceptions to handle programmatic errors.
+</ul>
+<h2>Web Resources</h2>
+<a href="http://www.interworldtransport.com">Interworld Transport</a>
+
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+java -classpath . com.interworldtransport.sailgui.SailAway -s "./Sail.save" -p "./Sail.profile"
+Configuration File name is /etc/SailAway.conf
+Properties for TestSail0 are loaded.
+FileWriter to Eph file is open.
+Ephemeris File Open and ready
+Checking to see if the following monad is in orbit plane: RungeLenz Of:Orbit Of:TestSail0
+This is the Monad being checked for in plane status.
+Scalar 0.0
+Vector 0.4653874861884948 0.0 0.0
+Bivector 0.0 0.0 0.0
+Volume 0.0
+This is L.
+Scalar -0.0
+Vector -0.0 -0.0 -0.0
+Bivector 4.4879895E18 2.991993E18 -0.0
+Volume -0.0
+RungeLenz Of:Orbit Of:TestSail0 lies in the orbit plane to within tolerances.
+Checking to see if the following monad is in orbit plane: SailPosition
+This is the Monad being checked for in plane status.
+Scalar 0.0
+Vector 1.4959965E11 0.0 0.0
+Bivector 0.0 0.0 0.0
+Volume 0.0
+This is L.
+Scalar -0.0
+Vector -0.0 -0.0 -0.0
+Bivector 4.4879895E18 2.991993E18 -0.0
+Volume -0.0
+SailPosition lies in the orbit plane to within tolerances.
+Initial position checks out as being in-Plane.
+Checking to see if the following monad is in orbit plane: SailVelocity
+This is the Monad being checked for in plane status.
+Scalar 0.0
+Vector 0.0 30000.0 20000.0
+Bivector 0.0 0.0 0.0
+Volume 0.0
+This is L.
+Scalar -0.0
+Vector -0.0 -0.0 -0.0
+Bivector 4.4879895E18 2.991993E18 -0.0
+Volume -0.0
+SailVelocity lies in the orbit plane to within tolerances.
+Initial velocity checks out as being in-Plane.
+Stepping forward once.
+Orbit telling Perturber to set current monads.
+Orbit telling Perturber to calculate Changes.
+Perturber parsing perturbing force.
+Perturber getting old orbit parameters.
+Perturber knows new orbit parameters.
+Perturber knows new orbit Monads.
+Perturber is happy with step and returning to orbit.
+Orbit regains control of calculation.
+Checking to see if the following monad is in orbit plane: Unit position monad:
+This is the Monad being checked for in plane status.
+Scalar 0.0
+Vector 0.9999500004166653 0.008320364269022754 0.005546909512681836
+Bivector 0.0 0.0 0.0
+Volume 0.0
+This is L.
+Scalar -0.0
+Vector -0.0 -0.0 -0.0
+Bivector 4.4879895E18 2.991993E18 -0.0
+Volume -0.0
+Unit position monad: lies in the orbit plane to within tolerances.
+Checking to see if the following monad is in orbit plane: Position post-iteration:
+This is the Monad being checked for in plane status.
+Scalar 0.0
+Vector 1.4959217007983298E11 1.2447235825183098E9 8.298157216788733E8
+Bivector 0.0 0.0 0.0
+Volume 0.0
+This is L.
+Scalar -0.0
+Vector -0.0 -0.0 -0.0
+Bivector 4.4879895E18 2.991993E18 -0.0
+Volume -0.0
+Position post-iteration: should be in the plane of the orbit.
+It isn't by tempL.MagnitudeOf 5.49755813888E11
+This is L wedged with Monad being checked.
+Scalar 0.0
+Vector 0.0 0.0 0.0
+Bivector 0.0 0.0 0.0
+Volume 5.49755813888E11
+No new velocity monad is being calculated.  Returning null.
+Checking to see if the following monad is in orbit plane: RungeLenz Of:Orbit Of:TestSail0
+This is the Monad being checked for in plane status.
+Scalar 0.0
+Vector 0.4653874861884948 0.0 0.0
+Bivector 0.0 0.0 0.0
+Volume 0.0
+This is L.
+Scalar 0.0
+Vector 0.0 0.0 0.0
+Bivector 4.4879895E18 2.991993E18 0.0
+Volume 0.0
+RungeLenz Of:Orbit Of:TestSail0 lies in the orbit plane to within tolerances.
+Stepping forward once.
+Orbit telling Perturber to set current monads.
+Orbit telling Perturber to calculate Changes.
+Perturber parsing perturbing force.
+Perturber getting old orbit parameters.
+Perturber knows new orbit parameters.
+Perturber knows new orbit Monads.
+Perturber is happy with step and returning to orbit.
+Orbit regains control of calculation.
+Checking to see if the following monad is in orbit plane: Position post-iteration:
+This is the Monad being checked for in plane status.
+Scalar 0.0
+Vector 1.4956973106731772E11 2.489322693715634E9 1.6595484624770894E9
+Bivector 0.0 0.0 0.0
+Volume 0.0
+This is L.
+Scalar 0.0
+Vector 0.0 0.0 0.0
+Bivector 4.4879895E18 2.991993E18 0.0
+Volume 0.0
+Position post-iteration: should be in the plane of the orbit.
+It isn't by tempL.MagnitudeOf 1.099511627776E12
+This is L wedged with Monad being checked.
+Scalar 0.0
+Vector 0.0 0.0 0.0
+Bivector 0.0 0.0 0.0
+Volume 1.099511627776E12
+newRHat failed in orbit plane test, so there is no newRHat or newPosition
+An Exception occured during stepForward.
+An Exception at iteratePath would stop Sail from
+knowing its next set of attitude values.
+New RHat or newPosition try failed

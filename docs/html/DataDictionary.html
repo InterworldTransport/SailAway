@@ -1,0 +1,213 @@
+<html>
+<head>
+<Title>Data Dictionary for SailAway</title>
+</head>
+<body bgcolor=ffffff>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table border=0 width=100% align=center>
+<tr align=center valign=top>
+	<td align=center valign=middle>
+		<img	height=100
+			src="../images/SplashImage.gif" 
+			border=0>
+	</td>
+	<td align=center valign=bottom>
+		<h1>SailAway</h1>
+		<h3>Version 0.10<br>(An early development version)</h3>
+	</td>
+</tr>
+<tr>
+	<td colspan=2 bgcolor=cccccc>
+		&nbsp;
+	</td>
+</tr>
+<tr align=left valign=top>
+	<td align=left valign=top>
+		<h3>Contents</h3>
+		<font size=2>
+		<ul>
+		<li>Data Dictionary
+		</ul>
+		</font>
+	</td>
+	<td align=left valign=top>
+		<h3>Data Dictionary</h3>
+		<font size=3>
+		<p>
+		Entries in the following list are here to define them for other
+		documentation.
+		<p>
+		<table border=0 width=100%>
+		<tr>
+			<th colspan=1 align=left valign=top>
+				Term
+			</th>
+			<th align=left valign=top>
+				Definition
+			</th>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				ApplicationSupport
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				ApplicationOrders
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				ApplicationConfiguration
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				This object contains all information for setting
+				up the SailAway application when it is first 
+				started.   Other data objects will be named in 
+				this object so the application may access them 
+				if defined.
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				SailProfile
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				This object contains all the information about a 
+				particular Sail that may be observed externally.  
+				It also happens to have internal information 
+				until the SailStructure object can be properly 
+				defined.  Any property that can be summed up and
+				give an external behavior to the Sail is 
+				described in its parts in SailStructure and in 
+				its sum in this object.
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				SailStructure
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				This object contains all the internal structural 
+				information describing sail elements and their 
+				relationships to each other.  Any property that 
+				can be summed up and give an external behavior 
+				to the Sail is described in its parts in this 
+				object and in its sum in SailProfile.
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				SailMission
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				This object contains all information needed to 
+				describe the aim of a particular SailTest.  
+				Contents of this object will be used by SailAway
+				to determine the 'closeness' of SailResult to 
+				SailMission and evaluate the value of the test.
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				SailEphemeris
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				This object contains information regarding the 
+				flight 	of a sail that may be imported as an 
+				ephemeris file by the Satellite Tool Kit.
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				SailTest
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				This object contains all information needed to 
+				describe a particular test run of a Sail.  
+				Contents of this object will be evaluated by 
+				SailAway to determine the test score after the 
+				comparison of SailResult and SailMission.
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				SailResult
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				This object contains all information needed to 
+				describe the results of a particular test run of
+				a Sail.  Contents of this object will be used by
+				SailAway to determine the test score of the 
+				related SailTest.
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				FlightOrders
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				Telemetry
+			</td>
+			<td align=left valign=top>
+				<font size=2>
+				....
+				</font>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td colspan=2 bgcolor=cccccc>
+		&nbsp;
+	</td>
+</tr>
+</table>
+</body>
+</html>

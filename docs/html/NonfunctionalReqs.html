@@ -1,0 +1,529 @@
+<html>
+<head>
+<title>SailAway Nonfunctional Requirements</title>
+</head>
+<body>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table width=100%>
+<tr>
+<td width=120 align=center valign=top>
+	<img width=100 height=100 src="../images/SplashImage.gif">
+</td>
+<td align=center valign=top>
+	<h2>
+	SailAway Project<br>
+	Nonfunctional Requirements
+	</h2>
+</td>
+</tr>
+</table>
+<table border=0 width=100%>
+<tr>
+<th align=right bgcolor=silver valign=top width=50>
+	Number
+</th>
+<th align=right bgcolor=silver valign=top width=100>
+	Requirement Type
+</th>
+<th align=right bgcolor=silver valign=top>
+	Definition
+</th>
+<th align=right bgcolor=silver valign=top width=100>
+	Source
+</th>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# A1
+</td>
+<td align=right valign=top width=100>
+	Application Architecture
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	No matter how the SailAway application is developed, the design must
+	support the separation of the user interface, the event model, and the physical
+	model.  The Library must be treated as a separate application, so it's
+	design is not within the scope of this project.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+	<td align=right bgcolor=silver valign=top width=50>
+	<br>
+	</td>
+	<td align=right valign=top colspan=3>
+	<hr>
+	</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# P1
+</td>
+<td align=right valign=top width=100>
+	Physical Model Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	The physical model must be able to accept commands to iterate forward or
+	backward along an orbit one step at a time.  Commands for multiple steps or
+	stepping while or until conditions are met are properly part of the user
+	interface.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# P2
+</td>
+<td align=right valign=top width=100>
+	Physical Model Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	The physical model must publish a basic set of commands to which it will
+	respond when so ordered by the event model.  These commands do not need to
+	be in a spoken language since it is the responsibility of the user
+	interface to correctly link spoken language commands to the physical model
+	through the event model.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# P3
+</td>
+<td align=right valign=top width=100>
+	Physical Model Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	Some elements within a sail model will serve special purposes that may 
+	include elements of the following list.  These elements should be nameable
+	so the user interface may display them by name in graphical displays.
+	<table border=1 width=100% bgcolor=silver>
+	<tr>
+		<td>sail bus</td>
+		<td>sail fabric</td>
+		<td>payload</td>
+		<td>batteries</td>
+		<td>transmitters</td>
+	</tr>
+	<tr>
+		<td>receivers</td>
+		<td>antennae</td>
+		<td>docking adaptors</td>
+		<td>tension lines</td>
+		<td>computing electronics</td>
+	</tr>
+	<tr>
+		<td>pulleys</td>
+		<td>servos</td>
+		<td>cameras</td>
+		<td>general sensors</td>
+		<td>thermal controls</td>
+	</tr>
+	</table>
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+	<td align=right bgcolor=silver valign=top width=50>
+	<br>
+	</td>
+	<td align=right valign=top colspan=3>
+	<hr>
+	</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# U1
+</td>
+<td align=right valign=top width=100>
+	User Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	Any GUI used by the Student or Supporter must be able to present a very
+	simplified picture of the Sail Model with the ability to switch on and off a
+	variety of graphical aids showing derived data such as sun angle, clock
+	angle, position, speed, time elapsed and other secondary information.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# U2
+</td>
+<td align=right valign=top width=100>
+	User Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	Any UI used by the Researcher or Developer must be able to present all 
+	internally used primary properties of all objects in a graphical or XML 
+	format to the user.
+	<p>
+	The UI must also be able to present all secondary, derived data for these
+	same users in an XML format as an information dump.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# U3
+</td>
+<td align=right valign=top width=100>
+	User Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	The user commands must be writable in a spoken language.  The system must be
+	able to parse the commands to the internal command set represented as a
+	collection of Events.  This requirement is mainly to support languages other
+	than English.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# U4
+</td>
+<td align=right valign=top width=100>
+	User Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	It must be possible to plug in user interfaces into the system as
+	replacements for the one that comes packaged with SailAway.  These alternate
+	UI's will function by adhering to the API of the physical model
+	<p>
+	In order to meet this requirement, it may be necessary to place each of the
+	application packages into different jar files.  It is probably true that the
+	physical model will have to be separated out at a minimum.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# U5
+</td>
+<td align=right valign=top width=100>
+	User Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	Every user interface capable of storing or retrieving storable objects must
+	be able to handle a flat XML formatted file.  The minimal demands for
+	library interaction involve passing XML files that represent the contents
+	ofthe storable objects, so each UI that can save or retrieve must be able to
+	handle these at a minimum.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# U6
+</td>
+<td align=right valign=top width=100>
+	User Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	The developer's UI should be have a very slim profile.  A menu, tool bar, 
+	and status bar should be enough.  The user would show the windows to objects
+	they intend to view from menu or toolbar choices they make.  These separate
+	windows would stay in touch with the main interface and update as various
+	commands were completed.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# U7
+</td>
+<td align=right valign=top width=100>
+	User Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	The researcher's UI should be a collection of windows into the various
+	objects they have up and active as working objects.  These windows would
+	demonstrate to which objects they belong and what remains to be done with
+	them.  The constructive hints from validators would appear at the bottom of
+	these viewers.  An enclosed desktop approach to containing these viewers is
+	the desired one.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# U8
+</td>
+<td align=right valign=top width=100>
+	User Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	The Supporter's UI should keep to a rule of not allowing creation of new
+	objects through the UI.  Instead, it should focus upon giving a good 
+	presentation for objects already in the library.  It should also make it
+	very easy to run short 'templated' command sequences on those existing
+	objects.  These templates would be determined by what outside observers tend
+	to focus their questoins upon.  A well developed FAQ will be needed before
+	this requirement is fleshed out.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# U9
+</td>
+<td align=right valign=top width=100>
+	User Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	The Notification Tool is assumed to be a separate application like email,
+	IRC or some other messaging system.  No real requirements are being made for
+	covering all types of messaging system, but email will be expected as the
+	default option.  The system must be able to format outgoing messages
+	according to the protocol type used by the messaging system.  Because of
+	this, the System must understand how to construct a basic email message or
+	hand the information to an object that can do the work and comes as a 
+	standard on all machines that can run SailAway.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+	<td align=right bgcolor=silver valign=top width=50>
+	<br>
+	</td>
+	<td align=right valign=top colspan=3>
+	<hr>
+	</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# E1
+</td>
+<td align=right valign=top width=100>
+	Event Model
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	The process that performs the saving of anything to a library will register
+	with all storable objects to receive event information needed to notice 
+	these changes.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+	<td align=right bgcolor=silver valign=top width=50>
+	<br>
+	</td>
+	<td align=right valign=top colspan=3>
+	<hr>
+	</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# L1
+</td>
+<td align=right valign=top width=100>
+	Library Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	SailAway will be packaged with the addresses of Library sites willing to
+	provide remote library services.  The default configuration of SailAway will
+	be to use remote libraries listed with the package.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# L2
+</td>
+<td align=right valign=top width=100>
+	Library Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	The system must be able to package scheduled flight states for delivery to
+	remote libraries.  A package would be delivered for storage in one
+	transaction and treated by the library as an aggregate to be authorized in
+	one swoop.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# L3
+</td>
+<td align=right valign=top width=100>
+	Library Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	When an application delivers or receives a storable object from a remote 
+	library, the object will be transferable as an XML file.   All GUI's that
+	interact with libraries will be able to accept the flat file format, so
+	each library must be able to handle XML representations of objects at a
+	minimum.
+	<p>
+	It is perfectly acceptable if the library stores the objects in a different
+	format, however.  A librarian may choose to store serialized objects,
+	tabular data, or any other format they wish.  They may also be willing to
+	transfer storable objects in formats other than XML.  As long as the
+	library can handle the one basic format that is assumed useable by all the
+	advanced UI's, any extra features offered by the Librarian are their own
+	business.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=silver valign=top width=50>
+	# L4
+</td>
+<td align=right valign=top width=100>
+	Library Interface
+</td>
+<td align=left valign=top>
+	<font size=2 color=darkred>
+	All transactions between the System and a Library must be secured in the
+	sense that that both sides must be able to identify the source and target 
+	user of the request.  It is not necessary that the transaction be secured in
+	the cryptographic sense yet because there are no passwords involved.  This
+	kind of security is mostly a naming scheme, but will eventually evolve into
+	a higher security system to support the creation of research groups with
+	interests in closing their research long enough to publish in a competitive
+	environment.
+	</font>
+</td>
+<td align=right valign=top width=100>
+	<font size=2>
+	Interworld Transport Management
+	</font>
+</td>
+</tr>
+<tr>
+<td align=right bgcolor=dddddd valign=top width=50>
+	number
+</td>
+<td align=right bgcolor=dddddd valign=top width=100>
+	<font size=1>
+	Interface, availability, speed, etc.
+	</font>
+</td>
+<td align=right bgcolor=dddddd valign=top>
+	notes
+</td>
+<td align=right bgcolor=dddddd valign=top width=100>
+	<font size=1>
+	author or group
+	</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

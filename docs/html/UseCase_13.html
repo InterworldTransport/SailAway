@@ -1,0 +1,241 @@
+<html>
+<head>
+	<title>
+		SailAway Case Study
+	</title>
+</head>
+<body>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table width=90%>
+<tr>
+<td width=120 align=center valign=top>
+	<img width=100 height=100 src="../images/SplashImage.gif">
+</td>
+<td align=center valign=top>
+	<h2>
+	SailAway Project
+	</h2>
+</td>
+</tr>
+</table>
+
+
+<table border=1 width=90%>
+<caption>
+	<b>Use Cases</b>
+</caption>
+
+<tr>
+<th align=left valign=top>
+	Diagram
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<img 	alt="Use Case Diagram 13" 
+			src="../images/usecase13.gif" 
+			align="top" 
+			border="0">
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Name
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Validate User Entering System
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Iteration
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Finished
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Summary
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Gather User information in order to ensure later processes may rely upon its
+	existance.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Basic Course of Events
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ul>
+	<li>The user enters the System.
+	<li>The System creates a blank 'user info'.  Any old user info is deleted.
+	<li>The System responds by presenting an interface where the user may
+	identify themselves.
+	<li>If the User is new to the System, basic information is requested through
+	the same interface.
+	<li>If the User is known to the System, their old information is stored
+	within user info.
+	<li>The System creates a blank 'user test result' and associates it with
+	user info.
+	<li>The System passes user info through a test in the test queue.
+	<li>The test returns results to the System.
+	<li>The results are appended to the test result.
+	<li>If the test results are negative, processing stops and the test result
+	is returned to the interface gathering user information
+	<li>If the test results are negative, a copy of the test result is handed to
+	the Notification Tool for delivery to the user.
+	<li>If the test results are positive and further tests need to be performed,
+	processing returns to step 7 using the next queued test.
+	<li>If the test results are positive and no further tests need to be
+	perfomred, the test result is returned to the interface gathering user
+	information
+	</ul>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Alternative Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ul>
+	<li>The user informs the system they wish to operate anonymously
+	<li>The System stores this fact to make it available to other routines that
+	need it.
+	</ul>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Exception Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Until this validator marks the user information as sufficient, the user
+	effectively operates as an anonymous user.  Some remote resources may be
+	willing to accept interactions with partial infromation, but the System will
+	not count upon it.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Extension Points
+</th>
+<td align=left valign=top>
+	<font size=3>
+	.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Trigger
+</th>
+<td align=left valign=top>
+	<font size=3>
+	The System triggers this case when a process that relies upon user data
+	finds that some of that data is missing and the user has not expressed a
+	desire to operate anonymously.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Assumptions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	If the system is being run in batch mode and user information is missing,
+	the simulation validator will determine that the simulation is is being run
+	as a partially anonymous user.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Preconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	There may be files present on the local hardware that provide user
+	infromation sufficient to supply all that is needed for user validation.
+	Check to see if such a file exists.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Postconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	After this process is done, sufficient user information is available to
+	identify the user running a simulation for all downstream processes.  It is
+	not known for sure (in the security sense) that the user information is
+	correct.  This process will not prevent fraudulent identification.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Related Environment Rules
+</th>
+<td align=left valign=top>
+	<font size=3>
+	3
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Author
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Dr Alfred W Differ
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Date
+</th>
+<td align=left valign=top>
+	<font size=3>
+	2001/12/26 - Facade<br>
+	2002/01/06 - Filled<br>
+	2002/02/04 - Focused<br>
+	2002/02/15 - Finished
+	</font>
+</td>
+</tr>
+</table>
+
+</body>
+</html>	

@@ -1,0 +1,299 @@
+<html>
+<head>
+  <title>
+  	SailAway HTML Documentation
+  </title>
+</head>
+<body bgcolor=ffffff>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table border=0 width=100% align=center>
+<tr align=center valign=top>
+	<td align=center valign=middle>
+		<img	height=100
+			src="../images/SplashImage.gif" 
+			border=0>
+	</td>
+	<td align=center valign=bottom>
+		<h1>SailAway</h1>
+		<h3>Version 0.10<br>(An early development version)</h3>
+	</td>
+</tr>
+<tr>
+	<td colspan=2 bgcolor=cccccc>
+		&nbsp;
+	</td>
+</tr>
+<tr align=left valign=top>
+	<td align=left valign=top bgcolor=cccccc>
+		<h3>Contents</h3>
+		<font size=2>
+		<ul>
+		<li><a href="#Overview">Overview</a>
+		<li><a href="./usecases.html">The Use Cases</a>
+		<li><a href="./NonfunctionalReqs.html">The Nonfunctional Reqs</a>
+		<li><a href="./Dictionary.html">The Dictionary</a>
+		</ul>
+		<ul>
+		<li><a href="#Limits">Simulation Limitations</a>
+		<li><a href="#Features">Feature List</a>
+		<li><!a href="./sailgui.html">The user interface</a>
+		<li><!a href="./sailevent.html">The event model</a>
+		<li><a href="./sailmodel.html">The physical model</a>
+		<li><a href="./clados_help.html">The clados model</a>
+		<li><a href="../api/index.html">SailAway API</a>
+		</ul>
+		</font>
+	</td>
+	<td align=left valign=top>
+		<a name="Overview">
+			<h3>Overview</h3>
+		</a>
+		<font size=3>
+		<p>
+		SailAway is a solar sail simulator application meant to 
+		demonstrate realistic flight paths for a simple light sail on 
+		flights through the inner solar system.  Solar radiation 
+		pressure effects on the sail are treated as perturbations upon 
+		the orbit constants.  This has the affect of treating the sail 
+		as if it were temporarily on a Keplerian orbit while the orbit 
+		is treated as a slowly varying or osculating object.
+		<p>
+		SailAway is currently organized in four separate packages.  Each of the 
+		packages organize the java classes into distinct units that perform 
+		defineable functions in the application.  Each package is listed and 
+		summarized below.
+		<p>
+		<ul>
+		<li>The User Interface
+			<p>
+			<font size=2>
+			All classes in this package encapsulate the
+			the the user interfaces available to human and
+			automated operators.  This encapsulation is 
+			meant to isolate the user interface from the
+			underlying physics and how events are delivered 
+			to and from the physical model.  Changes to 
+			classes in the user interface arise from
+			alterations or additions to the ways an
+			operater may interact with the application as a
+			whole.
+			</p>
+			</font>
+		<li>The Event model
+			<p>
+			<font size=2>
+			All classes in this package encapsulate the
+			the interaction between the user interface and
+			the physical model.  This encapsulation is meant
+			to isolate the user interface from the
+			underlying physics.  Changes to classes in the
+			event model arise from changes in the physical
+			model that affect what the user sees or does or 
+			from changes to the user interface that require
+			interaction with the physical model
+			</p>
+			</font>
+		<li>The Physical model
+			<p>
+			<font size=2>
+			All classes in this package encapsulate the
+			physical properties of a solar sail and the
+			physical laws one would obey  Changes to classes
+			in the physical model arise from improvements to
+			the modelling of a solar sail or of the physical
+			laws.
+			</p>
+			</font>
+		<li>The clados model
+			<p>
+			<font size=2>
+			All classes in this package encapsulate the
+			mathematics used to represent physical objects in the 
+			application.  The underlying mathematics is one based
+			upon geometric algebras sometimes referred to more 
+			formally as Clifford algebras.  Changes to classes in 
+			the clados package result from improvements in the
+			manner in which Clifford algebras and implemented and
+			the addition of convenience methods for each class.
+			</p>
+			</font>
+		</ul>
+		The first two packages are common to most applications of any type; 
+		though they may be called by different names and grouped in different 
+		ways.  The third package is what makes SailAway a solar sail simulator.
+		The fourth package is a math library and is supported as a separate 
+		project named 'Clados'.
+		</font>
+		<hr size=4>
+		<a name="Limits">
+			<h3>Current Limits to the simulation</h3>
+		</a>
+		<font size=3>
+		There are some limitations to where one may take a sail
+		simulation and still expect the application to deliver accurate
+		results.  These limitations may be of a physical or development
+		nature.  Physical limitations are those imposed by the physical
+		laws.  All other limitations are those imposed by inadequacies
+		of the techniques and how they are implemented in the
+		application.  The limitations of which a user must be aware are
+		listed below along with a summarization.
+		<p>
+		<ul>
+		<li>Stay away from planets and other secondary gravitators.
+			<p>
+			<font size=2>
+			The sail currently uses a simple OrbitEllipse and its
+			related Perturber.  Proximity to a planet violates the
+			assumption that the sail orbit is approximately
+			elliptical.  All perturbing forces are assumed to be 
+			much smaller than the central force responsible for the
+			ellipse.
+			</p>
+			</font>
+		<li>Stay away from unbounded orbits.
+			<p>
+			<font size=2>
+			The sail currently uses a simple OrbitEllipse and its
+			related Perturber.  It is possible the two classes can
+			handle unbounded paths, but the secondary parameter set
+			delivered to the user interface assumes an ellipse.
+			Flying on unbounded paths is likely to break one of the
+			methods that calculates the secondary set.
+			</p>
+			</font>
+		<li>Stay away from rectilinear orbits.
+			<p>
+			<font size=2>
+			The sail currently uses a simple OrbitEllipse and its
+			related Perturber.  A rectilinear orbit has a zero
+			magnitude monad for the orbital angular momentum.  This
+			leads to problems calculating further properties.  The
+			OrbitEllipse is not set up to detect these problems and
+			avoid them yet.
+			</p>
+			</font>
+		<li>Stay away from orbits with undefined parameters.
+			<p>
+			<font size=2>
+			The sail currently uses a simple OrbitEllipse and its
+			related Perturber.  It is assumed the orbit is an
+			ellipse where the semimajor axis, eccentricity,
+			inclination, ascending node, and periapsis angle are
+			defined.  Some closed orbits leave one or more of these
+			parameters undefined.  While the OrbitEllipse and
+			Perturber can probably represent such orbits, the
+			calculation of the secondary parameters for delivery to
+			the user interface may present an uncaught problem.  A
+			circular orbit in the equatorial plane is a good example
+			that leaves several problems.
+			</p>
+			</font>
+		<li>Stay away from large perturbing forces.
+			<p>
+			<font size=2>
+			The sail uses a simple Perturber.  If the forces
+			altering the orbit of the sail are not small compared to
+			the central gravity force, the perturber will not catch
+			this fact.  Instead the perturber will try smaller time
+			slices hoping to find one that produces a small enough
+			change to the orbit angular momentum and runge-lenz
+			vector to pass the tolerance test.  If the perturbing
+			forces are large enough, no slice will be found before
+			the number of decimals available in the double primitive
+			runs out.  Running out of decimals will result in a zero
+			time slice that cannot be reduced.  The perturber will
+			become trapped and the application will keep running
+			with no apparent affect.
+			</p>
+			</font>
+		</ul>
+		</p>
+		</font>
+		<hr size=4>
+		<a name="Features">
+			<h3>Feature List</h3>
+		</a>
+		<font size=3>
+		<p>
+		This early development version of SailAway has a limited set of features
+		that actually work.  Many menu choices are present on the application 
+		menu, but only the simplest ones needed to debug the physical model are
+		working or being developed.  Users of this early version of the
+		simulator should expect the interface to change noticeably after the
+		user requirements are properly worked out.  The physical model is the
+		only part of the application not likely to change much.
+		<p>
+		<b>Orbit Iteration</b>
+		<p>
+		A sail defined in the Sail.profile file may be started
+		and stepped forward or backward through discrete steps
+		along its orbit.  Each step is worked through to
+		completion with all sail, orbit, perturber, and
+		perturber forces data members refreshed in the
+		appropriate area of the user interface.
+		<p>
+		There is one exception to the updating of the sail properties 
+		after one orbit step.  Since there is no implementation of a 
+		dyad in the clados package yet, there is no good way to 
+		represent the sail's rotational inertia.  Without the rotational
+		inertia, it is not possible to properly handle the sail's 
+		internal angular momentum and attitude.  Therefore, no torques 
+		internal to the sail body are handled yet.  Places in the source
+		code have been marked for eventual inclusion of this exception 
+		and its related parts.
+		<p>
+		<b>Tools/Viewers</b>
+		<p>
+		The Tools menu has options for displaying detailers giving a summary of 
+		parts of the sail state and showing displayers to deliver details about 
+		the monads internal to the physical model. The over all menu may seem to
+		be mis-named with the collection of choices under it. Later versions of 
+		the menu will permit some interaction between the user and the object 
+		displayed through an as-yet-to-be-developed feature centered on the 
+		concepts of a mission plan and a target profile.
+		<p>
+		The Detailers show summary numbers about the state of the
+		sail, the summed perturbing force, and the orbit.  These
+		detailers are part of the oldest graphical interface and
+		show properties most likely to be viewed by a user
+		through numerous orbit steps.
+		<p>
+		The Monad displayers show the internal members of the
+		various monads that make up the physical model.  Each
+		monad important to determining the current state of the
+		sail is reachable through these displayers.  No
+		alteration of these Monads may be performed through
+		these features yet.
+		<p>
+		There are place holders present for the eventual control
+		of the application options and time flow multiplier
+		between real time and simulator time.  Since there is no
+		mechanism yet developed for multiple stepping through an
+		orbit, there is no need to complete the time rate
+		feature or the complex options dialogs.
+		</font>
+	</td>
+</tr>
+<tr>
+	<td colspan=2 bgcolor=cccccc>
+		&nbsp;
+	</td>
+</tr>
+</table>
+
+</body>
+</html>

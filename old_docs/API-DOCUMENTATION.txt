@@ -1,0 +1,18 @@
+	SailAway API Documentation
+
+API Documentation can be generated much like a compiled version
+of SailAway can be generated.
+
+From the top of a working copy of the repository, do the 
+following:
+
+	(Edit the Makefile to produce your own doctitle
+	if you wish to do so.)
+
+	make doc
+
+This command will generate a directory named docs/api within the 
+SailAway source directory.  Within docs/api can be found the 
+output of javadoc as applied to the entire com.interworldtransport
+package tree.  The packages that get documented are listed
+within Makedocpackage.

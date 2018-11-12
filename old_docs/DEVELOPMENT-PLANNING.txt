@@ -1,0 +1,49 @@
+
+               SailAway Development Plan
+
+This file, APPLICATION-PLAN, contains the plan by which the
+SailAway development group operates.
+
+----------------------------------------------------------------------
+Charter for the sailaway-plan mailing list:
+
+The SailAway Planner's List exists to help people with access to the
+SailAway source repository coordinate the architecture planning
+associated with the project.
+
+Everyone who has been given checkin access to the repository for the
+SailAway sources should read sailaway-plan.  Only those with an interest
+in influencing the architecture of the application should send messages 
+to the list.  The list will not block submissions unless it is abused.
+
+The sailaway-plan list may be used to discuss:
+- changes or features to packages other than SailAway if they relate
+  back to the application plan
+- changes and features intended for inclusion in the official SailAway
+  application plan, which someone plans to implement, or has 
+  implemented.
+
+The sailaway-plan list should not be used to discuss:
+- administrivia regarding the SailAway source repository and release
+  process
+- changes which nobody has offered to implement
+These topics should be handled off list.
+
+----------------------------------------------------------------------
+Policies regarding the SailAway source repository:
+
+By discussing items on the sailaway-plan list, authors agree to 
+permit inclusion of their ideas and implementation of them under the
+terms of the GNU Public License.
+
+----------------------------------------------------------------------
+Procedure for dealing with people who want to be application planners:
+
+People who have checkin access are welcome to discussion the overall
+direction of the application on sailaway-plan.  If the list traffic 
+becomes too large, we will move the discussion to a BBS.  It is intended
+that developers that want a say in direction will be able to make their
+voices heard.  If they can convince the maintainer and community of the 
+worthiness of their ideas, those ideas will be incorporated into the 
+application plan.
+

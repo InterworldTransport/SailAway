@@ -1,0 +1,631 @@
+<html>
+<head>
+<Title>Dictionary for SailAway</title>
+</head>
+<body bgcolor=ffffff>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table border=0 width=90%>
+<tr>
+<td width=120 align=center valign=top>
+	<img width=100 height=100 src="../images/SplashImage.gif">
+</td>
+<td align=center valign=top>
+	<h2>
+	SailAway Project<br>
+	Requirements Dictionary
+	</h2>
+</td>
+</tr>
+</table>
+
+<table border=0 width=100% align=center>
+<tr>
+	<td colspan=4 bgcolor=cccccc>
+		&nbsp;.
+	</td>
+</tr>
+<tr>
+	<th colspan=1 align=left valign=top width=150>
+		<font size=4>
+		Term
+		</font>
+	</th>
+	<th align=left valign=top>
+		<font size=4>
+		Definition
+		</font>
+	</th>
+	<th align=left valign=top width=80 bgcolor=silver>
+		<font size=4>
+		Source
+		</font>
+	</th>
+	<th align=left valign=top width=100>
+		<font size=4>
+		Date
+		</font>
+	</th>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Sail
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A Sail is a Sail Model and a Sail Property Set.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2001/12/26
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Sail Model
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A Sail Model is a consistent set of Sail Elements.  Consistency is a
+		measure of the completeness of the information of a Sail Model.  An
+		example of an incomplete model is one that would immediately fly as two
+		separate vehicles at the start of a simulation.  A Sail Model is
+		consistent when physical properties describing it have meaning like they
+		would for a atomic rigid body.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2001/12/26
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Sail Element
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A Sail Element is a description of a single atomic component of a solar
+		sail that can be desribed with the following information.
+		<p>
+		<b>Required Information</b>
+		<ul>
+		<li>The name
+		<li>The location
+		<li>The mass
+		<li>The physical extent
+		<li>The physical contraints
+		</ul>
+		<b>Optional Information</b>
+		<ul>
+		<li>The purpose
+		<li>The activity
+		<li>The activity direction
+		<li>The operational constraints for an activity
+		</ul>
+		Possible example Sail Elements include items from the following list.
+		<ul>
+		<li>sail bus
+		<li>sail fabric
+		<li>payload
+		<li>batteries
+		<li>tension lines
+		<li>pulleys
+		<li>servos
+		</ul>
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2001/12/26
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Sail Property Set
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A Sail Property Set is a collection of physical properties describing
+		the external behavior of a Sail Model.  These properties include items
+		from the following list.
+		<p>
+		<b>Required Information</b>
+		<ul>
+		<li>The location of Sail's Center of Mass
+		<li>The linear momentum of the Sail
+		<li>The primary source of gravitation
+		<li>An external list of perturbation sources and their strengths
+		<li>Properties derivable from the above list
+		</ul>
+		<p>
+		Other properties are also included in this set that are not physical in
+		nature.  These properties are present mostly to help a simulator keep
+		track of related information and are considered optional.
+		<p>
+		<b>Optional Information</b>
+		<ul>
+		<li>The name of the Sail
+		<li>The owner of the Sail
+		<li>The Sail Model to which these properties are typically associated.
+		</ul>
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2001/12/26
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Sail Flight
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A Sail Flight is a collection of Sails that can be linked to each other
+		in a continuous temporal chain.  The flight is essentially a history of
+		states of the Sail.  Each link in that chain is a Sail with all its
+		parts.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2001/12/28
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Sail Simulation
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A Sail Simulation is a well formed Sail with a Command List to be
+		treated as operators by the System running the simulation.  These
+		commands may be interactive, batch or macro based.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2001/12/28
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Ephemerides
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		Ephemerides is a data set describing the location of the Sail.  It is
+		extracted from a Sail by the System and then output as an independent
+		data store.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2001/12/28
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Command List
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A command list is one or more operators understood my the system to be
+		used on a Sail during a simulation.  In batch mode, the command list is
+		an XML file conforming to a particular format.  In interactive mode, a
+		command list is formed real time from user input.
+		
+		A command list may optionally refer to a flight assumptions list.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2001/12/28
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Initial Conditions
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		Initial Conditions come in two forms, but they are essentially the same
+		in both cases.  Initial Conditions describe how a sail model or a sail
+		flight starts at the beginning of a simulation.  In the case of a sail
+		model, the initial conditions ARE a sail model.  In the case of a sail
+		flight, the initial conditions ARE a Sail Property Set with enough
+		information to permit the derivation of all secondary properties
+		relavant to a well formed simulation.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2001/12/26
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Final Conditions
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		Final Conditions come in two forms, but they are essentially the same
+		in both cases.  Final Conditions describe how a sail model or a sail
+		flight is to finish at the end of a simulation.  In the case of a sail
+		model, the final conditions ARE a sail model.  In the case of a sail
+		flight, the final conditions ARE a Sail Property Set with enough
+		information to permit the derivation of all secondary properties
+		relavant to a well formed simulation.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2001/12/26
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Library
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A Library is an internet resource (URL) willing to store and return Sail
+		Models, Sail Property Sets, and Sail Flights generated by remotely
+		running simulations and their users.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2001/12/26
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Receipt Confirmation
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A 'Receipt Confirmation' is information passed back from a Library to
+		the System to provide basic information about the success or failure of
+		an operatoin along with some error messages.  This receipt may take the
+		form of data files or sockets depending on the library.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2002/01/07
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Delivery Request
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A 'delivery request' is a set of information passed from the System to a
+		remote library.  Within the delivery request is sufficient information
+		to tell the library what actions are being requested and by whom.  This
+		request may take the form of data files or sockets depending on the
+		library.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2002/01/07
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Flight Assumptions List
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A Flight Assumptions List is a set of rules under which a simulation is
+		expected to constrain its run.  Example rules are included in the
+		following list.
+		<ul>
+		<li>A particular Sail Element will vanish from the model if the
+		Element's temperature rises above a particular threshold.
+		<li>A particular Sail Element's reflective coefficients will change to a
+		new value if the Element's temperature rises above a particular
+		threshold.
+		<li>The simulation is to stop after a certain amount of time elapses.
+		<li>The Sail releases it's payload element if certain conditions are met
+		by the Sail Property Set.
+		<li>The Sail receives an impulsive boost from a large laser at a
+		particular time during the simulation.
+		</ul>
+		A command list may optionally refer to a Flight Assumptions List.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2001/12/26
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Status Log
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		The status log is the place where the System writes information about
+		the success or failure of a particular command.  This log may be
+		persistent or not depending on the interface design.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2002/01/07
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Physical Model
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		The physical model is the part of the SailAway application responsible
+		for representing the physics of sails and sail flight.  
+		<p>
+		The physical model will be isolated within its own java package in order
+		to properly encapsulate the rules of physics from the other parts of the
+		application.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2002/02/10
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		User Interface
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A user interface is the part of the SailAway application responsible
+		for interacting with the user in such a way that they can run
+		simulations, observe previous simulations, and otherwise manipulate
+		application data.
+		<p>
+		User interfaces are isolated from the rest of the application within
+		their own java package in order to properly protect the other parts of
+		the application from parts that can be manipulated by the users.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2002/02/10
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Event Model
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A event model is the part of the SailAway application responsible
+		for interfacing a user interface with the physical model.
+		<p>
+		The event model is aware of the published interface of the physical 
+		model and can translate UI components into actions within the UI and the
+		physical model.  The event model is isolated from the rest of the 
+		application within its own java package in order to properly encapsulate
+		the rules by which a physical model may be manipulated.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2002/02/10
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Clados
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		Clados is a math library designed to support geometric algebras and the
+		multi-ranked objects they may represent.  It is a replacement for
+		libraries that handle operations involving vectors, matricies, and
+		tensors.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2002/02/10
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Monad
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A Monad is an object meant to represent geometric entities.  Most
+		physical properties of real things have some kind of geometric
+		interpretatoin, so Monads are generally used to represent real things in
+		algebraic equations.  Positions, velocities, angular motion and many
+		other things can be represented by Monads and are in SailAway.  Other
+		physical simulators use a mix of classic vectors, matricies, and tensors
+		to do the jobs performed by Monads.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2002/02/15
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Dyad
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A Dyad is an object meant to represent entities that have two distinct
+		geometric natures.  They are composed of two Monads founded in different
+		spaces and otherwise unrelated to each other.  The physics of the
+		relationship is what ties the two Monads together in a Dyad.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2002/02/15
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Orbit
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		An Orbit is the external path a Sail takes around a gravitational
+		center.  These path come in many shapes including straight lines,
+		ellipses, parabolae, and hyperbolae.
+		<p>
+		Orbits are often described in terms of a paramter set that can be used
+		to algebraically represent the path in an equation.  The actual
+		parameters used depends on the shape and what one intends to do with
+		them.  SailAway treats parameter sets as secondary information to be
+		derived from the Orbit's defining properties like angular momentum and
+		the Runge-Lenz object (eccentricity vector.)
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2002/02/15
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Perturber
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A Perturber is an object that handles the physics of perturbation theory
+		as it applies to gravitational orbits and spacecraft or satellites.
+		Perturbatoin theory lays out how orbits are slowly altered by tiny
+		forces other than the central gravitational force acting on a satellite.
+		<p>
+		There are differnt approaches to managing perturbations acting on
+		satellites in gravitational orbits.  The different approaches are used
+		to deliver results for orbits of different shapes and different
+		parameter sets.  The method used by SailAway is described in 'The
+		physics of SailAway.'
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2002/02/15
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Force Model
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A Force Model is an abstracted representation of of a perturbing force
+		acting to change the orbit of a satellite.  All perturbing forces have a
+		few things in common, so at this level of abstraction, those things are
+		given similar names and treated in a similar fashion.
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2002/02/15
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top width=150>
+		Radiation Force Model
+	</td>
+	<td align=left valign=top>
+		<font size=2>
+		A Radiation Force Model is a particular example of a force model that
+		represents the physics of radiation pressure.  An object reflecting 
+		photons receives an impulse that depends on a lot of properties that
+		describe the strength and quality of the reflector.  Reflection can be
+		strong or weak, specular or diffuse, and directional or not
+		</font>
+	</td>
+	<td align=left valign=top width=80 bgcolor=silver>
+		adiffer
+	</td>
+	<td align=left valign=top width=100>
+		2002/02/15
+	</td>
+</tr>
+<tr>
+	<td colspan=4 bgcolor=cccccc>
+		&nbsp;.
+	</td>
+</tr>
+</table>
+
+</body>
+</html>

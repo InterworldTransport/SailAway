@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+
+<HTML>
+<HEAD>
+	
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 641  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Alfred Differ">
+	<META NAME="CREATED" CONTENT="20020130;21235542">
+	<META NAME="CHANGED" CONTENT="16010101;0">
+	
+</HEAD>
+
+<STYLE>
+	<!-- 
+	BODY { font-family: "Albany"; font-size: 2 }
+	 -->
+</STYLE>
+
+<BODY TEXT="#000000">
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table width=90%>
+<tr>
+<td width=120 align=center valign=top>
+	<img width=100 height=100 src="../images/SplashImage.gif">
+</td>
+<td align=center valign=top>
+	<h2>
+	SailAway Project
+	</h2>
+	<h3>
+	Context Matrix and Statement of Scope
+	</h3>
+</td>
+</tr>
+</table>
+<font size=2>
+From the table of use cases in context included below, it is apparent that
+SailAway may be organized as a collection of units with specific functions that
+when all done add up to fulfill the documented requirements.  These units are as
+follows.
+<p>
+<ul>
+<li>Core {includes use cases 11, 13, 19, 20, 21}.  In scope during phase 1.
+<li>Orbit Modelling {includes use cases 14, 18, 22}.  In scope during phase 2.
+<li>Sail Modelling {includes use cases 1, 17}.  In scope during phase 3.
+<li>Flight Construction {includes use cases 7, 12}.  In scope during phase 4.
+</ul>
+<p>
+In each phase of development of SailAway, new features will be considered for a
+unit that was completed in a previous phase.
+<p>
+</font>
+
+<TABLE FRAME=BELOW CELLSPACING=0 COLS=6 RULES=GROUPS BORDER=2>
+	<COLGROUP>
+		<COL WIDTH=25>
+		<COL WIDTH=150>
+		<COL WIDTH=527>
+		<COL WIDTH=41>
+		<COL WIDTH=86>
+		<COL WIDTH=48>
+	</COLGROUP>
+	<TBODY>
+		<TR>
+			<Th WIDTH=25 HEIGHT=17 ALIGN=LEFT>#</Th>
+			<Th WIDTH=150 HEIGHT=17 ALIGN=LEFT>Use Case Title</Th>
+			<Th WIDTH=527 HEIGHT=17 ALIGN=LEFT>Summary</Th>
+			<Th WIDTH=41 HEIGHT=17 ALIGN=LEFT>Core?</Th>
+			<Th WIDTH=86 HEIGHT=17 ALIGN=LEFT>Dependecies</Th>
+			<Th WIDTH=48 HEIGHT=17 ALIGN=LEFT>Priority</Th>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=25 HEIGHT=82 ALIGN=LEFT SDVAL="11" SDNUM="1033;">11</TD>
+			<TD WIDTH=150 HEIGHT=82 ALIGN=LEFT>Run Simulated Flight</TD>
+			<TD WIDTH=527 HEIGHT=82 ALIGN=LEFT>At the request of the user, the system will run the well formed simulation named by the user. The system will first check to see that the named simulation is well formed and then run it to completion without further input from the user. Information marked in the simulation as data to be saved for later delivery by the Notification Tool will be saved and marked as such.</TD>
+			<TD WIDTH=41 HEIGHT=82 ALIGN=LEFT>Yes</TD>
+			<TD WIDTH=86 HEIGHT=82 ALIGN=LEFT><BR></TD>
+			<TD WIDTH=48 HEIGHT=82 ALIGN=LEFT>2</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=25 HEIGHT=50 ALIGN=LEFT SDVAL="19" SDNUM="1033;">19</TD>
+			<TD WIDTH=150 HEIGHT=50 ALIGN=LEFT>Iterate Sail One Phase Step</TD>
+			<TD WIDTH=527 HEIGHT=50 ALIGN=LEFT>The User provides a Sail, an iteration command, and some optional assumptions to the System. The System steps forward or backward along the Sail's orbit one phase step and returns a Sail with a valid physical state at the other end of the step.</TD>
+			<TD WIDTH=41 HEIGHT=50 ALIGN=LEFT>Yes</TD>
+			<TD WIDTH=86 HEIGHT=50 ALIGN=LEFT SDVAL="11" SDNUM="1033;">11</TD>
+			<TD WIDTH=48 HEIGHT=50 ALIGN=LEFT>1</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=25 HEIGHT=63 ALIGN=LEFT SDVAL="13" SDNUM="1033;">13</TD>
+			<TD WIDTH=150 HEIGHT=63 ALIGN=LEFT>Validate User Entering System</TD>
+			<TD WIDTH=527 HEIGHT=63 ALIGN=LEFT>Gather User information in order to ensure later processes may rely upon its existance.</TD>
+			<TD WIDTH=41 HEIGHT=63 ALIGN=LEFT>Yes</TD>
+			<TD WIDTH=86 HEIGHT=63 ALIGN=LEFT><br></TD>
+			<TD WIDTH=48 HEIGHT=63 ALIGN=LEFT>3</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=25 HEIGHT=50 ALIGN=LEFT SDVAL="20" SDNUM="1033;">20</TD>
+			<TD WIDTH=150 HEIGHT=50 ALIGN=LEFT>Store Object in Llibrary</TD>
+			<TD WIDTH=527 HEIGHT=50 ALIGN=LEFT>When the system is configured to make use of an independent libary, it will automatically store many of the objects created or altered by the user or system in the library at times dictated by the system. No user intervention will be required to store sail information.</TD>
+			<TD WIDTH=41 HEIGHT=50 ALIGN=LEFT>Yes</TD>
+			<TD WIDTH=86 HEIGHT=50 ALIGN=LEFT>13</TD>
+			<TD WIDTH=48 HEIGHT=50 ALIGN=LEFT>4</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=25 HEIGHT=50 ALIGN=LEFT SDVAL="21" SDNUM="1033;">21</TD>
+			<TD WIDTH=150 HEIGHT=50 ALIGN=LEFT>Retrieve Object from Library</TD>
+			<TD WIDTH=527 HEIGHT=50 ALIGN=LEFT>When the system is configured to make use of an remote libary, it will offer for retrieval all objects allowed at the request of a user. These objects will be be made available much like those in the local library are handled.</TD>
+			<TD WIDTH=41 HEIGHT=50 ALIGN=LEFT>Yes</TD>
+			<TD WIDTH=86 HEIGHT=50 ALIGN=LEFT SDVAL="20" SDNUM="1033;">13</TD>
+			<TD WIDTH=48 HEIGHT=50 ALIGN=LEFT>5</TD>
+		</TR>
+	</TBODY>
+	
+	<TBODY>
+		<TR bgcolor=dddddd>
+			<TD WIDTH=25 HEIGHT=10 ALIGN=LEFT"><br></TD>
+			<TD WIDTH=150 HEIGHT=10 ALIGN=LEFT><br></TD>
+			<TD WIDTH=527 HEIGHT=10 ALIGN=LEFT><br></TD>
+			<TD WIDTH=41 HEIGHT=10 ALIGN=LEFT><br></TD>
+			<TD WIDTH=86 HEIGHT=10 ALIGN=LEFT"><br></TD>
+			<TD WIDTH=48 HEIGHT=10 ALIGN=LEFT><br></TD>
+		</TR>
+	</TBODY>
+	
+	<TBODY>
+		<TR>
+			<TD WIDTH=25 HEIGHT=129 ALIGN=LEFT SDVAL="1" SDNUM="1033;">1</TD>
+			<TD WIDTH=150 HEIGHT=129 ALIGN=LEFT>Create a Sail Model</TD>
+			<TD WIDTH=527 HEIGHT=129 ALIGN=LEFT>A user records into the system details about a sail model. These details will add up to enough information for the system to treat the model as a real physical object that obeys real physics laws. Information that makes up a sail model includes detail about the mass, shape, locations, and System Level Context contraints on every portion of the sail. The system receives all input and validates it against templates. Acceptable information is then added to the sail model and saved. The system informs the user when the sail model is complete enough to be considered well formed for the purpose of using it in a simulation.</TD>
+			<TD WIDTH=41 HEIGHT=129 ALIGN=LEFT>No</TD>
+			<TD WIDTH=86 HEIGHT=129 ALIGN=LEFT>20, 21</TD>
+			<TD WIDTH=48 HEIGHT=129 ALIGN=LEFT>7</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=25 HEIGHT=66 ALIGN=LEFT SDVAL="17" SDNUM="1033;">17</TD>
+			<TD WIDTH=150 HEIGHT=66 ALIGN=LEFT>Validate Sail Element Information</TD>
+			<TD WIDTH=527 HEIGHT=66 ALIGN=LEFT>Information passed to the System about elements of a Sail Model must be checked for validity before the element may be assumed to be a good part of a model. This validation check screens out elements with negative lengths, masses and other similar non-physical possibilities.</TD>
+			<TD WIDTH=41 HEIGHT=66 ALIGN=LEFT>No</TD>
+			<TD WIDTH=86 HEIGHT=66 ALIGN=LEFT SDVAL="1" SDNUM="1033;">1, 22</TD>
+			<TD WIDTH=48 HEIGHT=66 ALIGN=LEFT>7</TD>
+		</TR>
+	</TBODY>
+		<TBODY>
+		<TR bgcolor=dddddd>
+			<TD WIDTH=25 HEIGHT=10 ALIGN=LEFT"><br></TD>
+			<TD WIDTH=150 HEIGHT=10 ALIGN=LEFT><br></TD>
+			<TD WIDTH=527 HEIGHT=10 ALIGN=LEFT><br></TD>
+			<TD WIDTH=41 HEIGHT=10 ALIGN=LEFT><br></TD>
+			<TD WIDTH=86 HEIGHT=10 ALIGN=LEFT"><br></TD>
+			<TD WIDTH=48 HEIGHT=10 ALIGN=LEFT><br></TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=25 HEIGHT=82 ALIGN=LEFT SDVAL="14" SDNUM="1033;">14</TD>
+			<TD WIDTH=150 HEIGHT=82 ALIGN=LEFT>Create Sail Property Set</TD>
+			<TD WIDTH=527 HEIGHT=82 ALIGN=LEFT>A user records into the system details about the external properties of a sail. These details will add up to enough information for the system to treat a related model as a rigid physical object that obeys rigid physics laws. Information that makes up a sail sail property set includes detail about the location of the center of mass, the total linear momentum, the focus of the Sail's orbit and other external properties.</TD>
+			<TD WIDTH=41 HEIGHT=82 ALIGN=LEFT>No</TD>
+			<TD WIDTH=86 HEIGHT=82 ALIGN=LEFT>20, 21</TD>
+			<TD WIDTH=48 HEIGHT=82 ALIGN=LEFT>6</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=25 HEIGHT=66 ALIGN=LEFT  SDVAL="14" SDNUM="1033;">18</TD>
+			<TD WIDTH=150 HEIGHT=66 ALIGN=LEFT>Validate Sail Property Set</TD>
+			<TD WIDTH=527 HEIGHT=66 ALIGN=LEFT>Information passed to the System about parts of a property set must be checked for validity before the property may be assumed to be a good part of a property set. This validation check screens out properties that do not match up with names from a known list of valid properties.</TD>
+			<TD WIDTH=41 HEIGHT=66 ALIGN=LEFT>No</TD>
+			<TD WIDTH=86 HEIGHT=66 ALIGN=LEFT SDVAL="14" SDNUM="1033;">14, 22</TD>
+			<TD WIDTH=48 HEIGHT=66 ALIGN=LEFT>6</TD>
+		</TR>
+	</TBODY>
+		<TBODY>
+		<TR>
+			<TD WIDTH=25 HEIGHT=66 ALIGN=LEFT  SDVAL="14" SDNUM="1033;">22</TD>
+			<TD WIDTH=150 HEIGHT=66 ALIGN=LEFT>Run a validation test</TD>
+			<TD WIDTH=527 HEIGHT=66 ALIGN=LEFT>In this case, all validators may reuse the structure of the test queue and the fabrication of the test results objects.</TD>
+			<TD WIDTH=41 HEIGHT=66 ALIGN=LEFT>No</TD>
+			<TD WIDTH=86 HEIGHT=66 ALIGN=LEFT SDVAL="14" SDNUM="1033;">14</TD>
+			<TD WIDTH=48 HEIGHT=66 ALIGN=LEFT>6</TD>
+		</TR>
+	</TBODY>
+		<TBODY>
+		<TR bgcolor=dddddd>
+			<TD WIDTH=25 HEIGHT=10 ALIGN=LEFT"><br></TD>
+			<TD WIDTH=150 HEIGHT=10 ALIGN=LEFT><br></TD>
+			<TD WIDTH=527 HEIGHT=10 ALIGN=LEFT><br></TD>
+			<TD WIDTH=41 HEIGHT=10 ALIGN=LEFT><br></TD>
+			<TD WIDTH=86 HEIGHT=10 ALIGN=LEFT"><br></TD>
+			<TD WIDTH=48 HEIGHT=10 ALIGN=LEFT><br></TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=25 HEIGHT=129 ALIGN=LEFT SDVAL="7" SDNUM="1033;">7</TD>
+			<TD WIDTH=150 HEIGHT=129 ALIGN=LEFT>Create Flight Simulation</TD>
+			<TD WIDTH=527 HEIGHT=129 ALIGN=LEFT>A user records into the system details about the initial conditions of a sail flight. These details involve an initial sail and command set. The System facilitates the gathering of this information from the user if the use mode for the System is interactive and the marking of the parts for inclusion in a simulation.  When the user completes all the information gathered by the System for this case, they will have a simulated flight that may be checked for consistency and then run. </TD>
+			<TD WIDTH=41 HEIGHT=129 ALIGN=LEFT>No</TD>
+			<TD WIDTH=86 HEIGHT=129 ALIGN=LEFT>20, 21</TD>
+			<TD WIDTH=48 HEIGHT=129 ALIGN=LEFT>8</TD>
+		</TR>
+	</TBODY>
+	<TBODY>
+		<TR>
+			<TD WIDTH=25 HEIGHT=82 ALIGN=LEFT SDVAL="12" SDNUM="1033;">12</TD>
+			<TD WIDTH=150 HEIGHT=82 ALIGN=LEFT>Validate Simulation to be run</TD>
+			<TD WIDTH=527 HEIGHT=82 ALIGN=LEFT>  When the System is ordered to run a simulation, it will determine whether the offered simulation is well formed or not. Any simulation that passes this test is handed on to another process within the system for further work. Any simulation that does not pass this test is analyzed for why it failed and useful error messages are passed back to the part of the system that called here.</TD>
+			<TD WIDTH=41 HEIGHT=82 ALIGN=LEFT>No</TD>
+			<TD WIDTH=86 HEIGHT=82 ALIGN=LEFT SDVAL="7" SDNUM="1033;">7, 22</TD>
+			<TD WIDTH=48 HEIGHT=82 ALIGN=LEFT>8</TD>
+		</TR>
+	</TBODY>
+</TABLE>
+<!-- ************************************************************************** -->
+</BODY>
+
+</HTML>

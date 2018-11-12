@@ -1,0 +1,110 @@
+		How to write code for SailAway
+
+* Portability
+
+The general rule for portability is that the physical model must be
+runnable in any version of Java.  We try to avoid deprecated features
+within all the runtime versions of Java in all sections of the application. 
+We also try to avoid features from any Java environment that appear to be
+a kludge that will be altered in later releases.  The current GUI and event 
+model are not meant to be compatible with any version of Java earlier than
+version 1.2.  Since a variety of GUI's and event models may be written, no
+portability constraints will be maintained for them.
+
+* Coding standards in general
+
+Readability is the primary concern regarding coding standards in SailAway.
+If individual developers wish to use their own styles, there should be no
+problem as long as others can read the code.
+
+Our team does try to hold to the notion that each source file should 
+contain only one class definition.  We recognize the usefullness of 
+internal classes, but we do shy away from them.
+
+Learn to love Javadoc.  Write good javadoc comments and save us all the 
+trouble of having to write technical resource documentation by hand after
+the fact.
+
+Learn to love Ant.  We shall be moving the build process away from Make
+and psuedo-make batch files and using Ant in its basic form.  Ant is java
+based, so our build process can be maintained as a single set of files
+that work across all platforms.  If you don't have Jakarta-Ant yet, get it.
+
+* Writing code (strategy)
+
+Only some kinds of changes are suitable for inclusion in the 'official'
+version of SailAway.  
+
+Bugfixes, where the application's behavior contradicts the documentation 
+and/or expectations that everyone agrees upon, is OK. 
+
+If your code section is for a feature approved for inclusion by the 
+application planners, committing the code is also OK.
+
+If your design is not yet clear (which is true of most features), then
+the design is likely to benefit from more work and community input.
+Write documentation including rationales for how one would use the feature.  
+Think in terms of Use cases.  Discuss it with the SailAway development
+team, researchers, or a mailing list to see what other people think.
+
+If your code section is for a feature not on the approved list yet,
+get the application planners involved in your discussions.  Follow
+the same plan you would if your design were not yet clear.
+
+The intention of all this is to arrive at some kind of rough community 
+consensus before changing the "official" SailAway. It is likely that 
+experimental packages will be distributed as a way to break in new features
+in any section. 
+
+* Writing code (tactics)
+
+When you first distribute a patch it may be suitable to just put forth
+a rough patch, or even just an idea.  But before the end of the
+process the following should exist:
+
+  - ChangeLog entry
+
+  - Somewhere, a description of what the patch fixes (often in
+    comments in the code, or maybe the ChangeLog or documentation or
+    all of the above)
+
+  - Most of the time, a test case (see TESTS).  If your code fixes a bug, 
+    it can be quite frustrating to fix it only to see it reappear later
+    Adding a test case to the testsuite, where feasible, solves this and other
+    problems.
+
+If you solve several unrelated problems, it is generally easier to
+consider the desirability of the changes if there is a separate patch
+for each bug/issue.  Use context diffs or unidiffs for a bug fix/patch.
+
+Include words like "I grant permission to distribute this patch under
+the terms of the GNU Public License" with your patch.  By sending a
+patch to the SailAway team, you implicitly grant this permission, but we
+would prefer it to be spelled out for clarity.
+
+* What is the schedule for the next release?
+
+There isn't one.  That is, upcoming releases are not announced (or
+even hinted at, really) until the feature freeze which is
+approximately 2 weeks before the final release (at this time test
+releases start appearing and are announced).  This is
+intentional, to avoid a last minute rush to get new features in.
+
+* Mailing lists
+
+We intend to have mailing lists supporting the following aspects of
+the project.
+
+    sailaway-plan		Application Planners
+    sailaway-develop		Application Developers
+    sailaway-bugs		Bug reports and comments
+    sailaway-info		General Information
+
+Each of these can be found on our SourceForge site.  Subscribe
+instructions are there too. 
+
+    sailaway-commit		Commit notices
+
+This mailing list is not present yet.  It will be an automated
+list sending commit messages from the developers to those wishing
+to know about the activity.

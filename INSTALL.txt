@@ -1,0 +1,33 @@
+2002/02/19	Alfred Differ
+The API docs are included as a separate jar file.  Other documents are included
+under the html directory under docs and wrapped as pdf's for separate release.
+
+2002/02/13  Alfred Differ
+I created an 'install' target within the ANT buildfile.  At the moment it
+creates jar files for SailAway and Clados and places them in the lib directory. 
+Because we are still developing everything, the SailAway.jar file will also
+include the related javadocs.  In the long run, the jar files will be moved to
+an installation directory choosen by the user.
+
+With the jar files, it should be possible to invoke SailAway by running
+SailAway.jar as you would any other jar file.  The application class should be
+correctly labelled and activated on any system with a JVM.
+
+Be aware that SailAway currently requires the installaton of Java3D.
+
+2001/11/04	Alfred Differ
+SailAway still isn't mature enough to warrent an 'install' target, but ANT makes
+it so easy to build it that I think I will do it soon. Issuing the 'ant install'
+command from a command line should do the trick of getting the sailaway.jar file
+and the related configuration files into a place where the application may be
+invoked from a similar command line. Expect this before too long.
+
+2000/03/15	Alfred Differ
+SailAway isn't mature enough yet to deserve an 'install' instruction set. The
+compilation done by make places the class files alongside the java source files.
+The 'run' target within the makefile runs the application in place. The 'clean'
+target removes the class files from the source tree to prepare for another
+compilation.
+
+A little later I will alter the default make target to cause compilation to dump
+class files in a directory next to the SailAway source tree.

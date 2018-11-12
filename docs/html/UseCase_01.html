@@ -1,0 +1,240 @@
+<html>
+<head>
+	<title>
+		SailAway Case Study
+	</title>
+</head>
+<body>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table width=90%>
+<tr>
+<td width=120 align=center valign=top>
+	<img width=100 height=100 src="../images/SplashImage.gif">
+</td>
+<td align=center valign=top>
+	<h2>
+	SailAway Project
+	</h2>
+</td>
+</tr>
+</table>
+
+
+<table border=1 width=90%>
+<caption>
+	<b>Use Cases</b>
+</caption>
+
+<tr>
+<th align=left valign=top>
+	Diagram
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<img 	alt="Use Case Diagram 1" 
+			src="../images/usecase1.gif" 
+			align="top" 
+			border="0">
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Name
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Create a Sail Model
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Iteration
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Finished
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Summary
+</th>
+<td align=left valign=top>
+	<font size=3>
+	A user records into the system details about a sail model. These details 
+	will add up to enough information for the system to treat the model as a 
+	real physical object that obeys real physics laws. Information that makes up
+	a sail model includes detail about the mass, shape, locations, and System 
+	Level Context contraints on every portion of the sail. The system receives 
+	all input and validates it against templates.  Acceptable information is 
+	then added to the sail model and saved.  	The system informs the user when 
+	the sail model is complete enough to be considered well formed for the
+	purpose of using it in a simulation.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Basic Course of Events
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ol>
+	<li>From within the system the User optionally recalls an existing sail 
+	model for refinement.
+	<li>The User records details about sail elements in a sail model
+	<li>The System attempts to validate the new details.
+	<li>The System identifies and records these details for later use
+	</ol>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Alternative Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	If the system is configured to use any library at step 4, it will store the 
+	sail model in a library with related information.
+	<p>
+	If the system is configured to use a library at step 1, it will present the
+	user with the option to load a pre-existing model to act as a starting point
+	for further additions or deletions to the model.
+	<p>
+	If multiple libraries are available, the storage and retrievals use cases
+	will make the decisions regarding which ones to use.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Exception Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	At step 3, invalid elements are brought to the attention of the user via the
+	Notification Tool and not saved within a sail model.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Extension Points
+</th>
+<td align=left valign=top>
+	<font size=3>
+	When the System records elements from a sail model, these elements are
+	passed through a validator.  This occurs at step 3.
+	<p>
+	When the System records a sail model in a library at step 4, it will use a 
+	separate process to do the actual saving due to the complexity of the 
+	interaction between the System and a remote library and the fact that the 
+	separate process can be re-used by other sections of the system.
+	<p>
+	When the System retrieves a sail model from a library at step 1, it will use
+	a separate process to do the actual getting due to the complexity of the
+	interaction between the System and a remote library and the fact that the 
+	separate process can be re-used by other sections of the system.  
+	</font>
+</td>
+
+</tr>
+<tr>
+<th align=left valign=top>
+	Trigger
+</th>
+<td align=left valign=top>
+	<font size=3>
+	The user triggers this case when they present information to the System that
+	results in a new or altered Sail Model.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Assumptions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Preconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ul>
+	<li>Templates for a variety of valid sail elements exist.
+	</ul>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Postconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Every time the System leaves this case, any stored sail model is valid.  It
+	is not necessarily true that the sail models are complete, though.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Related Environment Rules
+</th>
+<td align=left valign=top>
+	<font size=3>
+	1
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Author
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Dr Alfred W Differ
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Date
+</th>
+<td align=left valign=top>
+	<font size=3>
+	2001/11/07 - Facade<br>
+	2002/01/04 - Filled<br>
+	2002/02/03 - Focused<br>
+	2002/02/15 - Finished
+	</font>
+</td>
+</tr>
+</table>
+
+</body>
+</html>	

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SailAway" default="install" basedir=".">
+	
+	<target name="init" description="Initialize all properties">
+		<property name="appName" value="SailAway" />
+		<property name="coName" value="Interworld Transport" />
+		<property name="appHome" value="http://www.interworldtransport.com" />
+		<property name="copyleft" value="&lt;p&gt;
+--------------------------------------------------------------------------------
+&lt;br&gt;
+SailAway_API_Documentation&lt;br&gt;
+--------------------------------------------------------------------------------
+&lt;br&gt;
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+&lt;p&gt;
+Interworld Transport grants you (Licensee) a license to this documentation 
+under the terms of the Design Science License.  A full copy of the license can 
+be found bundled with this documentation and published within it.
+&lt;p&gt;
+Use of this documentation beyond the legal definition of &apos;fair use&apos; by the 
+Licensee states their willingness to accept the terms of the license.
+&lt;p&gt;
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy." />
+		<path id="classpath">
+			<pathelement path="./class" />
+		</path>
+	</target>
+	
+	<target name="clean" 
+			depends="init"
+			description="Removes all SailAway files down to a basic src package.">
+		<delete file="SailAway.jar" /> <!-- made by jar target -->
+		<delete file="lib/SailAway_API_Docs.jar" /> <!-- made by jar target -->
+		<delete dir="test" /> <!-- made by test target -->
+		<delete dir="class" /> <!-- made by compile target -->
+		<delete dir="docs/api" /> <!-- made by javadoc target -->
+		
+	</target>
+	
+	<target name="compile" 
+			depends="init" 
+			description="Compiles all the SailAway source files" >
+		<mkdir dir="class" />
+		
+		<javac 	classpath="lib/clados.jar" 
+				debug="off" 
+				destdir="class" 
+				nowarn="on" 
+				srcdir="." 
+				verbose="false">
+			<include name="com/interworldtransport/sailmodel/*.java"></include>
+			<include name="com/interworldtransport/sailgui/*.java"></include>
+			<include name="com/interworldtransport/sailli/*.java"></include>
+			<include name="com/interworldtransport/sailnti/*.java"></include>
+			<include name="com/interworldtransport/sailevent/*.java"></include>
+			<exclude name="./**/CVS/*"></exclude>
+			<exclude name="com/interworldtransport/sailmodel/Orbit.java"></exclude>
+			<exclude name="com/interworldtransport/sailgui/Geometry.java"></exclude> 
+			<exclude name="com/interworldtransport/sailgui/ErrorMessage.java"></exclude>
+		</javac>
+	</target>
+	
+	<target name="javadoc" depends="init"
+		description="Generates the API documentation for SailAway." >
+		<delete dir="./docs/api" />
+		<mkdir dir="./docs/api" />		
+		<javadoc 	classpath="lib/clados.jar"
+					author="true" 
+					bottom="${copyleft}" 
+					destdir="./docs/api" 
+					doctitle="SailAway Package Documentation" 
+					header="&lt;a target=_top href=${appHome}&gt;${coName}&lt;/a&gt;" 
+					overview="com/interworldtransport/overview.html" 
+					packagenames="com.interworldtransport.*" 
+					sourcepath="." 
+					verbose="false" 
+					windowtitle="SailAway API Documentation">
+		</javadoc>
+	</target>
+	
+	<target name="jar"
+		depends="compile"
+		description="Package the source code and support docs for install." >
+		<mkdir dir="class/configuration"></mkdir>
+		<mkdir dir="class/images"></mkdir>
+		<copydir dest="class/configuration" src="configuration" />
+		<copydir dest="class/images" src="images" />
+		<jar
+			jarfile="./SailAway.jar"
+			manifest="./com/interworldtransport/sailgui/SailAway.manifest"
+			>
+			<fileset dir="./class">
+				<include name="com/interworldtransport/**/*.class"/>
+				<include name="images/*.gif"/>
+				<include name="images/*.jpg"/>
+				<include name="configuration/*.*"/>
+			</fileset>
+		</jar>
+	</target>
+	
+	<target name="jar_API_docs"
+		depends="javadoc"
+		description="Package the source code and support docs for install." >
+		<jar
+			jarfile="./lib/SailAway_API_Docs.jar"
+			>
+			<fileset dir=".">
+				<include name="docs/api/**/*.*"/>
+			</fileset>
+		</jar>
+	</target>
+	<target name="install"
+			depends="jar, jar_API_docs"
+			description="This one is not ready yet.." >
+	</target>
+	<target name="test"
+			description="This one is temporary.  It helps test what makes it into the jar files." >
+			<mkdir dir="test" />
+			<copy file="SailAway.jar" todir="test" />
+	</target>
+	<target name="run" 
+			depends="compile" 
+			description="This target allows developers to run the class code">
+			<java 	classname="com.interworldtransport.sailgui.SailAway"
+					classpath="./class">
+			</java>
+	</target>
+	<target name="run_jar" 
+			depends="install" 
+			description="This target allows developers to run the application">
+			<java 	classpath="./lib/SailAway.jar" 
+					jar="SailAway.jar">
+			</java>
+	</target>
+	<target name="uninstall" description="This one is not ready yet." >
+	</target>
+</project>
+

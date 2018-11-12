@@ -1,0 +1,123 @@
+<html>
+<head>
+	<title>
+		SailAway Case Study
+	</title>
+</head>
+<body>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table width=90%>
+<tr>
+<td width=120 align=center valign=top>
+	<img width=100 height=100 src="../images/SplashImage.gif">
+</td>
+<td align=center valign=top>
+	<h2>
+	SailAway Project
+	</h2>
+</td>
+</tr>
+</table>
+
+<table border=1 width=90%>
+<caption>
+	<b>Scenarios</b>
+</caption>
+
+<tr>
+<th align=left valign=top>
+	Use Case Name
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Iterate Sail One Phase Step
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Iteration
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Finished
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Scenario
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ol>
+	<li>From a System UI, the user issues the command to step forward one phase
+	step along the orbit using perturbations.
+	<li>The Sail uses a default phase step and issues the revised order to its 
+	Orbit as a discrete iteration of all related properties.
+	<li>The Orbit determines it is safe to use perturbation assumptions.  The 
+	Orbit sets flags to signal downstream calculators.
+	<li>The Orbit then requests an update to the orbit properties from its 
+	Perturber as a small perturbation.
+	<li>The Perturber collects all the perturbing forces acting upon the Sail
+	into a list.
+	<li>The Perturber takes the list and calculates resulting forces and torques
+	from each of them.
+	<li>The Perturber takes the sum of the perturbing forces and calculates the
+	changes to the orbit parameters.
+	<li>The Perturber takes the sum of the non-inertial perturbing forces and 
+	torques and sends a copy to the Sail.
+	<li>If the changes to the parameters do not pass the smallness test, the 
+	Perturber tries again with a phase step that is half the size of the 
+	previous value.  Return to step 7.
+	<li>The Perturber hands the new orbit parameters to the Orbit.
+	<li>The Orbit derives the new location and velocity of the Sail based upon
+	old orbit properties.
+	<li>The Orbit updates itself and passes control back to the Sail.
+	<li>The Sail updates itself and issues a statement signaling the completion
+	of the order to the registered listeners.
+	</ol>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Author
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Dr Alfred W Differ
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Date
+</th>
+<td align=left valign=top>
+	<font size=3>
+	2002/01/15 - Facade<br>
+	2002/02/07 - Filled<br>
+	2002/02/09 - Focused<br>
+	2002/02/15 - Finished
+	</font>
+</td>
+</tr>
+</table>
+
+</body>
+</html>	

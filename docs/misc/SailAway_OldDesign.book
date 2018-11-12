@@ -1,0 +1,10 @@
+#HTMLDOC 1.8.18
+-t pdf14 -f ./OldDesign_20020212.pdf --webpage --title --titleimage ../html/Title_OldDesign.html --logoimage ../images/SplashImage.gif --linkstyle underline --size Universal --left 1.00in --right 0.50in --top 0.50in --bottom 0.50in --header ... --footer ... --tocheader ... --tocfooter ... --portrait --color --no-pscommands --no-xrxcomments --compression=1 --jpeg=0 --fontsize 11.0 --fontspacing 1.2 --headingfont Helvetica --bodyfont Times --headfootsize 11.0 --headfootfont Helvetica --charset 8859-1 --links --no-truetype --pagemode document --pagelayout single --firstpage p1 --pageeffect none --pageduration 10 --effectduration 1.0 --no-encryption --permissions all  --owner-password ""  --user-password "" --browserwidth 680
+../html/index.html
+../html/DataObjects.html
+../html/EventList.html
+../html/DataDictionary.html
+../html/sailmodel.html
+../html/clados_help.html
+../html/sailevent.html
+../html/sailgui.html

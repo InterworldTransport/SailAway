@@ -1,0 +1,933 @@
+<HTML>
+<HEAD>
+<TITLE>SailAway - The Physical Model</TITLE>
+
+</HEAD>
+ 
+<BODY TEXT="#000000" BGCOLOR="#FFFFFF">
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table border=0 width=100% align=center>
+<tr align=center valign=top>
+	<td align=center valign=middle>
+		<img	height=100
+			src="../images/SplashImage.gif" 
+			border=0>
+	</td>
+	<td align=center valign=bottom>
+		<h1>SailAway</h1>
+		<h3>Version 0.10<br>(An early development version)</h3>
+	</td>
+</tr>
+<tr>
+	<td colspan=2 bgcolor=cccccc>
+		&nbsp;
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top>
+		<h3>Contents</h3>
+		<h5>The physical model</h5>
+		<font size=2>
+		<ul>
+		<li><a href="#Overview">Overview</a>
+		<li><a href="#Sail">The Sail</a>
+		<li><a href="#Orbit">The Orbit</a>
+		<li><a href="#Perturber">The Perturber</a>
+		<li><a href="#ForceModel">The Force Models</a>
+		<li><a href="#ObjectPlan">The Object Plan</a>
+		</ul>
+		</font>
+	</td>
+	<td align=left valign=bottom>
+		<a name="Overview">
+			<h3>Sailmodel Package Overview</h3>
+		</a>
+		<font size=3>
+		<p>
+		The sailmodel package encapsulates the physical properties 
+		of a solar sail and the physical laws the sail would obey.  
+		<p>
+		The sailmodel package currently contains an implementation of 
+		four classes that do the bulk of the work within the physical
+		model of SailAway.  Knowing how these classes work is an 
+		important step in putting this package to proper use.  Each
+		class is listed below with a short summary.  Afterward, more
+		detail is provided about each class in the package along with
+		some classes that are planned for later inclusion.		
+		</font>
+		<hr size=4>
+		<a name="Sail">
+			<h3>The Sail</h3>
+		</a>
+		<font size=3>
+		<p>
+		The sail object encapsulates information relating strictly to 
+		the sail.  Some properties included as data members follow.
+		<ul>
+		<li>Mass, area, and mission clock
+		<li>Position, Velocity, Attitude, and internal angular momentum
+		<li>Reflection, specularity, emissivity, and non-Lambertian
+		coefficients
+		<li>Orbit
+		</ul>
+		Some properties not included as data members follow in the next
+		list.
+		<ul>
+		<li>Orbit perturbation details
+		<li>The physics of the force models
+		<li>Error handling objects
+		</ul>
+		<p>
+		There are many functions the sail can perform that are related 
+		directly to it.  These functions are included as methods within 
+		the sail object.
+		<ul>
+		<li>Iteration control
+		<li>Simulation tolerance control
+		<li>File I/O for preservation of a simulated run
+		<li>File I/O for loading of a defined sail.
+		</ul>
+		There are several functions not included as methods within the 
+		sail since they are better placed within owned objects.  Here 
+		are some examples. 
+		<ul>
+		<li>Iteration details
+		<li>Perturbation details
+		<li>Event handlers of any kind
+		</ul>
+		<p>
+		The sail is responsible for containing all the details it needs 
+		to correctly tell the GUI where it is and what it is doing.  
+		However, the sail is not responsible for knowing how to perform 
+		all the actions and deliver all the information it contains.  
+		The Orbit, Perturber, and Force Models handle their own details 
+		and relate only neccessary information to the sail.  The user 
+		interface handles the gathering of information by interacting 
+		with the correct gettors in the physical model.
+		<p>
+		For more detailed information about the data members and methods
+		of the sail object, consult the API documentation or the source 
+		code.
+		</font>
+		<hr size=4>
+		<a name="Orbit">
+			<h3>The Orbit</h3>
+		</a>
+		<font size=3>
+		<p>
+		The orbit object encapsulates information relating strictly to 
+		the sail's orbit.  The bulk of the physics concerning celestial 
+		mechanics used by SailAway is contained within this object.  
+		Perturbation techniques and details, however, are contained 
+		within the Perturber.
+		<p>
+		Properties included as data members:
+		<ul>
+		<li>Orbit parameter sets
+		<li>Orbit reference frame
+		<li>A reference to the Parent Sail
+		</ul>
+		Properties not included as data members:
+		<ul>
+		<li>Perturbation techniques and details
+		<li>The physics of the force models
+		<li>Error handling objects
+		</ul>
+		<p>
+		These functions are included as methods within the Orbit object.
+		<ul>
+		<li>Iteration details
+		<li>Perturbation controls
+		<li>Orbit parameter conversion and handling
+		<li>A variety of informational outputs
+		</ul>
+		These functions are not included as methods within the Orbit 
+		object.
+		<ul>
+		<li>Perturbation details
+		<li>A variety of informational outputs from other data members
+		</ul>
+		<p>
+		The Orbit object is responsible for containing all the details 
+		it needs to correctly handle for its Parent Sail all the needed 
+		details of Celestial Mechanics.  The Orbit object, however, is 
+		not responsible for knowing how to perform all the actions and 
+		deliver all the information it contains.  The Perturber handles 
+		its own details and relates only neccessary information to the 
+		Orbit.
+		<p>
+		For more detailed information about the data members and methods
+		of the orbit object, consult the API documentation or the source
+		code.
+		</font>
+		<hr size=4>
+		<a name="Perturber">
+			<h3>The Perturber</h3>
+		</a>
+		<font size=3>
+		<p>
+		There are several techniques for handling small perturbations on
+		orbits.  The Perturber object encapsulates these details.  The 
+		physics of celestial mechanics not covered by data members and 
+		methods of the Orbit object are found in the Perturber object.
+		<p>
+		Properties included as data members:
+		<ul>
+		<li>A Perturber Name
+		<li>A reference to the Parent Orbit
+		<li>Force Models
+		<li>Change of Orbit parameter sets
+		<li>Total Perturbation force
+		</ul>
+		Properties not included as data members:
+		<ul>
+		<li>The physics of the force models
+		<li>Error handling objects
+		</ul>
+		<p>
+		These functions are included as methods within the Perturber 
+		object.
+		<ul>
+		<li>Perturbation details
+		<li>Iteration flags and phase step validations
+		<li>Orbit parameter conversion and handling
+		<li>A variety of informational outputs
+		</ul>
+		These functions are not included as methods within the Perturber
+		object.
+		<ul>
+		<li>Force Model details
+		<li>A variety of informational outputs from other data members
+		</ul>
+		<p>
+		The Perturber object is responsible for containing all the 
+		details it needs to correctly handle for its Parent Orbit all 
+		the needed details of Orbit perturbations by small forces.  The 
+		Perturber object, however, is not responsible for knowing how to
+		perform all the actions	and deliver all the information it 
+		contains.  The Force Models handle their own details and relate 
+		only neccessary information to the Perturber.
+		<p>
+		For more detailed information about the data members and methods
+		of the Perturber object, consult the API documentation or the 
+		source code.
+		</font>
+		<hr size=4>
+		<a name="ForceModel">
+			<h3>The Force Models</h3>
+		</a>
+		<font size=3>
+		<p>
+		The Force Models collectively describe the physics of the 
+		perturbing forces acting upon a sail's orbit.  The only Force 
+		Model currently in the sailmodel package is the Radiation Force 
+		Model.  Later versions of SailAway must include Force Models for
+		gravitational N-body cases, gravitational harmonics, atmospheric
+		drag, magnetic drag, and impulsive perturbative forces.  
+		<p>
+		Properties included as data members:
+		<ul>
+		<li>A reference to the Parent Perturber
+		<li>Copies of sail or orbit properties needed for calculation 
+		<li>Other values easily calculated while figuring the force
+		<li>Force components and total
+		</ul>
+		Properties not included as data members:
+		<ul>
+		<li>Live data members from Parent objects
+		<li>Error handling objects
+		</ul>
+		<p>
+		These functions are included as methods within the Radiation 
+		Force Model object.
+		<ul>
+		<li>Force calculations
+		<li>Needed parameter copying
+		<li>A variety of informational outputs
+		</ul>
+		These functions are not included as methods within the Force 
+		Model objects.
+		<ul>
+		<li>A variety of informational outputs from other data members
+		</ul>
+		<p>
+		The Force Model objects are responsible for containing all the 
+		details it needs to correctly handle for its Parent Perturber 
+		all the details needed to calculate the force components that 
+		result in orbit perturbations.  Other values many also be 
+		calculated by the Force Models as a convenience.  Later versions
+		of SailAway will move the conveniences to other objects.		
+		<p>
+		For more detailed information about the data members and methods
+		of the Force Model objects, consult the API documentation or the
+		source code.		
+		</font>
+		<hr size=4>
+		<a name="Exceptions">
+			<h3>The Exceptions</h3>
+		</a>
+		<font size=3>
+		<p>
+		The Sail Exceptions are a group of classes designed to intercept
+		bad simulations and deliver the erroneous data to a dump file 
+		for later analysis.  Each exception is designed	to catch a 
+		particular issue.  As the SailAway application matures, more 
+		exceptions will	be added to the SailException tree.
+		<p>
+		At present, none of the exceptions actually cause a dump of data
+		to a file.  Until the application is more mature, they will be
+		restricted to writing to the stream named 'standard out'.  The
+		developer working on the application can redirect this stream if
+		they wish to do so.
+		</font>
+	</td>
+</tr>
+<tr>
+	<td colspan=2 bgcolor=cccccc>
+		&nbsp;
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top>
+		<h3>Contents</h3>
+		<h5>The physical model</h5>
+		<font size=2>
+		<ul>
+		<li>Parentage
+		<li>Ownership
+		</ul>
+		</font>
+	</td>
+	
+	<td align=left valign=top>
+		<a name="ObjectPlan">
+			<h3>Class parentage within sailmodel</h3>
+		</a>
+		<font size=3>
+		All classes within sailmodel descend directly from Object with
+		very few exceptions.  The exceptions to this rule are listed 
+		below.
+		<p>
+		<ul>
+		<li>All force models implementing a particular type of force
+		descend from ForceModel
+		<li>All Exceptions implementing catches for particular problems
+		caused by objects in the physical model descend from
+		SailException.
+		</ul>
+		</p>
+		</font>
+		<hr size=8>
+	</td>
+</tr>
+<tr>
+	<td align=left valign=top>
+		&nbsp;
+	</td>
+	
+	<td align=left valign=top>
+		<font size=4>
+		<b>Class Ownership within sailmodel - </b>
+		</font>
+		<font size=2>
+		<i>Italics</i> implies a planned object 
+		while <b>bold</b> implies an abstract object 
+		</font>
+		<p>		
+		
+		<table border=0 width=100%>
+		<tr>
+			<th colspan=5 align=left valign=top>
+				Objects
+			</th>
+			<th align=left valign=top>
+				Description
+			</th>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				Sail
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				A representation of a solar sail
+			</font>
+			</td>			
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				|________________
+			</td>
+			<td align=left valign=top>
+				Orbit
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				A representation of two body orbits
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				|
+			</td>
+			<td align=left valign=top>
+				|____
+			</td>
+			<td align=left valign=top>
+				Perturber
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				The pieces of an Orbit that handle small 
+				perturbations due to small
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				|________________
+			</td>
+			<td align=left valign=top>
+				<i>Structure</i>
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				This object will handle the list of elements
+				belonging to the sail.  It will also handle
+				global methods that trigger methods in all
+				elements.
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				|____
+			</td>
+			<td align=left valign=top>
+				<i>Element</i>
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				Several properties currently located in the Sail
+				will be moved here.  Only elements should have a
+				mass, area, attitude, and some other properties.
+				The Sail may have a sum of these properties.
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				|____
+			</td>
+			<td align=left valign=top>
+				<i>ElementConstraint</i>
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				This object will act to contrain properties of
+				the Element to which it belongs.  These
+				constraints are meant to implement physical law
+				restrictions and nearest neighbor limits.
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				|____
+			</td>
+			<td align=left valign=top>
+				<i>ForceTorqueHandler</i>
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				Active force models on a Sail element will be 
+				listed and handled in this object.
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				|________
+			</td>
+			<td align=left valign=top>
+				<b>ForceModel</b>
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				The abstract parent of all Force Models
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				|________
+			</td>
+			<td align=left valign=top>
+				RadiationForceModel
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				The physics of radiation pressure
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				|________
+			</td>
+			<td align=left valign=top>
+				HarmonicForceModel
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				The physics of nonspherical gravity
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				|________
+			</td>
+			<td align=left valign=top>
+				NBodyForceModel
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				The physics of multi-body gravity
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				|________
+			</td>
+			<td align=left valign=top>
+				FluidForceModel
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				The physics of fluid drag
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				|________
+			</td>
+			<td align=left valign=top>
+				MagneticForceModel
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				The physics of magnetic forces-eddy
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				&nbsp;
+			</td>
+			<td align=left valign=top>
+				|________
+			</td>
+			<td align=left valign=top>
+				ImpulsiveForceModel
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				The physics of impulsive forces
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				SailException
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				&nbsp;
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				BadAngularMomentumException
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				&nbsp;
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				BadAttitudeException
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				&nbsp;
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				BadOrbitDefinitionException
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				&nbsp;
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				BadPositionException
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				&nbsp;
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				BadRungeLenzException
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				&nbsp;
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				BadSailDefinitionException
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				&nbsp;
+			</font>
+			</td>
+			
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				BadVelocityTryException
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				&nbsp;
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				CantGetProfileException
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				&nbsp;
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				CantGetSaveException
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				&nbsp;
+			</font>
+			</td>
+		</tr>
+		<tr>
+			<td align=left valign=top>
+				PerturbationAssumptionException
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+				............
+			</td>
+			<td align=left valign=top>
+			<font size=2>
+				&nbsp;
+			</font>
+			</td>
+		</tr>
+		</table>		
+	</td>
+</tr>
+<tr>
+	<td colspan=2 bgcolor=cccccc>
+		&nbsp;
+	</td>
+</tr>
+</table>
+</BODY>
+</HTML>

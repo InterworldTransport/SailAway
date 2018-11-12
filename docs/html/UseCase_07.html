@@ -1,0 +1,247 @@
+<html>
+<head>
+	<title>
+		SailAway Case Study
+	</title>
+</head>
+<body>
+<!--
+Copyright
+Copyright (c) 2002 Interworld Transport.  All rights reserved.
+
+Interworld Transport grants you ("Licensee") a license to this documentation 
+under the terms of the Design Science License.
+A full copy of the license can be found bundled with this documentation and
+published within it.
+
+Use of this documentation beyond the legal definition of 'fair use' by the 
+Licensee states their willingness to accept the terms of the license.
+
+A prospective Licensee unable to find a copy of the license terms should contact
+Interworld Transport for a free copy.
+-->
+<table width=90%>
+<tr>
+<td width=120 align=center valign=top>
+	<img width=100 height=100 src="../images/SplashImage.gif">
+</td>
+<td align=center valign=top>
+	<h2>
+	SailAway Project
+	</h2>
+</td>
+</tr>
+</table>
+
+
+<table border=1 width=90%>
+<caption>
+	<b>Use Cases</b>
+</caption>
+
+<tr>
+<th align=left valign=top>
+	Diagram
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<img 	alt="Use Case Diagram 7" 
+			src="../images/usecase7.gif" 
+			align="top" 
+			border="0">
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Name
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Create Flight Simulation
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Iteration
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Finished
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Summary
+</th>
+<td align=left valign=top>
+	<font size=3>
+	A user records into the system details about the initial conditions of a
+	sail flight.  These details involve an initial sail and command set.  The
+	System facilitates the gathering of this information from the user if the
+	use mode for the System is interactive and the marking of the parts for
+	inclusion in a simulation.
+	<p>
+	When the user completes all the information gathered by the System for this
+	case, they will have a simulated flight that may be checked for consistency
+	and then run.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Basic Course of Events
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ol>
+	<li>From within the system the User optionally recalls an existing flight
+	simulation for refinement.
+	<li>The User records details about an initial sail to use
+	<li>The User optionally records details about a final sail to use
+	<li>The User records some details about the command set to use
+	<li>The System attempts to determine if the changed flight simulation is
+	well-formed.
+	<li>The System identifies and records these details for later use.
+	</ol>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Alternative Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	If the system is configured for the use of a library, any changes in step 2,
+	3, or 4 will automatically be associated and saved with the current working 
+	flight in the library.
+	<p>
+	If the system is configured to use a library at step 1, it will present the
+	user with the option to load a pre-existing flight to act as a starting 
+	point for further additions or deletions.
+	<p>
+	If multiple libraries are available, the storage and retrievals use cases
+	will make the decisions regarding which ones to use.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Exception Paths
+</th>
+<td align=left valign=top>
+	<font size=3>
+	At step 5, simulations that are not well-formed are brought to the 
+	attention of the user via the Notification Tool.  Additions are saved as
+	part of the simulation, though, unlike invalid additions to the subparts of
+	a simulation.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Extension Points
+</th>
+<td align=left valign=top>
+	<font size=3>
+	When the System adds objects to a flight simulation, these changes trigger a
+	testing process to determine whether the whole collection is well-formed.  
+	This occurs at step 5.
+	<p>
+	When the System records a simulation in a library at step 6, it will use a 
+	separate process to do the actual saving due to the complexity of the 
+	interaction between the System and a remote library and the fact that the 
+	separate process can be re-used by other sections of the system.
+	<p>
+	When the System retrieves a simulation from a library at step 1, it will use
+	a separate process to do the actual getting due to the complexity of the
+	interaction between the System and a remote library and the fact that the 
+	separate process can be re-used by other sections of the system.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Trigger
+</th>
+<td align=left valign=top>
+	<font size=3>
+	The User triggers this case by changing any part of a flight simulation.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Assumptions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Preconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	<ul>
+	<li>All parts of a flight simulation are valid.
+	<li>Tests exist to determine what is required to make a flight simulation
+	well-formed.
+	</ul>
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Postconditions
+</th>
+<td align=left valign=top>
+	<font size=3>
+	A Simulated Flight will exist after this case is complete.  That does not
+	imply the simulation will be well-formed or run.
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Related Environment Rules
+</th>
+<td align=left valign=top>
+	<font size=3>
+	1
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Author
+</th>
+<td align=left valign=top>
+	<font size=3>
+	Dr Alfred W Differ
+	</font>
+</td>
+</tr>
+<tr>
+<th align=left valign=top>
+	Date
+</th>
+<td align=left valign=top>
+	<font size=3>
+	2001/11/07 - Facade<br>
+	2002/01/03 - Filled<br>
+	2002/02/07 - Focused<br>
+	2002/02/15 - Finished
+	</font>
+</td>
+</tr>
+</table>
+
+</body>
+</html>	

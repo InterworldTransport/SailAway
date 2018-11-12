@@ -1,0 +1,19 @@
+	SailAway Testing Plan
+
+The application is still in its early days, so testing is done
+right along side development.  The only ephemeris test that can
+be done right now is to check if the orbit parameters alter the
+way they should when the StepForward and StepBackward methods in
+the Sail are called.  
+
+All other testing at this time involves seeing if the feature
+being added to SailAway is actually reachable from the user 
+interface and event model.  Whether the feature works as it
+should gets to be tested later.
+
+There is a 'run' target within the makefile.  It simply runs
+the java interpreter with the SailAway class and the default
+support files.  (This is going to be converted to an Ant target
+with a similar function.  The old makefile will be left intact
+but it will not be maintained.  If you don't have Ant, get it
+soon and make the switch.)
