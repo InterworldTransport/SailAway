@@ -303,49 +303,37 @@ public class Perturber {
 	this.setDPhase(0.01);
 	this.setDerivedValues();
 
-	IFPerturbON=new Boolean(
-		this.ParentOrbit.ParentSail.SailProps.getProperty(
-		"IFPerturbationON")).booleanValue();
+	IFPerturbON=Boolean.parseBoolean(ParentOrbit.ParentSail.SailProps.getProperty("IFPerturbationON"));
 	if (IFPerturbON) {
 		//this.IFModel = new ImpulsiveForceModel(
 		//"IF Model for: "+this.ParentOrbit.getOrbitName(), this);
 		}
 
-	MFPerturbON=new Boolean(
-		this.ParentOrbit.ParentSail.SailProps.getProperty(
-		"MFPerturbationON")).booleanValue();
+	MFPerturbON=Boolean.parseBoolean(ParentOrbit.ParentSail.SailProps.getProperty("MFPerturbationON"));
 	if (MFPerturbON) {
 		//this.MFModel = new MagDragForceModel(
 		//"MF Model for: "+this.ParentOrbit.getOrbitName(), this);
 		}
 
-	NFPerturbON=new Boolean(
-		this.ParentOrbit.ParentSail.SailProps.getProperty(
-		"NFPerturbationON")).booleanValue();
+	NFPerturbON=Boolean.parseBoolean(ParentOrbit.ParentSail.SailProps.getProperty("NFPerturbationON"));
 	if (NFPerturbON) {
 		//this.NFModel = new NBodyGravForceModel(
 		//"NF Model for: "+this.ParentOrbit.getOrbitName(), this);
 		}
 
-	FFPerturbON=new Boolean(
-		this.ParentOrbit.ParentSail.SailProps.getProperty(
-		"FFPerturbationON")).booleanValue();
+	FFPerturbON=Boolean.parseBoolean(ParentOrbit.ParentSail.SailProps.getProperty("FFPerturbationON"));
 	if (FFPerturbON) {
 		//this.FFModel = new FluidDragForceModel(
 		//"FF Model for: "+this.ParentOrbit.getOrbitName(), this);
 		}
 
-	HFPerturbON=new Boolean(
-		this.ParentOrbit.ParentSail.SailProps.getProperty(
-		"HFPerturbationON")).booleanValue();
+	HFPerturbON=Boolean.parseBoolean(ParentOrbit.ParentSail.SailProps.getProperty("HFPerturbationON"));
 	if (HFPerturbON) {
 		//this.HFModel = new HarmonicForceModel(
 		//"HF Model for: "+this.ParentOrbit.getOrbitName(), this);
 		}
 
-	RFPerturbON=new Boolean(
-		this.ParentOrbit.ParentSail.SailProps.getProperty(
-		"RFPerturbationON")).booleanValue();
+	RFPerturbON=Boolean.parseBoolean(ParentOrbit.ParentSail.SailProps.getProperty("RFPerturbationON"));
 	if (RFPerturbON) {
 		//this.RFModel = new RadiationForceModel(
 		//"RF Model for: "+this.ParentOrbit.getOrbitName(), this);

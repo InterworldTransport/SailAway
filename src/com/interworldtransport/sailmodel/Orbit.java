@@ -109,10 +109,9 @@ abstract	class		Orbit {
 	OrbitName = "Orbit Of:"+pSail.getSailName();
 	Micro = pSail.getMicro();
 	ParentSail = pSail;
-	PerturbationON = 
-	    new Boolean(ParentSail.SailProps.getProperty("PerturbationON")).booleanValue();
-	this.Perturb=new Perturber("Prtbr:"+OrbitName, this);
-	this.setInitialFrame();
+	PerturbationON = Boolean.parseBoolean(ParentSail.SailProps.getProperty("PerturbationON"));
+	Perturb=new Perturber("Prtbr:"+OrbitName, this);
+	setInitialFrame();
 		
 	//calculate the objects that define the orbit.
 	//calculate the derived objects that are convenient

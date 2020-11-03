@@ -204,24 +204,24 @@ public class RadiationForceModel extends ForceModel{
 
 	double tempcos=this.ParentSail.getcosAttitude();
 	if (tempcos >= 0.0) {        //Sail is facing forwards
-		Rf = new Double(this.ParentSail.getRf()).doubleValue();
-		Rb = new Double(this.ParentSail.getRb()).doubleValue();
-		Sf = new Double(this.ParentSail.getSf()).doubleValue();
-		Sb = new Double(this.ParentSail.getSb()).doubleValue();
-		Ef = new Double(this.ParentSail.getEf()).doubleValue();
-		Eb = new Double(this.ParentSail.getEb()).doubleValue();
-		Lf = new Double(this.ParentSail.getLf()).doubleValue();
-		Lb = new Double(this.ParentSail.getLb()).doubleValue();
+		Rf = Double.parseDouble(ParentSail.getRf());
+		Rb = Double.parseDouble(ParentSail.getRb());
+		Sf = Double.parseDouble(ParentSail.getSf());
+		Sb = Double.parseDouble(ParentSail.getSb());
+		Ef = Double.parseDouble(ParentSail.getEf());
+		Eb = Double.parseDouble(ParentSail.getEb());
+		Lf = Double.parseDouble(ParentSail.getLf());
+		Lb = Double.parseDouble(ParentSail.getLb());
 		}
 	else {            //Sail is facing backwards
-		Rf = new Double(this.ParentSail.getRb()).doubleValue();
-		Rb = new Double(this.ParentSail.getRf()).doubleValue();
-		Sf = new Double(this.ParentSail.getSb()).doubleValue();
-		Sb = new Double(this.ParentSail.getSf()).doubleValue();
-		Ef = new Double(this.ParentSail.getEb()).doubleValue();
-		Eb = new Double(this.ParentSail.getEf()).doubleValue();
-		Lf = new Double(this.ParentSail.getLb()).doubleValue();
-		Lb = new Double(this.ParentSail.getLf()).doubleValue();
+		Rf = Double.parseDouble(ParentSail.getRb());
+		Rb = Double.parseDouble(ParentSail.getRf());
+		Sf = Double.parseDouble(ParentSail.getSb());
+		Sb = Double.parseDouble(ParentSail.getSf());
+		Ef = Double.parseDouble(ParentSail.getEb());
+		Eb = Double.parseDouble(ParentSail.getEf());
+		Lf = Double.parseDouble(ParentSail.getLb());
+		Lb = Double.parseDouble(ParentSail.getLf());
 		}
 	}
 

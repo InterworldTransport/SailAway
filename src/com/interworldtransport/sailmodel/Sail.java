@@ -168,18 +168,15 @@ public class Sail {
  *  instantiated for each sail patch.
  */
   //protected	SailPerturber	intlAttPert;
-/** The long holds information about the Sail version for Serialization purposes
- */
-  public static final long  serialVersionUID=01 ;
 
-    private final double  AU=149599650.0; //One Astronomical Unit in kilometers
-    private final double  TU=5022675.7; //One Time Unit in seconds
-    private final double  SOLMICRO=1.3271544E20; //Value of solar G in m3/s2
-    private final double  EAU=6378.145; //One EarthOrbitUnit in kilometers
-    private final double  ETU=806.8118744; //One EarthTime Unit in seconds
-    private final double  EARTHMICRO=3.986012E14; //Value of Terran G in m3/s2
-    private final double  ERADIUS=6.378145E6; //One EarthRadius Unit in meters
-    private final double  SRADIUS=0.0; //One SolarRadius Unit in meters
+    public static final double  AU=149599650.0; //One Astronomical Unit in kilometers
+    public static  final double  TU=5022675.7; //One Time Unit in seconds
+    public static  final double  SOLMICRO=1.3271544E20; //Value of solar G in m3/s2
+    public static  final double  EAU=6378.145; //One EarthOrbitUnit in kilometers
+    public static  final double  ETU=806.8118744; //One EarthTime Unit in seconds
+    public static  final double  EARTHMICRO=3.986012E14; //Value of Terran G in m3/s2
+    public static  final double  ERADIUS=6.378145E6; //One EarthRadius Unit in meters
+    public static  final double  SRADIUS=0.0; //One SolarRadius Unit in meters
 //}}}
 //The Constructors
 //{{{ constructors that aren't ready yet
@@ -305,10 +302,10 @@ public class Sail {
 
 	if (ProfileON) this.getProfileFile();
 
-	this.FOO=this.SailProps.getProperty("SailFOO");
-	if (this.FOO.equals("Earth")) {this.Micro=this.EARTHMICRO;}
+	FOO=SailProps.getProperty("SailFOO");
+	if (FOO.equals("Earth")) {Micro=EARTHMICRO;}
 	else {
-		if (this.FOO.equals("Sun")) {this.Micro=this.SOLMICRO;}
+		if (FOO.equals("Sun")) {Micro=SOLMICRO;}
 		}
 
 	double[] tempC=new double[9];
@@ -316,27 +313,27 @@ public class Sail {
 		tempC[i]=0.0;
 		}
 
-	tempC[2]=new Double(SailProps.getProperty("SailPositionX")).doubleValue();
-	tempC[3]=new Double(SailProps.getProperty("SailPositionY")).doubleValue();
-	tempC[4]=new Double(SailProps.getProperty("SailPositionZ")).doubleValue();
+	tempC[2]=Double.parseDouble(SailProps.getProperty("SailPositionX"));
+	tempC[3]=Double.parseDouble(SailProps.getProperty("SailPositionY"));
+	tempC[4]=Double.parseDouble(SailProps.getProperty("SailPositionZ"));
 	this.Position = new Monad("SailPosition", FOO, FOO+"0", 3, 0, tempC);
 
-	tempC[2]=new Double(SailProps.getProperty("SailVelocityX")).doubleValue();
-	tempC[3]=new Double(SailProps.getProperty("SailVelocityY")).doubleValue();
-	tempC[4]=new Double(SailProps.getProperty("SailVelocityZ")).doubleValue();
+	tempC[2]=Double.parseDouble(SailProps.getProperty("SailVelocityX"));
+	tempC[3]=Double.parseDouble(SailProps.getProperty("SailVelocityY"));
+	tempC[4]=Double.parseDouble(SailProps.getProperty("SailVelocityZ"));
 	this.Velocity = new Monad("SailVelocity", FOO, FOO+"0", 3, 0, tempC);
 
 	tempC[2]=0.0;
 	tempC[3]=0.0;
 	tempC[4]=0.0;
-	tempC[5]=new Double(SailProps.getProperty("SailAttitudeXY")).doubleValue();
-	tempC[6]=new Double(SailProps.getProperty("SailAttitudeXZ")).doubleValue();
-	tempC[7]=new Double(SailProps.getProperty("SailAttitudeYZ")).doubleValue();
+	tempC[5]=Double.parseDouble(SailProps.getProperty("SailAttitudeXY"));
+	tempC[6]=Double.parseDouble(SailProps.getProperty("SailAttitudeXZ"));
+	tempC[7]=Double.parseDouble(SailProps.getProperty("SailAttitudeYZ"));
 	this.Attitude = new Monad("SailAttitude", FOO, FOO+"0", 3, 0, tempC);
 
-	tempC[5]=new Double(SailProps.getProperty("SailIntLX")).doubleValue();
-	tempC[6]=new Double(SailProps.getProperty("SailIntLY")).doubleValue();
-	tempC[7]=new Double(SailProps.getProperty("SailIntLZ")).doubleValue();
+	tempC[5]=Double.parseDouble(SailProps.getProperty("SailIntLX"));
+	tempC[6]=Double.parseDouble(SailProps.getProperty("SailIntLY"));
+	tempC[7]=Double.parseDouble(SailProps.getProperty("SailIntLZ"));
 	this.intlAngMomentum = new Monad("SailInternalL", FOO, FOO+"0", 3, 0, tempC);  
 	
 	tempC=null;
@@ -629,12 +626,11 @@ public class Sail {
  */
     public void stepForward(double pDPhase) {
 	this.setDerivedValues();
-	double pLAllow=new Double(this.getChangeAllowanceL()).doubleValue();
-	double pRLAllow=new Double(this.getChangeAllowanceRL()).doubleValue();
+	double pLAllow=Double.parseDouble(this.getChangeAllowanceL());
+	double pRLAllow=Double.parseDouble(this.getChangeAllowanceRL());
 	double step=0.0;
 	if (pDPhase==0.0) {
-		step=new Double(SailProps.getProperty("InitialPhaseStep")).
-								doubleValue();
+		step=Double.parseDouble(SailProps.getProperty("InitialPhaseStep"));
 		}
 	else 	step=pDPhase; 
 	try {
@@ -665,12 +661,11 @@ public class Sail {
  */
     public void stepBackward(double pDPhase) {
 	this.setDerivedValues();
-	double pLAllow=new Double(this.getChangeAllowanceL()).doubleValue();
-	double pRLAllow=new Double(this.getChangeAllowanceRL()).doubleValue();
+	double pLAllow=Double.parseDouble(this.getChangeAllowanceL());
+	double pRLAllow=Double.parseDouble(this.getChangeAllowanceRL());
 	double step=0.0;
 	if (pDPhase==0.0) {
-		step=new Double(this.SailProps.getProperty("InitialPhaseStep")).
-								doubleValue(); 
+		step=Double.parseDouble(this.SailProps.getProperty("InitialPhaseStep")); 
 		step=step * -1.0;
 		}
 	else 	step=-1.0*pDPhase; 
@@ -795,9 +790,9 @@ public class Sail {
 	//The profile file will be complex enough to hold several reflectors and will
 	//probably get read by the object that makes the intlStructure.
 
-		this.SailMass=new Double(this.getSailMass()).doubleValue();
-		this.SailArea=new Double(this.getSailArea()).doubleValue();
-		this.MissionClock=new Double(this.SailProps.getProperty("MissionClockStart")).doubleValue();
+		this.SailMass=Double.parseDouble(this.getSailMass());
+		this.SailArea=Double.parseDouble(this.getSailArea());
+		this.MissionClock=Double.parseDouble(this.SailProps.getProperty("MissionClockStart"));
 
 		System.out.println("Properties for "+ this.SailName +" are loaded.");
 		}
@@ -859,19 +854,19 @@ public class Sail {
     protected void saveSailActivity() throws IOException {
 	this.to.write(this.SailName);
 	this.to.write(", ");
-	this.to.write(new Double(MissionClock).toString());
+	this.to.write(Double.valueOf(MissionClock).toString());
 	this.to.write(", ");
-	this.to.write(new Double(Orbit.SemiMajorAxis).toString());
+	this.to.write(Double.valueOf(Orbit.SemiMajorAxis).toString());
 	this.to.write(", ");
-	this.to.write(new Double(Orbit.Eccentricity).toString());
+	this.to.write(Double.valueOf(Orbit.Eccentricity).toString());
 	this.to.write(", ");
-	this.to.write(new Double(Orbit.Inclination).toString());
+	this.to.write(Double.valueOf(Orbit.Inclination).toString());
 	this.to.write(", ");
-	this.to.write(new Double(Orbit.RAN).toString());
+	this.to.write(Double.valueOf(Orbit.RAN).toString());
 	this.to.write(", ");
-	this.to.write(new Double(Orbit.PeriAngle).toString());
+	this.to.write(Double.valueOf(Orbit.PeriAngle).toString());
 	this.to.write(", ");
-	this.to.write(new Double(Orbit.TrueAnomoly).toString());
+	this.to.write(Double.valueOf(Orbit.TrueAnomoly).toString());
 	this.to.write("\n");
 	this.to.flush();
 	return;
