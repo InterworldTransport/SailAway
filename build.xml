@@ -54,7 +54,6 @@ Interworld Transport for a free copy." />
 			<include name="com/interworldtransport/sailli/*.java"></include>
 			<include name="com/interworldtransport/sailnti/*.java"></include>
 			<include name="com/interworldtransport/sailevent/*.java"></include>
-			<exclude name="./**/CVS/*"></exclude>
 			<exclude name="com/interworldtransport/sailmodel/Orbit.java"></exclude>
 			<exclude name="com/interworldtransport/sailgui/Geometry.java"></exclude> 
 			<exclude name="com/interworldtransport/sailgui/ErrorMessage.java"></exclude>

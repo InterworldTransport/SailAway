@@ -21,7 +21,6 @@ Interworld Transport for a free copy.
 ---com.interworldtransport.sailgui.ErrorMessage---------------------------------
  */
 
-
 /**
  * Derived from original code for ThreeSpace made available under GPL by... 
  * ThreeSpace (c) Copyright 2001 Adam Chodorowski, John Nilsson
@@ -35,13 +34,14 @@ import javax.swing.JOptionPane;
 /**
  * A class used by the GUI to show error messages
  */
-public class ErrorMessage{
-    /**
-     * Shows an error message.
-     * @param mess The Message
-     * @param title The Title
-     */
-    public static void show(String mess, String title){
-	JOptionPane.showMessageDialog(null, mess, "Error - "+title, JOptionPane.ERROR_MESSAGE);
-    }
+public class ErrorMessage {
+	/**
+	 * Shows an error message.
+	 * 
+	 * @param mess  The Message
+	 * @param title The Title
+	 */
+	public final static void show(String mess, String title) {
+		JOptionPane.showMessageDialog(null, mess, "Error - " + title, JOptionPane.ERROR_MESSAGE);
+	}
 }
